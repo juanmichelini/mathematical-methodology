@@ -3,6 +3,7 @@ import MathematicalMethodology.Examples.Lists
 import MathematicalMethodology.Examples.ListsStore
 import MathematicalMethodology.Examples.ListsSearch
 import MathematicalMethodology.Examples.Enumeration
+import MathematicalMethodology.Examples.ExportCheck
 
 /-!
 # Report
@@ -63,10 +64,15 @@ def negativeRows : List String :=
     | none => s!"| {escape desc} | WRONGLY ACCEPTED |"
 
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
+/-- Is the committed `Generated/FstCandidates.lean` what the generator prints? -/
+def exportUpToDate : Bool :=
+  MM.Export.fstFile == include_str "Generated/FstCandidates.lean"
+
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
   negatives.all (fun (_, dev) => (negativeOutcome dev).isSome) &&
-  MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst
+  MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst &&
+  exportUpToDate
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -170,6 +176,14 @@ def markdown : String :=
     , "|---|---|" ]
     ++ candidateRows ++
     [ ""
+    , "## Export to Lean"
+    , ""
+    , s!"The {MM.Strategic.candidatosFst.length} candidates (and the data types) are printed as plain Lean"
+    , "(`Export/Lean.lean`, `lake exe export-lean`) in `Generated/FstCandidates.lean`. That file is"
+    , "part of the library, so `lake build` compiles it: Lean itself accepts the definitions and their"
+    , "structural recursion. A guard checks that the committed file equals the generator's output:"
+    , s!"{exportUpToDate}."
+    , ""
     , "## Soundness"
     , ""
     , "Accepting a certificate is not just tested, it is proved correct in Lean"
