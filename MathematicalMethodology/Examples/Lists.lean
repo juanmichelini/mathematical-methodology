@@ -113,28 +113,24 @@ def isError {α : Type} : Except String α → Bool
   | .error _ => true
   | .ok _ => false
 
--- A false statement: `append x nil = nil`, with the certificate of a true one.
-#guard isError (checkDevelopment listCtx
-  [("false", ⟨["List"], appendT (.var 0) nilT, nilT⟩, appendNilCert)] [])
+/-- Developments the checker must reject: a description and the development.
+Shared by the `#guard` below and by the generated report (`results/report.md`). -/
+def negatives : List (String × List (String × Affirm × Cert)) :=
+  [ ("false statement `append x nil = nil`, with the certificate of a true lemma",
+     [("false", ⟨["List"], appendT (.var 0) nilT, nilT⟩, appendNilCert)])
+  , ("false statement `rev x = x`, with an unrelated certificate",
+     [("false", ⟨["List"], revT (.var 0), .var 0⟩, appendNilCert)])
+  , ("reference to a rule that does not exist",
+     [("bad", appendNil,
+        .induct 0 <| c2 (.compute .lhs .refl)
+          (.compute .lhs (.rewrite .lhs 7 false .refl)))])
+  , ("too few cases for an induction",
+     [("bad", appendNil, .induct 0 (c1 (.compute .lhs .refl)))])
+  , ("lemma used before it is proven (rev_rev proved first)",
+     [("rev_rev", revRev, revRevCert)])
+  , ("induction on a variable that is not of a data type",
+     [("bad", ⟨["Elem"], .var 0, .var 0⟩, .induct 0 .nil)]) ]
 
--- `rev x = x` is false for lists; no certificate shape should get through.
-#guard isError (checkDevelopment listCtx
-  [("false", ⟨["List"], revT (.var 0), .var 0⟩, appendNilCert)] [])
-
--- Reference to a rule that does not exist.
-#guard isError (checkDevelopment listCtx
-  [("bad", appendNil, .induct 0 <| c2 (.compute .lhs .refl)
-      (.compute .lhs (.rewrite .lhs 7 false .refl)))] [])
-
--- Too few cases for an induction.
-#guard isError (checkDevelopment listCtx
-  [("bad", appendNil, .induct 0 (c1 (.compute .lhs .refl)))] [])
-
--- Using a lemma before it is proven (rev_rev needs rev_append etc.).
-#guard isError (checkDevelopment listCtx [("rev_rev", revRev, revRevCert)] [])
-
--- Induction on a variable that is not of a data type.
-#guard isError (checkDevelopment listCtx
-  [("bad", ⟨["Elem"], .var 0, .var 0⟩, .induct 0 .nil)] [])
+#guard negatives.all fun (_, dev) => isError (checkDevelopment listCtx dev [])
 
 end MM.Examples

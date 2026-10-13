@@ -35,6 +35,8 @@ three levels, and the code is split the same way:
   *find* certificates are untrusted; only the checker must be right.
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
+- `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
+  not trusted and nothing trusted may import them.
 
 **Trusted-base rule:** anything that can make a false statement pass `Cert.check`
 is trusted and gets extra care (tests that reject bad certificates, small diffs,
@@ -44,11 +46,17 @@ operational level or by `Cert.check`.
 ## Commands
 
 ```
-lake build        # builds everything and runs the #guard tests
+lake build                          # builds everything and runs the #guard tests
+lake exe results > results/report.md  # regenerates the committed report
 ```
 
 There is no separate test runner: tests are `#guard` / `#eval` checks inside the
 Lean files, so a successful `lake build` means the tests passed.
+
+`results/report.md` is a deterministic, committed record of what the checker accepts
+and rejects. CI regenerates it on a clean runner and **fails if it differs from the
+committed copy**, so regenerate and commit it whenever behaviour changes. Do not edit
+it by hand and do not add timestamps or hashes to it.
 
 Toolchain: `lean-toolchain` pins the version (currently Lean 4.24.0).
 If `elan` cannot reach `release.lean-lang.org` (restricted sandboxes), download
@@ -60,6 +68,7 @@ If `elan` cannot reach `release.lean-lang.org` (restricted sandboxes), download
 - `lake build` succeeds with no errors and no `sorry`.
 - New behaviour has a `#guard` that passes **and** a `#guard` showing the checker
   rejects a wrong input (for anything touching `Cert.check`).
+- `results/report.md` regenerated and committed if anything it reports changed.
 - Docs updated if behaviour or structure changed (`README.md`, this file,
   `docs/ROADMAP.md`).
 - PR description says what was and was not verified. Do not claim CI passed if
