@@ -1,5 +1,2 @@
-/-!
-# MathematicalMethodology
-
-Root module. See README.md and AGENTS.md.
--/
+import MathematicalMethodology.Operational.Term
+import MathematicalMethodology.Operational.Compute
