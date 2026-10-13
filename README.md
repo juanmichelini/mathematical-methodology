@@ -19,10 +19,13 @@ it needs (`append_nil`, `append_assoc`, `rev_append`).
 ## Build
 
 ```
-lake build
+lake build                            # builds and runs the #guard tests
+lake exe results > results/report.md  # regenerate the committed report
 ```
 
 Tests are `#guard` checks inside the Lean files, so a successful build means they pass.
+[`results/report.md`](results/report.md) records what the checker accepts and rejects;
+CI regenerates it and fails if the committed copy is stale.
 
 ## Status
 

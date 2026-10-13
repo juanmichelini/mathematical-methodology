@@ -39,6 +39,18 @@ For anything that touches `Cert.check`, add both:
 
 A checker that only has positive tests has not been tested.
 
+### Results report
+
+`lake exe results > results/report.md` writes a markdown report: every lemma with its
+statement, certificate size and result, and every negative test with the checker's
+rejection message. The report is committed and deterministic (no timestamps, hashes or
+timings). CI regenerates it on a clean runner and fails if it differs from the committed
+copy, and uploads it as the `results` artifact. If you change what the checker accepts or
+rejects, regenerate and commit the report in the same PR.
+
+Negative tests live in `Examples/*.lean` as data (`negatives`), so the `#guard` and the
+report always agree.
+
 ## Style
 
 - No `sorry`. No `partial`/`unsafe` in the trusted base. `autoImplicit` is off.
@@ -51,4 +63,5 @@ A checker that only has positive tests has not been tested.
 - Does it build, and was that actually observed?
 - If it touches the trusted base: could it make a false statement pass? Is there a
   negative test?
+- Is `results/report.md` regenerated if the checker's behaviour changed?
 - Are docs and `docs/ROADMAP.md` updated?

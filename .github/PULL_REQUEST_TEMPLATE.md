@@ -11,4 +11,5 @@ Closes #<!-- issue number: every PR needs an issue -->
 - [ ] There is an issue for this change and this PR closes it
 - [ ] `lake build` succeeds, no `sorry`
 - [ ] Anything touching `Cert.check` has a test that rejects a bad certificate
+- [ ] `results/report.md` regenerated and committed if the checker's behaviour changed
 - [ ] Docs updated (`README.md`, `AGENTS.md`, `docs/ROADMAP.md`) if needed

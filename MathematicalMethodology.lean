@@ -1,4 +1,6 @@
 import MathematicalMethodology.Operational.Term
 import MathematicalMethodology.Operational.Compute
 import MathematicalMethodology.Tactical.Cert
+import MathematicalMethodology.Pretty
 import MathematicalMethodology.Examples.Lists
+import MathematicalMethodology.Report

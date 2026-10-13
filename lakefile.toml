@@ -6,3 +6,7 @@ autoImplicit = false
 
 [[lean_lib]]
 name = "MathematicalMethodology"
+
+[[lean_exe]]
+name = "results"
+root = "Results"
