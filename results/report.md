@@ -96,6 +96,14 @@ and the two lists are identical, in order: true.
 | `(C_,a_R -> (C_,a_R -> C_,R))` | 6 |
 | `(C_,a_R -> (C_,a_R -> C_,a_R))` | 6 |
 
+## Export to Lean
+
+The 64 candidates (and the data types) are printed as plain Lean
+(`Export/Lean.lean`, `lake exe export-lean`) in `Generated/FstCandidates.lean`. That file is
+part of the library, so `lake build` compiles it: Lean itself accepts the definitions and their
+structural recursion. A guard checks that the committed file equals the generator's output:
+true.
+
 ## Soundness
 
 Accepting a certificate is not just tested, it is proved correct in Lean

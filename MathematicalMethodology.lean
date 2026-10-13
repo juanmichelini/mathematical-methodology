@@ -24,3 +24,6 @@ import MathematicalMethodology.Strategic.Enumerate
 import MathematicalMethodology.Strategic.Show
 import MathematicalMethodology.Examples.HaskellFst
 import MathematicalMethodology.Examples.Enumeration
+import MathematicalMethodology.Export.Lean
+import MathematicalMethodology.Generated.FstCandidates
+import MathematicalMethodology.Examples.ExportCheck

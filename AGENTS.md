@@ -45,6 +45,11 @@ three levels, and the code is split the same way:
   `Strategic/Show.lean` rebuilds the Haskell names for display. Its output is compared, in
   order, with a list printed by the original Haskell (`Examples/HaskellFst.lean`).
   Nothing trusted imports it.
+- **Export** (`MathematicalMethodology/Export/`, `Generated/`): prints data types and generated
+  functions as plain Lean (#34). Untrusted display code. `lake exe export-lean >
+  MathematicalMethodology/Generated/FstCandidates.lean` regenerates the committed file; it is a
+  library module, so `lake build` compiles it, and a guard in `Examples/ExportCheck.lean`
+  checks it equals the generator's output.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
   not trusted and nothing trusted may import them.

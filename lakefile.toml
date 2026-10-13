@@ -10,3 +10,7 @@ name = "MathematicalMethodology"
 [[lean_exe]]
 name = "results"
 root = "Results"
+
+[[lean_exe]]
+name = "export-lean"
+root = "ExportMain"

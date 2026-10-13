@@ -23,6 +23,10 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   directly on de Bruijn `Term` (#33, no named syntax); the 64 candidates are identical, in
   order, to what the original Haskell prints (`Examples/HaskellFst.lean`).
 
+- Export to Lean (#34): data types as `inductive`, generated functions as `def` + `match`;
+  the 64 first-search candidates compile in real Lean and `suma` and list `append` run
+  (`Export/Lean.lean`, `Generated/FstCandidates.lean`, `Examples/ExportCheck.lean`).
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by
