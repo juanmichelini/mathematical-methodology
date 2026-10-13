@@ -65,7 +65,8 @@ def negativeRows : List String :=
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
-  negatives.all fun (_, dev) => (negativeOutcome dev).isSome
+  negatives.all (fun (_, dev) => (negativeOutcome dev).isSome) &&
+  MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -162,7 +163,8 @@ def markdown : String :=
     ++ dataRows ++
     [ ""
     , s!"First-search candidates (recursive functions on `C_,R` and `C_,a_R`):"
-    , s!"{MM.Strategic.candidatosFst.length} in total (foundations: 64)."
+    , s!"{MM.Strategic.candidatosFst.length} in total; the original Haskell prints {MM.Examples.haskellFst.length}"
+    , s!"and the two lists are identical, in order: {MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst}."
     , ""
     , "| function type | candidates |"
     , "|---|---|" ]

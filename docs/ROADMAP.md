@@ -19,8 +19,9 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   lemmas, which `Cert.check` accepts. Enumeration of data types and functions
   (`Strategic/Enumerate.lean`, `enum*` of `Propose.hs`; #22): `datas` and the 64 first-search
   candidates match foundations. The 164 second-search candidates depend on the first
-  search's output (`fstEnv`) and are checked with #26/#27. Candidates are still *named*
-  terms; converting them to de Bruijn `Term` is part of #26.
+  search's output (`fstEnv`) and are checked with #26/#27. The strategic level works
+  directly on de Bruijn `Term` (#33, no named syntax); the 64 candidates are identical, in
+  order, to what the original Haskell prints (`Examples/HaskellFst.lean`).
 
 ## Next, in rough order
 

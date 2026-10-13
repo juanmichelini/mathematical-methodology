@@ -39,9 +39,12 @@ three levels, and the code is split the same way:
   import them. The search builds each next goal with the checker's own functions, so a
   bug there can only make it fail, never make a false statement pass.
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
-  `Strategic/Enumerate.lean` (port of the enumeration in `Propose.hs`) works on *named* terms
-  (`Strategic/Syntax.lean`, as the Haskell does) so that its output order is the same; the
-  conversion to de Bruijn `Term` comes with the first search (#26). Nothing trusted imports it.
+  `Strategic/Enumerate.lean` (port of the enumeration in `Propose.hs`) works directly on the
+  de Bruijn `Term` (no named syntax). Foundations names all constructors' fields from one
+  pool, so atoms are counted by position (`Strategic/Syntax.lean`, `termAtoms`), and
+  `Strategic/Show.lean` rebuilds the Haskell names for display. Its output is compared, in
+  order, with a list printed by the original Haskell (`Examples/HaskellFst.lean`).
+  Nothing trusted imports it.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
   not trusted and nothing trusted may import them.

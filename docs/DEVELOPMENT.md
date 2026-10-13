@@ -65,3 +65,28 @@ report always agree.
   negative test?
 - Is `results/report.md` regenerated if the checker's behaviour changed?
 - Are docs and `docs/ROADMAP.md` updated?
+
+## Comparing with the Haskell
+
+Parity with `juanmichelini/foundations` is checked against output of the original program,
+not only its committed `results/*.txt`. Install GHC (`brew install ghc`), then print what you
+want to compare from `foundations/code`, for example the first-search candidates:
+
+```
+cat > Fst.hs <<'HS'
+module Fst where
+import qualified Main as M
+import PrettyPrint
+import Type
+ppTy :: Type -> String
+ppTy (TAtm (TCon c)) = c
+ppTy (TAtm (TVar v)) = v
+ppTy (TBin TCom a b) = "(" ++ ppTy a ++ " -> " ++ ppTy b ++ ")"
+fstMain :: IO ()
+fstMain = mapM_ (\(e,t) -> putStrLn (toCLI e ++ "  ::  " ++ ppTy t)) M.candidatosFst
+HS
+ghc -O0 -i<foundations>/code -outputdir build -main-is Fst.fstMain Fst.hs -o fst && ./fst
+```
+
+`Examples/HaskellFst.lean` holds that output (64 lines, backslashes escaped) and
+`Examples/Enumeration.lean` guards that the Lean list is identical to it, in order.
