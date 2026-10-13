@@ -1,2 +1,3 @@
 import MathematicalMethodology.Operational.Term
 import MathematicalMethodology.Operational.Compute
+import MathematicalMethodology.Tactical.Cert
