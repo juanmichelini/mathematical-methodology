@@ -65,6 +65,36 @@ feeding the lemma store. Whatever it finds is re-checked by `Cert.check`.
 | `rev_append` | found | 10 | accepted |
 | `rev_rev` | found | 9 | accepted |
 
+## Enumeration
+
+The untrusted strategic level (`Strategic/Enumerate.lean`, port of the enumeration in
+`Propose.hs`) proposes data types and candidate functions. Data types of `Main.datas`:
+
+| type | constructors |
+|---|---|
+| `C_,_` | `C_,_.0`, `C_,_.1` |
+| `C_,R` | `C_,R.0`, `C_,R.1 C_,R` |
+| `C_,a` | `C_,a.0`, `C_,a.1 a` |
+| `C_,a_R` | `C_,a_R.0`, `C_,a_R.1 a C_,a_R` |
+
+First-search candidates (recursive functions on `C_,R` and `C_,a_R`):
+64 in total (foundations: 64).
+
+| function type | candidates |
+|---|---|
+| `(C_,R -> C_,R)` | 6 |
+| `(C_,R -> C_,a_R)` | 1 |
+| `(C_,a_R -> C_,R)` | 6 |
+| `(C_,a_R -> C_,a_R)` | 3 |
+| `(C_,R -> (C_,R -> C_,R))` | 12 |
+| `(C_,R -> (C_,R -> C_,a_R))` | 1 |
+| `(C_,R -> (C_,a_R -> C_,R))` | 6 |
+| `(C_,R -> (C_,a_R -> C_,a_R))` | 2 |
+| `(C_,a_R -> (C_,R -> C_,R))` | 12 |
+| `(C_,a_R -> (C_,R -> C_,a_R))` | 3 |
+| `(C_,a_R -> (C_,a_R -> C_,R))` | 6 |
+| `(C_,a_R -> (C_,a_R -> C_,a_R))` | 6 |
+
 ## Soundness
 
 Accepting a certificate is not just tested, it is proved correct in Lean

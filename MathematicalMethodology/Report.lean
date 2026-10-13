@@ -2,6 +2,7 @@ import MathematicalMethodology.Pretty
 import MathematicalMethodology.Examples.Lists
 import MathematicalMethodology.Examples.ListsStore
 import MathematicalMethodology.Examples.ListsSearch
+import MathematicalMethodology.Examples.Enumeration
 
 /-!
 # Report
@@ -85,6 +86,20 @@ def searchRows : List String :=
         | none => "REJECTED"
       s!"| `{n}` | found | {c.size} | {status} |"
 
+/-- Rows of the enumeration table: the data types of `Main.datas`. -/
+def dataRows : List String :=
+  MM.Strategic.datas.map fun d =>
+    let ctors := d.2.map fun (c, fs) =>
+      if fs.isEmpty then c else s!"{c} {" ".intercalate (fs.map MM.Strategic.Ty.pp)}"
+    s!"| `{d.1}` | {", ".intercalate (ctors.map fun c => s!"`{c}`")} |"
+
+/-- Number of first-search candidates for each function type. -/
+def candidateRows : List String :=
+  open MM.Strategic in
+  let tipos := (armarTip 1 fstTypes) ++ (armarTip 2 fstTypes)
+  tipos.map fun t =>
+    s!"| `{t.pp}` | {(candidatosFst.filter fun (_, u) => u == t).length} |"
+
 def markdown : String :=
   let pos := runDev listCtx development []
   String.intercalate "\n" <|
@@ -136,6 +151,22 @@ def markdown : String :=
     , "| lemma | search | certificate steps | checker |"
     , "|---|---|---|---|" ]
     ++ searchRows ++
+    [ ""
+    , "## Enumeration"
+    , ""
+    , "The untrusted strategic level (`Strategic/Enumerate.lean`, port of the enumeration in"
+    , "`Propose.hs`) proposes data types and candidate functions. Data types of `Main.datas`:"
+    , ""
+    , "| type | constructors |"
+    , "|---|---|" ]
+    ++ dataRows ++
+    [ ""
+    , s!"First-search candidates (recursive functions on `C_,R` and `C_,a_R`):"
+    , s!"{MM.Strategic.candidatosFst.length} in total (foundations: 64)."
+    , ""
+    , "| function type | candidates |"
+    , "|---|---|" ]
+    ++ candidateRows ++
     [ ""
     , "## Soundness"
     , ""

@@ -10,7 +10,7 @@ The method has three levels, and so does the code:
 |---|---|---|---|
 | Operational | what is possible? | `MathematicalMethodology/Operational/` | yes |
 | Tactical | how do we attempt it? | `MathematicalMethodology/Tactical/` | `Cert.check` only |
-| Strategic | what is worth proving? | to come | no |
+| Strategic | what is worth proving? | `MathematicalMethodology/Strategic/` (enumeration so far) | no |
 
 Proofs are *certificates* (`Cert`) that a small checker re-verifies. The headline
 example, in `Examples/Lists.lean`, checks `rev (rev xs) = xs` together with the lemmas

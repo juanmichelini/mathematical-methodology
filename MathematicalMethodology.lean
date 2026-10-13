@@ -18,3 +18,7 @@ import MathematicalMethodology.Tactical.Store
 import MathematicalMethodology.Examples.ListsStore
 import MathematicalMethodology.Tactical.Search
 import MathematicalMethodology.Examples.ListsSearch
+import MathematicalMethodology.Strategic.Util
+import MathematicalMethodology.Strategic.Syntax
+import MathematicalMethodology.Strategic.Enumerate
+import MathematicalMethodology.Examples.Enumeration
