@@ -1,6 +1,7 @@
 import MathematicalMethodology.Pretty
 import MathematicalMethodology.Examples.Lists
 import MathematicalMethodology.Examples.ListsStore
+import MathematicalMethodology.Examples.ListsSearch
 
 /-!
 # Report
@@ -71,6 +72,19 @@ def storeRows : List String :=
   let r := MM.Examples.store
   r.simp.map (row "simp") ++ r.reor.map (row "reor") ++ r.basu.map (row "basu")
 
+/-- Rows of the tactic-search table: what the search found for each conjecture, and
+whether the checker accepts it. -/
+def searchRows : List String :=
+  let checked := runDev listCtx MM.Examples.foundDevelopment []
+  MM.Examples.found.map fun (n, _, c) =>
+    match c with
+    | none => s!"| `{n}` | not found | | |"
+    | some c =>
+      let status := match checked.find? (·.name == n) with
+        | some r => if r.ok then "accepted" else "REJECTED"
+        | none => "REJECTED"
+      s!"| `{n}` | found | {c.size} | {status} |"
+
 def markdown : String :=
   let pos := runDev listCtx development []
   String.intercalate "\n" <|
@@ -112,6 +126,16 @@ def markdown : String :=
     , "| store | lemma |"
     , "|---|---|" ]
     ++ storeRows ++
+    [ ""
+    , "## Tactic search"
+    , ""
+    , "The untrusted search (`Tactical/Search.lean`, port of `mainTactic`) is given the"
+    , "statements above with no certificates and proves them in order, each proven lemma"
+    , "feeding the lemma store. Whatever it finds is re-checked by `Cert.check`."
+    , ""
+    , "| lemma | search | certificate steps | checker |"
+    , "|---|---|---|---|" ]
+    ++ searchRows ++
     [ ""
     , "## Soundness"
     , ""
