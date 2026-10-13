@@ -34,8 +34,10 @@ three levels, and the code is split the same way:
 - **Operational**: terms (de Bruijn), substitution, beta/case/delta computation.
 - **Tactical**: `Cert` proof certificates and `Cert.check`, the checker. Tactics that
   *find* certificates are untrusted; only the checker must be right. `Tactical/Store.lean`
-  (the lemma store used by the search: `fund`, dependencies, `Rec`) is untrusted: nothing
-  in `Cert.lean`, `Operational/` or `Semantics/` may import it.
+  (the lemma store: `fund`, dependencies, `Rec`) and `Tactical/Search.lean` (the port of
+  `mainTactic`) are untrusted: nothing in `Cert.lean`, `Operational/` or `Semantics/` may
+  import them. The search builds each next goal with the checker's own functions, so a
+  bug there can only make it fail, never make a false statement pass.
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are

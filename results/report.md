@@ -52,6 +52,19 @@ foundations `Prove.hs`: `simp` rewrites the bigger side to the smaller (sorted b
 | reor | `∀ (x : List) (y : List) (z : List). append (append x y) z = append x (append y z)` |
 | reor | `∀ (x : List) (y : List) (z : List). append x (append y z) = append (append x y) z` |
 
+## Tactic search
+
+The untrusted search (`Tactical/Search.lean`, port of `mainTactic`) is given the
+statements above with no certificates and proves them in order, each proven lemma
+feeding the lemma store. Whatever it finds is re-checked by `Cert.check`.
+
+| lemma | search | certificate steps | checker |
+|---|---|---|---|
+| `append_nil` | found | 6 | accepted |
+| `append_assoc` | found | 8 | accepted |
+| `rev_append` | found | 10 | accepted |
+| `rev_rev` | found | 9 | accepted |
+
 ## Soundness
 
 Accepting a certificate is not just tested, it is proved correct in Lean

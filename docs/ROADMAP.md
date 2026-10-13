@@ -14,7 +14,9 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   (`Ctx.typeOf`), a scope check for induction, and dropped rigid rules on nested induction.
 
 - Parity with foundations (issues #18, #22-#29): lemma store and ordering (`Tactical/Store.lean`,
-  port of `Rec`, `fund`, `dependencies`, `addAffirm` from `Prove.hs`; #24).
+  port of `Rec`, `fund`, `dependencies`, `addAffirm` from `Prove.hs`; #24) and the tactic
+  search (`Tactical/Search.lean`, port of `mainTactic`; #18): it rediscovers the four list
+  lemmas, which `Cert.check` accepts.
 
 ## Next, in rough order
 
@@ -26,8 +28,8 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
    generalising instead of dropping them.
 3. **Calculational output.** Print a checked certificate as a Dijkstra-style proof
    (`lhs = { hint } ...`), as the Haskell version prints LaTeX.
-4. **Tactical search.** Port `mainTactic` (Trivialize, Compute, Fundamentalize, Reorder,
-   Induction) as an untrusted search that produces `Cert`s.
+4. **Tactical search: beyond the list example.** `mainTactic` is ported (`Search.lean`);
+   what is left is running it on the other lemma suites (#28) and the `paciencia` limit (#25).
 5. **Strategic level.** Enumerate data types, functions and conjectures (`Propose.hs`)
    and rank lemmas ("ample", "deep").
 6. **Binder-aware rewriting.** Allow rewriting and computing under binders and inside

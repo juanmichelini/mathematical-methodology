@@ -16,3 +16,5 @@ import MathematicalMethodology.Semantics.CheckSound
 import MathematicalMethodology.Examples.ListsSound
 import MathematicalMethodology.Tactical.Store
 import MathematicalMethodology.Examples.ListsStore
+import MathematicalMethodology.Tactical.Search
+import MathematicalMethodology.Examples.ListsSearch
