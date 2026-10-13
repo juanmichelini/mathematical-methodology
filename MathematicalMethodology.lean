@@ -4,3 +4,6 @@ import MathematicalMethodology.Tactical.Cert
 import MathematicalMethodology.Pretty
 import MathematicalMethodology.Examples.Lists
 import MathematicalMethodology.Report
+import MathematicalMethodology.Semantics.Subst
+import MathematicalMethodology.Semantics.Scope
+import MathematicalMethodology.Semantics.Inst
