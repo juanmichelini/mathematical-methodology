@@ -7,6 +7,7 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
 - Operational level: de Bruijn terms, substitution, beta/case/delta, `computeSafe`/`computeWide`.
 - Tactical level: `Affirm`, `Rule`, `Cert`, `Cert.check`, `checkDevelopment`.
 - Example: `append_nil`, `append_assoc`, `rev_append`, `rev_rev` as checked certificates.
+- Deterministic results report (`lake exe results`), committed in `results/` and verified by CI.
 
 ## Next, in rough order
 

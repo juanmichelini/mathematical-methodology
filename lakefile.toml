@@ -1,0 +1,12 @@
+name = "mathematical_methodology"
+defaultTargets = ["MathematicalMethodology"]
+
+[leanOptions]
+autoImplicit = false
+
+[[lean_lib]]
+name = "MathematicalMethodology"
+
+[[lean_exe]]
+name = "results"
+root = "Results"

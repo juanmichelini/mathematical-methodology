@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Installs the pinned toolchain and runs `lake build`, which runs the #guard tests.
+      - uses: leanprover/lean-action@v1
+
+      # Regenerate the report on a clean runner. The executable exits non-zero if a good
+      # certificate is rejected or a bad one is accepted.
+      - name: Generate results
+        shell: bash
+        run: |
+          mkdir -p results
+          lake exe results | tee results/report.md
+
+      # results/report.md is deterministic, so a diff means it is stale.
+      - name: Check committed results are up to date
+        shell: bash
+        run: |
+          if [ -n "$(git status --porcelain -- results/)" ]; then
+            git --no-pager diff -- results/ || true
+            echo "::error::results/report.md is stale. Run 'lake exe results > results/report.md' and commit it."
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results
+          path: results/
