@@ -29,6 +29,7 @@ three levels, and the code is split the same way:
 | Operational | what is possible? | `MathematicalMethodology/Operational/` | yes (small) |
 | Tactical | how do we attempt it? | `MathematicalMethodology/Tactical/` | only `Cert.check` |
 | Strategic | what is worth proving? | `MathematicalMethodology/Strategic/` (not yet written) | no |
+| Semantics | is the checker right? | `MathematicalMethodology/Semantics/` | proofs, not code |
 
 - **Operational**: terms (de Bruijn), substitution, beta/case/delta computation.
 - **Tactical**: `Cert` proof certificates and `Cert.check`, the checker. Tactics that
@@ -68,6 +69,8 @@ If `elan` cannot reach `release.lean-lang.org` (restricted sandboxes), download
 - `lake build` succeeds with no errors and no `sorry`.
 - New behaviour has a `#guard` that passes **and** a `#guard` showing the checker
   rejects a wrong input (for anything touching `Cert.check`).
+- The soundness proofs still compile (`lake build`), and `#print axioms` on
+  `MM.Cert.check_sound` shows only standard axioms.
 - `results/report.md` regenerated and committed if anything it reports changed.
 - Docs updated if behaviour or structure changed (`README.md`, this file,
   `docs/ROADMAP.md`).
@@ -83,8 +86,15 @@ If `elan` cannot reach `release.lean-lang.org` (restricted sandboxes), download
 - Rewriting and computing only touch spine positions (application parts and
   `case` scrutinees), never binders or alternatives. Keep it that way until
   binder-aware rewriting is its own issue.
-- Known gaps (do not paper over them): matching is untyped, and there is no
-  soundness theorem yet. See `docs/ROADMAP.md`.
+- `Semantics/` holds the proofs about the trusted base (`Cert.check_sound`). Changing
+  `Cert.lean`, `Compute.lean` or `Term.lean` means keeping those proofs compiling;
+  never weaken the theorem statements to make a change go through.
+- Lemma rules only rewrite first-order terms and every instance is type-checked against
+  `Ctx.sigs` (signatures of defined functions); `induct` requires a scoped statement and
+  drops rigid rules. A new function needs a signature, and `SigSound` for it.
+- Known gaps (do not paper over them): the soundness theorem assumes `EnvClosed`,
+  `SigSound` and `DataWF` (proved per example, not checked by the checker); types are
+  first-order names only; undeclared types are opaque. See `docs/ROADMAP.md`.
 
 ## Commits and PRs
 

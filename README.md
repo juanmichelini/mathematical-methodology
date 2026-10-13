@@ -29,7 +29,15 @@ CI regenerates it and fails if the committed copy is stale.
 
 ## Status
 
-Early. The checker is tested but has no soundness proof yet, and matching is untyped.
+Early, but the checker is **proved sound**: `Cert.check_sound`
+(`Semantics/CheckSound.lean`) says that if a certificate is accepted then the statement
+holds, as a `Conv` equation (delta, beta, case), for every substitution of *values*
+for its variables.  The theorem is conditional on three explicit assumptions about the
+checker's context (definitions are closed, declared function signatures are right, data
+type names are unique); `Examples/ListsSound.lean` proves them for the list example,
+which gives `development_valid` and `revRev_valid`.  Not proved: that the defined
+functions are total in general (it is an assumption per development), termination
+of computation, or anything about the untrusted search and strategy levels.
 See [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Contributing

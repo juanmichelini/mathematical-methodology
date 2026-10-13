@@ -203,4 +203,16 @@ theorem typeOf_sound {cx : Ctx} (hS : SigSound cx) (hD : DataWF cx.data) {ctx : 
       · simp at h
     · simp at h
 
+/-! ## Small helpers -/
+
+theorem Term.closed_app {f a : Term} (hf : f.closed) (ha : a.closed) : (Term.app f a).closed := by
+  unfold Term.closed at *
+  simp [Term.scoped, hf, ha]
+
+/-- Denotation is closed under backwards conversion (for closed terms). -/
+theorem Denotes.of_conv {env : Env} {data : List DataDecl} {ty : String} {a b : Term}
+    (hb : Denotes env data ty b) (hc : Conv env a b) (ha : a.closed) : Denotes env data ty a := by
+  obtain ⟨_, u, hu, hbu⟩ := hb
+  exact ⟨ha, u, hu, hc.trans hbu⟩
+
 end MM

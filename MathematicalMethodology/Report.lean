@@ -94,6 +94,16 @@ def markdown : String :=
     , s!"- lemmas accepted: {(pos.filter LemmaResult.ok).length} of {pos.length}"
     , s!"- negative tests rejected: {(negatives.filter fun (_, d) => (negativeOutcome d).isSome).length} of {negatives.length}"
     , s!"- overall: {if allOk then "ok" else "FAILED"}"
+    , ""
+    , "## Soundness"
+    , ""
+    , "Accepting a certificate is not just tested, it is proved correct in Lean"
+    , "(`Semantics/CheckSound.lean`): if `Cert.check` accepts a certificate for a statement,"
+    , "the two sides are convertible (delta, beta, case) for every substitution of values for"
+    , "its variables.  The theorem assumes that definitions are closed terms, that the declared"
+    , "function signatures are right, and that data type names are unique."
+    , "`Examples/ListsSound.lean` proves these assumptions for this development, giving"
+    , "`development_valid` and `revRev_valid` (`rev (rev xs) = xs`)."
     , "" ]
 
 end MM.Report

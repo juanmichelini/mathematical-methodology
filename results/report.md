@@ -27,9 +27,22 @@ The checker must reject each of these.
 | too few cases for an induction | rejected: `bad: induct: missing cases` |
 | lemma used before it is proven (rev_rev proved first) | rejected: `rev_rev: rewrite: no rule 3` |
 | induction on a variable that is not of a data type | rejected: `bad: induct: Elem is not a data type` |
+| lemma about lists applied to an `Elem` variable (ill-typed instance) | rejected: `bad: rewrite: rule 0 does not apply` |
+| induction on a statement that mentions a variable outside its context | rejected: `bad: induct: statement mentions variables outside its context` |
+| lemma with a variable that does not occur in its left-hand side (unbound pattern variable) | rejected: `bad: rewrite: rule 0 does not apply` |
 
 ## Summary
 
 - lemmas accepted: 4 of 4
-- negative tests rejected: 6 of 6
+- negative tests rejected: 9 of 9
 - overall: ok
+
+## Soundness
+
+Accepting a certificate is not just tested, it is proved correct in Lean
+(`Semantics/CheckSound.lean`): if `Cert.check` accepts a certificate for a statement,
+the two sides are convertible (delta, beta, case) for every substitution of values for
+its variables.  The theorem assumes that definitions are closed terms, that the declared
+function signatures are right, and that data type names are unique.
+`Examples/ListsSound.lean` proves these assumptions for this development, giving
+`development_valid` and `revRev_valid` (`rev (rev xs) = xs`).

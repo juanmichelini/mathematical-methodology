@@ -131,7 +131,16 @@ def negatives : List (String × List (String × Affirm × Cert)) :=
   , ("lemma used before it is proven (rev_rev proved first)",
      [("rev_rev", revRev, revRevCert)])
   , ("induction on a variable that is not of a data type",
-     [("bad", ⟨["Elem"], .var 0, .var 0⟩, .induct 0 .nil)]) ]
+     [("bad", ⟨["Elem"], .var 0, .var 0⟩, .induct 0 .nil)])
+  , ("lemma about lists applied to an `Elem` variable (ill-typed instance)",
+     [("append_nil", appendNil, appendNilCert),
+      ("bad", ⟨["Elem"], appendT (.var 0) nilT, .var 0⟩, .rewrite .lhs 0 false .refl)])
+  , ("induction on a statement that mentions a variable outside its context",
+     [("bad", ⟨["List"], appendT (.var 1) nilT, .var 1⟩,
+        .induct 0 <| c2 (.compute .lhs .refl) (.compute .lhs .refl))])
+  , ("lemma with a variable that does not occur in its left-hand side (unbound pattern variable)",
+     [("unused", ⟨["List", "List"], appendT (.var 0) nilT, .var 0⟩, appendNilCert),
+      ("bad", appendNil, .rewrite .lhs 0 false .refl)]) ]
 
 #guard negatives.all fun (_, dev) => isError (checkDevelopment listCtx dev [])
 
