@@ -8,14 +8,19 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
 - Tactical level: `Affirm`, `Rule`, `Cert`, `Cert.check`, `checkDevelopment`.
 - Example: `append_nil`, `append_assoc`, `rev_append`, `rev_rev` as checked certificates.
 - Deterministic results report (`lake exe results`), committed in `results/` and verified by CI.
+- **Soundness of `Cert.check`** (`Semantics/`): `Cert.check_sound`, `checkDevelopment_valid`,
+  conditional on `EnvClosed`, `SigSound`, `DataWF`; discharged for the list example in
+  `Examples/ListsSound.lean`. The checker gained first-order types for lemma instances
+  (`Ctx.typeOf`), a scope check for induction, and dropped rigid rules on nested induction.
 
 ## Next, in rough order
 
-1. **Soundness theorem for `Cert.check`.** Define a semantics (equality of terms under
-   the computation rules plus typed induction) and prove: if `check` succeeds, the
-   `Affirm` holds. This is what makes the trusted base *verified*.
-2. **Simple types.** Type terms, make matching typed, and close the untyped-matching gap
-   noted in `Tactical/Cert.lean`.
+1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by
+   hand per example. Derive it from a checked termination/totality argument (e.g. a
+   structural-recursion check on definitions), and check `EnvClosed`/`DataWF` in the checker.
+2. **Richer types.** Types are plain names; add type parameters (`List a`), function types,
+   and typed induction over parameterised data. Keep nested-induction hypotheses by
+   generalising instead of dropping them.
 3. **Calculational output.** Print a checked certificate as a Dijkstra-style proof
    (`lhs = { hint } ...`), as the Haskell version prints LaTeX.
 4. **Tactical search.** Port `mainTactic` (Trivialize, Compute, Fundamentalize, Reorder,
