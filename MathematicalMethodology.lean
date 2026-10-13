@@ -9,3 +9,7 @@ import MathematicalMethodology.Semantics.Subst
 import MathematicalMethodology.Semantics.Scope
 import MathematicalMethodology.Semantics.Inst
 import MathematicalMethodology.Semantics.Conv
+import MathematicalMethodology.Semantics.Val
+import MathematicalMethodology.Semantics.Rewrite
+import MathematicalMethodology.Semantics.Induct
+import MathematicalMethodology.Semantics.CheckSound

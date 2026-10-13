@@ -1,4 +1,5 @@
 import MathematicalMethodology.Operational.Compute
+import MathematicalMethodology.Operational.Scope
 
 /-!
 # Tactical level: certificates and the checker
@@ -13,11 +14,13 @@ the terms has type `ctx[i]`.
 
 ## Known limitations (v0)
 
-* Rewriting and matching are untyped: only induction looks at `ctx` types.
 * Rewriting and computing only touch *spine positions* (application parts and
   `case` scrutinees), never the inside of a binder or an alternative, so free
   variable indices never shift.
-* There is no soundness theorem yet; see the roadmap in `docs/ROADMAP.md`.
+* Lemma rules only rewrite first-order terms, and every instance of a lemma must be
+  well typed according to the first-order signatures in `Ctx` (`Ctx.typeOf`).
+* Soundness of `Cert.check` is proved in `Semantics/CheckSound.lean`, under explicit
+  assumptions on the environment, data types and signatures.
 -/
 
 namespace MM
@@ -36,16 +39,16 @@ structure DataDecl where
   ctors : List (String × List String)
   deriving Repr
 
-/-- A rewrite rule.  With `npat > 0` all free variables are pattern variables
-(a proven lemma).  With `npat = 0` the rule is ground/rigid (an induction
-hypothesis) and matches only syntactically. -/
+/-- A rewrite rule.  With `tys ≠ []` the free variables `0 … tys.length-1` are pattern
+variables of the given types (a proven lemma).  With `tys = []` the rule is rigid (an
+induction hypothesis) and matches only syntactically. -/
 structure Rule where
-  npat : Nat
-  lhs  : Term
-  rhs  : Term
+  tys : List String
+  lhs : Term
+  rhs : Term
   deriving Repr
 
-def Affirm.toRule (a : Affirm) : Rule := ⟨a.ctx.length, a.lhs, a.rhs⟩
+def Affirm.toRule (a : Affirm) : Rule := ⟨a.ctx, a.lhs, a.rhs⟩
 
 inductive Side | lhs | rhs
   deriving DecidableEq, Repr
@@ -65,6 +68,34 @@ mutual
     | cons (c : Cert) (rest : Certs)
 end
 
+/-! ## Typing of first-order terms -/
+
+/-- The checker's context: definitions, data types, and first-order signatures
+(`name, argument types, result type`) of the defined functions. -/
+structure Ctx where
+  env  : Env
+  data : List DataDecl
+  sigs : List (String × List String × String)
+
+/-- Argument types and data type of a constructor. -/
+def Ctx.ctorSig (cx : Ctx) (c : String) : Option (List String × String) :=
+  cx.data.findSome? fun d => (d.ctors.find? (·.1 = c)).map fun p => (p.2, d.name)
+
+def Ctx.funSig (cx : Ctx) (f : String) : Option (List String × String) :=
+  (cx.sigs.find? (·.1 = f)).map (·.2)
+
+/-- Type of a first-order term in a variable context: the types of the arguments it
+still expects, and its result type.  Only well-typed applications are accepted. -/
+def Ctx.typeOf (cx : Ctx) (ctx : List String) : Term → Option (List String × String)
+  | .var i => (ctx[i]?).map fun ty => ([], ty)
+  | .con c => cx.ctorSig c
+  | .const f => cx.funSig f
+  | .app f a =>
+    match cx.typeOf ctx f, cx.typeOf ctx a with
+    | some (t :: ts, r), some ([], u) => if u = t then some (ts, r) else none
+    | _, _ => none
+  | _ => none
+
 /-! ## Matching and rewriting -/
 
 /-- First-order terms: no binders, no `case`. -/
@@ -72,11 +103,6 @@ def Term.isFO : Term → Bool
   | .var _ | .con _ | .const _ => true
   | .app f a => f.isFO && a.isFO
   | _ => false
-
-def Term.vars : Term → List Nat
-  | .var i => [i]
-  | .app f a => f.vars ++ a.vars
-  | _ => []
 
 abbrev Binding := List (Nat × Term)
 
@@ -106,31 +132,36 @@ def Term.instFO (b : Binding) : Term → Option Term
 def Rule.orient (r : Rule) (rev : Bool) : Rule :=
   if rev then { r with lhs := r.rhs, rhs := r.lhs } else r
 
-/-- Rewrite `t` at the root with rule `r`, if it matches. -/
-def Rule.tryRoot (r : Rule) (t : Term) : Option Term :=
-  if r.npat = 0 then
+/-- Rewrite `t` at the root with rule `r`, if it matches.  A lemma rule must be
+first-order, bind every pattern variable, and every bound term must have the
+declared type of its pattern variable (in the goal's variable context `ctx`). -/
+def Rule.tryRoot (cx : Ctx) (ctx : List String) (r : Rule) (t : Term) : Option Term :=
+  if r.tys.isEmpty then
     if t = r.lhs then some r.rhs else none
   else if r.lhs.isFO && r.rhs.isFO then
     match matchFO r.lhs t [] with
     | some b =>
-      if r.rhs.vars.all (fun i => (b.find? (·.1 = i)).isSome) then r.rhs.instFO b else none
+      if (List.range r.tys.length).all (fun i =>
+          (b.find? (·.1 = i)).any fun p =>
+            decide (cx.typeOf ctx p.2 = some ([], r.tys.getD i "")))
+      then r.rhs.instFO b else none
     | none => none
   else none
 
 /-- Rewrite at the first matching spine position (preorder). -/
-def Term.rewriteFirst (r : Rule) : Term → Option Term
+def Term.rewriteFirst (cx : Ctx) (ctx : List String) (r : Rule) : Term → Option Term
   | .app f a =>
-    match r.tryRoot (.app f a) with
+    match r.tryRoot cx ctx (.app f a) with
     | some u => some u
     | none =>
-      match f.rewriteFirst r with
+      match f.rewriteFirst cx ctx r with
       | some f' => some (.app f' a)
-      | none => (a.rewriteFirst r).map fun a' => .app f a'
+      | none => (a.rewriteFirst cx ctx r).map fun a' => .app f a'
   | .cas s alts =>
-    match r.tryRoot (.cas s alts) with
+    match r.tryRoot cx ctx (.cas s alts) with
     | some u => some u
-    | none => (s.rewriteFirst r).map fun s' => .cas s' alts
-  | t => r.tryRoot t
+    | none => (s.rewriteFirst cx ctx r).map fun s' => .cas s' alts
+  | t => r.tryRoot cx ctx t
 
 /-! ## Induction -/
 
@@ -138,31 +169,41 @@ def Term.rewriteFirst (r : Rule) : Term → Option Term
 def closeGap (v : Nat) (img : Term) : Nat → Term := fun i =>
   if i < v then .var i else if i = v then img else .var (i - 1)
 
-/-- Subgoals and updated rules for induction on variable `v` of goal `g`. -/
+/-- Variables standing for the `k` fields of a constructor, placed after the `n - 1`
+remaining variables. -/
+def fieldVars (n k : Nat) : List Term := (List.range k).map fun j => Term.var (n - 1 + j)
+
+/-- Replace variable `v` (of a context of size `n`) by the constructor `c` applied to
+fresh field variables, closing the gap. -/
+def caseSubst (n v : Nat) (c : String) (k : Nat) : Nat → Term :=
+  closeGap v (Term.mkApp (.con c) (fieldVars n k))
+
+/-- The induction hypothesis for the `j`-th field: the goal with `v` replaced by it. -/
+def ihRule (g : Affirm) (v j : Nat) : Rule :=
+  let σj := closeGap v (.var (g.ctx.length - 1 + j))
+  ⟨[], g.lhs.subst σj, g.rhs.subst σj⟩
+
+/-- The subgoal (and its rules) of induction on variable `v` of goal `g` for the
+constructor `cf = (name, field types)` of the data type called `dname`. -/
+def inductCase (g : Affirm) (v : Nat) (dname : String) (rules : List Rule)
+    (cf : String × List String) : Affirm × List Rule :=
+  let σ := caseSubst g.ctx.length v cf.1 cf.2.length
+  let goal : Affirm := ⟨g.ctx.eraseIdx v ++ cf.2, g.lhs.subst σ, g.rhs.subst σ⟩
+  let ihs : List Rule :=
+    (List.range cf.2.length).filterMap fun j =>
+      if cf.2.getD j "" = dname then some (ihRule g v j) else none
+  -- Rigid rules (induction hypotheses of enclosing inductions) are dropped: they are
+  -- about the variable being eliminated.  Lemma rules do not depend on the goal.
+  let old : List Rule := rules.filter fun r => !r.tys.isEmpty
+  (goal, ihs ++ old)
+
+/-- Subgoals and updated rules for induction on variable `v` of goal `g`, one per
+constructor in declaration order. -/
 def inductCases (g : Affirm) (v : Nat) (d : DataDecl) (rules : List Rule) :
     List (Affirm × List Rule) :=
-  let n := g.ctx.length
-  let others := g.ctx.eraseIdx v
-  d.ctors.map fun (c, fields) =>
-    let k := fields.length
-    let fieldVars := (List.range k).map fun j => Term.var (n - 1 + j)
-    let σ := closeGap v (Term.mkApp (.con c) fieldVars)
-    let goal : Affirm := ⟨others ++ fields, g.lhs.subst σ, g.rhs.subst σ⟩
-    let ihs : List Rule :=
-      (List.range k).filterMap fun j =>
-        if fields.getD j "" = d.name then
-          let σj := closeGap v (.var (n - 1 + j))
-          some ⟨0, g.lhs.subst σj, g.rhs.subst σj⟩
-        else none
-    let old : List Rule := rules.map fun r =>
-      if r.npat = 0 then ⟨0, r.lhs.subst σ, r.rhs.subst σ⟩ else r
-    (goal, ihs ++ old)
+  d.ctors.map (inductCase g v d.name rules)
 
 /-! ## The checker -/
-
-structure Ctx where
-  env  : Env
-  data : List DataDecl
 
 def Side.get (g : Affirm) : Side → Term
   | .lhs => g.lhs
@@ -188,7 +229,7 @@ mutual
       match rules[i]? with
       | none => .error s!"rewrite: no rule {i}"
       | some r =>
-        match (s.get g).rewriteFirst (r.orient rev) with
+        match (s.get g).rewriteFirst cx g.ctx (r.orient rev) with
         | none => .error s!"rewrite: rule {i} does not apply"
         | some t' =>
           if t' = s.get g then .error "rewrite: no progress"
@@ -199,7 +240,10 @@ mutual
       | some ty =>
         match cx.data.find? (·.name = ty) with
         | none => .error s!"induct: {ty} is not a data type"
-        | some d => cases.checkAll cx (inductCases g v d rules)
+        | some d =>
+          if g.lhs.scoped g.ctx.length && g.rhs.scoped g.ctx.length then
+            cases.checkAll cx (inductCases g v d rules)
+          else .error "induct: statement mentions variables outside its context"
 
   /-- Check one certificate per subgoal. -/
   def Certs.checkAll (cx : Ctx) : Certs → List (Affirm × List Rule) → Except String Unit

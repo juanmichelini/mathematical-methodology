@@ -37,6 +37,8 @@ def revDef : Term :=
 def listCtx : Ctx where
   env  := [("append", appendDef), ("rev", revDef)]
   data := [{ name := "List", ctors := [("nil", []), ("cons", ["Elem", "List"])] }]
+  -- `Elem` is an opaque type: it has no declaration, so any closed term is an `Elem`.
+  sigs := [("append", ["List", "List"], "List"), ("rev", ["List"], "List")]
 
 /-! ## Operational level: computing -/
 
