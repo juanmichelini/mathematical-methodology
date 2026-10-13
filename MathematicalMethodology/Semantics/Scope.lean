@@ -1,4 +1,5 @@
 import MathematicalMethodology.Semantics.Subst
+import MathematicalMethodology.Operational.Scope
 
 /-!
 # Scoping, closedness, and substitution facts
@@ -9,24 +10,6 @@ import MathematicalMethodology.Semantics.Subst
 -/
 
 namespace MM
-
-mutual
-  /-- All free variables are `< n`. -/
-  def Term.scoped (n : Nat) : Term → Bool
-    | .var i => decide (i < n)
-    | .con _ => true
-    | .const _ => true
-    | .app f a => f.scoped n && a.scoped n
-    | .abs b => b.scoped (n + 1)
-    | .cas s alts => s.scoped n && alts.scoped n
-
-  def Alts.scoped (n : Nat) : Alts → Bool
-    | .nil => true
-    | .alt _ k b rest => b.scoped (n + k) && rest.scoped n
-end
-
-/-- No free variables. -/
-def Term.closed (t : Term) : Prop := t.scoped 0 = true
 
 /-! ## Scoping and renaming -/
 
