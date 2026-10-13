@@ -28,7 +28,7 @@ three levels, and the code is split the same way:
 |---|---|---|---|
 | Operational | what is possible? | `MathematicalMethodology/Operational/` | yes (small) |
 | Tactical | how do we attempt it? | `MathematicalMethodology/Tactical/` | only `Cert.check` |
-| Strategic | what is worth proving? | `MathematicalMethodology/Strategic/` (not yet written) | no |
+| Strategic | what is worth proving? | `MathematicalMethodology/Strategic/` (enumeration only so far) | no |
 | Semantics | is the checker right? | `MathematicalMethodology/Semantics/` | proofs, not code |
 
 - **Operational**: terms (de Bruijn), substitution, beta/case/delta computation.
@@ -39,6 +39,9 @@ three levels, and the code is split the same way:
   import them. The search builds each next goal with the checker's own functions, so a
   bug there can only make it fail, never make a false statement pass.
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
+  `Strategic/Enumerate.lean` (port of the enumeration in `Propose.hs`) works on *named* terms
+  (`Strategic/Syntax.lean`, as the Haskell does) so that its output order is the same; the
+  conversion to de Bruijn `Term` comes with the first search (#26). Nothing trusted imports it.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
   not trusted and nothing trusted may import them.

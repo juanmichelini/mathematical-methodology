@@ -16,7 +16,11 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
 - Parity with foundations (issues #18, #22-#29): lemma store and ordering (`Tactical/Store.lean`,
   port of `Rec`, `fund`, `dependencies`, `addAffirm` from `Prove.hs`; #24) and the tactic
   search (`Tactical/Search.lean`, port of `mainTactic`; #18): it rediscovers the four list
-  lemmas, which `Cert.check` accepts.
+  lemmas, which `Cert.check` accepts. Enumeration of data types and functions
+  (`Strategic/Enumerate.lean`, `enum*` of `Propose.hs`; #22): `datas` and the 64 first-search
+  candidates match foundations. The 164 second-search candidates depend on the first
+  search's output (`fstEnv`) and are checked with #26/#27. Candidates are still *named*
+  terms; converting them to de Bruijn `Term` is part of #26.
 
 ## Next, in rough order
 
@@ -30,8 +34,8 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
    (`lhs = { hint } ...`), as the Haskell version prints LaTeX.
 4. **Tactical search: beyond the list example.** `mainTactic` is ported (`Search.lean`);
    what is left is running it on the other lemma suites (#28) and the `paciencia` limit (#25).
-5. **Strategic level.** Enumerate data types, functions and conjectures (`Propose.hs`)
-   and rank lemmas ("ample", "deep").
+5. **Strategic level.** Data types and functions are enumerated (#22); still to do: conjectures
+   (#23, `conjeturas*`/`ample*`) and ranking lemmas ("ample", "deep").
 6. **Binder-aware rewriting.** Allow rewriting and computing under binders and inside
    `case` alternatives.
 7. **Reproduce Appendix B.** Rediscover the 31 functions f0..f30 from the thesis.
