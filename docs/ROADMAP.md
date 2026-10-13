@@ -13,6 +13,9 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   `Examples/ListsSound.lean`. The checker gained first-order types for lemma instances
   (`Ctx.typeOf`), a scope check for induction, and dropped rigid rules on nested induction.
 
+- Parity with foundations (issues #18, #22-#29): lemma store and ordering (`Tactical/Store.lean`,
+  port of `Rec`, `fund`, `dependencies`, `addAffirm` from `Prove.hs`; #24).
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by

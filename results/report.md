@@ -37,6 +37,21 @@ The checker must reject each of these.
 - negative tests rejected: 9 of 9
 - overall: ok
 
+## Lemma store
+
+Proven lemmas are classified for the (untrusted) tactic search, as `Rec.add` does in
+foundations `Prove.hs`: `simp` rewrites the bigger side to the smaller (sorted by the
+`fund` gap), `reor` holds permutation lemmas in both directions, `basu` the rest.
+(`flod` and `floe` exist but, as in Haskell, `addAffirm` never fills them.)
+
+| store | lemma |
+|---|---|
+| simp | `∀ (x : List) (y : List). rev (append x y) = append (rev y) (rev x)` |
+| simp | `∀ (x : List). append x nil = x` |
+| simp | `∀ (x : List). rev (rev x) = x` |
+| reor | `∀ (x : List) (y : List) (z : List). append (append x y) z = append x (append y z)` |
+| reor | `∀ (x : List) (y : List) (z : List). append x (append y z) = append (append x y) z` |
+
 ## Soundness
 
 Accepting a certificate is not just tested, it is proved correct in Lean
