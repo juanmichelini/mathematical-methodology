@@ -63,11 +63,11 @@ def negativeRows : List String :=
     | some e => s!"| {escape desc} | rejected: `{escape e}` |"
     | none => s!"| {escape desc} | WRONGLY ACCEPTED |"
 
-/-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 /-- Is the committed `Generated/FstCandidates.lean` what the generator prints? -/
 def exportUpToDate : Bool :=
   MM.Export.fstFile == include_str "Generated/FstCandidates.lean"
 
+/-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
   negatives.all (fun (_, dev) => (negativeOutcome dev).isSome) &&
