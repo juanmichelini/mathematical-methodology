@@ -1,4 +1,6 @@
 import MathematicalMethodology.Strategic.Enumerate
+import MathematicalMethodology.Strategic.Show
+import MathematicalMethodology.Examples.HaskellFst
 
 /-!
 # Enumeration: tests
@@ -44,31 +46,52 @@ open MM.Strategic
 #guard (datas[1]!).toC.map (fun (c, t) => (c, t.pp)) =
   [("C_,R.0", "C_,R"), ("C_,R.1", "(C_,R -> C_,R)")]
 
-/-! ## Function types and parameters -/
+/-! ## Function types -/
 
 #guard (armarTip 1 [.con "N", .con "L"]).map Ty.pp =
   ["(N -> N)", "(N -> L)", "(L -> N)", "(L -> L)"]
 #guard (armarTip 2 [.con "N", .con "L"]).length = 8
-#guard armarPar (.com (.con "N") (.com (.con "N") (.con "N"))) =
-  [("b", .con "N"), ("a", .con "N")]
 
 /-! ## Expressions -/
 
 private def natEnv : TEnv :=
-  [(NTerm.con "O", .con "N"), (NTerm.con "S", .com (.con "N") (.con "N"))]
+  [(Term.con "O", .con "N"), (Term.con "S", .com (.con "N") (.con "N"))]
 
-#guard (enumApp 0 (.con "N") natEnv).map NTerm.pp = ["O"]
-#guard (enumApp 1 (.con "N") natEnv).map NTerm.pp = ["O", "(S O)"]
-#guard (enumApp 2 (.con "N") natEnv).map NTerm.pp = ["O", "(S O)", "(S (S O))"]
+private def ppT : Term → String := showTerm 0 0
+
+#guard (enumApp 0 (.con "N") natEnv).map ppT = ["O"]
+#guard (enumApp 1 (.con "N") natEnv).map ppT = ["O", "S O"]
+#guard (enumApp 2 (.con "N") natEnv).map ppT = ["O", "S O", "S (S O)"]
 -- nothing of an unknown type
 #guard (enumApp 3 (.con "Z") natEnv).isEmpty
 
 -- the recursion filter drops terms
-#guard (enumAppRec (fun t => t.contains (.con "S")) 2 (.con "N") natEnv).map NTerm.pp = ["O"]
+#guard (enumAppRec (fun t => (termAtoms 0 0 t).contains (.con "S")) 2 (.con "N") natEnv).map ppT
+  = ["O"]
 
--- an atom may occur at most twice
-#guard (repiteAtmHasta 3 [(NTerm.var "x").app ((NTerm.var "x").app (NTerm.var "x")),
-    (NTerm.var "x").app (NTerm.var "y")]).length = 1
+/-! ## Counting atoms (`repiteAtmHasta`)
+
+Parameters and fields are counted by position from the left, so a field of one constructor
+and the same-position field of another are the same atom, whatever their de Bruijn index. -/
+
+-- inside an alternative of arity 2 under 1 parameter: var 1 = field 0, var 0 = field 1,
+-- var 2 = parameter 0
+#guard termAtoms 1 2 (.app (.var 1) (.app (.var 0) (.var 2))) =
+  [.field 0, .field 1, .param 0]
+-- the same fields in an alternative of arity 3: other indices, same atoms
+#guard termAtoms 1 3 (.app (.var 2) (.app (.var 1) (.var 3))) =
+  [.field 0, .field 1, .param 0]
+-- two parameters: the first is the outer one
+#guard termAtoms 2 0 (.app (.var 1) (.var 0)) = [.param 0, .param 1]
+
+-- field 0 of an arity-2 alternative and field 0 of an arity-1 alternative are one atom,
+-- although their indices differ (`var 1` and `var 0`): three occurrences are too many
+private def twoAlts (b0 b1 : Term) : Term :=
+  .cas (.var 0) (.alt "A" 2 b0 (.alt "B" 1 b1 .nil))
+
+#guard (repiteAtmHasta 1 3 [twoAlts (.app (.var 1) (.var 1)) (.var 0)]).isEmpty
+-- fields 1 (of A) and 0 (of B) are different atoms: two occurrences each is fine
+#guard (repiteAtmHasta 1 3 [twoAlts (.app (.var 0) (.var 0)) (.app (.var 0) (.var 0))]).length = 1
 
 /-! ## Functions -/
 
@@ -77,14 +100,21 @@ private def natEnv : TEnv :=
 #guard (enumFun (fun _ => false) "f" (.con "C_,R") datas cerothTEnv).isEmpty
 
 -- `suma` is among the candidates `Nat → Nat → Nat`
-#guard (candidatosFst.map fun (e, _) => e.pp).contains
-  "(\\b -> (\\a -> (case b of {C_,R.0 -> a; C_,R.1 c -> (C_,R.1 ((f c) a))})))"
+#guard (candidatosFst.map fun (e, _) => showFun e).contains
+  "\\b -> \\a -> case b of { C_,R.0 -> a; C_,R.1 c -> C_,R.1 (f c a); }"
 
 /-! ## First-search candidates -/
 
 -- foundations `results/experiments.txt`: "first search candidates: 64"
 #guard candidatosFst.length = 64
 -- every candidate mentions its own name (recursion)
-#guard candidatosFst.all fun (e, _) => e.contains (.var "f")
+#guard candidatosFst.all fun (e, _) => mentions "f" e
+
+/-- Candidates as `term  ::  type`, in the format of `haskellFst`. -/
+def fstLines : List String :=
+  candidatosFst.map fun (e, t) => showFun e ++ "  ::  " ++ t.pp
+
+-- the full list, in order, equals what the original Haskell prints
+#guard fstLines = haskellFst
 
 end MM.Examples.Enumeration

@@ -78,7 +78,8 @@ The untrusted strategic level (`Strategic/Enumerate.lean`, port of the enumerati
 | `C_,a_R` | `C_,a_R.0`, `C_,a_R.1 a C_,a_R` |
 
 First-search candidates (recursive functions on `C_,R` and `C_,a_R`):
-64 in total (foundations: 64).
+64 in total; the original Haskell prints 64
+and the two lists are identical, in order: true.
 
 | function type | candidates |
 |---|---|

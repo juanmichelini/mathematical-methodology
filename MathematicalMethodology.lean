@@ -21,4 +21,6 @@ import MathematicalMethodology.Examples.ListsSearch
 import MathematicalMethodology.Strategic.Util
 import MathematicalMethodology.Strategic.Syntax
 import MathematicalMethodology.Strategic.Enumerate
+import MathematicalMethodology.Strategic.Show
+import MathematicalMethodology.Examples.HaskellFst
 import MathematicalMethodology.Examples.Enumeration

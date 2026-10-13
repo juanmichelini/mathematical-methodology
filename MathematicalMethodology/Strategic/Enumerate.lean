@@ -5,7 +5,7 @@ import MathematicalMethodology.Strategic.Syntax
 
 Port of the enumeration half of foundations `code/Propose.hs` (`enumSimpleFiniteTypes`,
 `enumContainerFiniteTypes`, `enumRecursiveTypes`, `enumContainerRecTypes`, `armarTip`,
-`armarPar`, `dataAEsquema`, `enumApp`, `enumAppRec`, `enumFun`) and of `Main.datas`.
+`dataAEsquema`, `enumApp`, `enumAppRec`, `enumFun`) and of `Main.datas`.
 
 **Untrusted.**  Every function proposed here is only a candidate; a lemma about it still
 has to be accepted by `Cert.check`.  Nothing trusted imports this file.
@@ -17,15 +17,10 @@ generators).
 
 namespace MM.Strategic
 
-/-! ## Names -/
+/-! ## Names of type variables -/
 
 /-- Haskell `infiniteTVars`, truncated: `a b c d e 0 1 2 …`. -/
 def tvarPool : List String := ["a", "b", "c", "d", "e"] ++ (List.range 40).map toString
-
-/-- Haskell `infiniteVars`, truncated: `a … z`, `a0 … z0`, `a1 … z1`, … -/
-def varPool : List String :=
-  ("" :: (List.range 12).map toString).flatMap fun sfx =>
-    "abcdefghijklmnopqrstuvwxyz".toList.map fun ch => ch.toString ++ sfx
 
 /-! ## Data types -/
 
@@ -70,7 +65,7 @@ def datas : List DatasH :=
 
 /-- `Main.cerothTEnv`: the constructors of `datas`, as terms with their types. -/
 def cerothTEnv : TEnv :=
-  (datas.flatMap DatasH.toC).map fun (c, t) => (NTerm.con c, t)
+  (datas.flatMap DatasH.toC).map fun (c, t) => (Term.con c, t)
 
 /-! ## Function types and parameters -/
 
@@ -79,49 +74,44 @@ def armarTip : Nat → List Ty → List Ty
   | 0, xs => xs
   | n + 1, xs => xs.flatMap fun x => (armarTip n xs).map fun t => .com x t
 
-/-- Haskell `armarPar`: names for the parameters of a function type, in order, with
-their types.  Each name is the first fresh one not used by the later parameters. -/
-def armarPar : Ty → List (String × Ty)
-  | .com x y =>
-    let b := armarPar y
-    let v := (varPool.find? fun w => !(b.map Prod.fst).contains w).getD "?"
-    (v, x) :: b
-  | _ => []
+/-! ## Recursion scheme of a data type
 
-/-! ## Recursion scheme of a data type -/
+Inside the alternative of a constructor of arity `n`, field `j` (from the left) is
+`var (n-1-j)`; the parameters of the function follow, so parameter `i` of `k` is
+`var (k-1-i + n)`. -/
 
-/-- Haskell `dataAEsquema`: for the type `o`, the constructors with their field
-variables, and for each constructor the typed expressions available in its branch: the
-recursive calls `f v` (of the result type `b`) and the field variables. -/
+/-- Haskell `dataAEsquema`: for the type `o`, the constructors with their arity, and for
+each constructor the typed expressions available in its branch: the recursive calls `f v`
+(of the result type `b`) and the field variables. -/
 structure Scheme where
-  cons : List (String × List String)
-  avail : List (List (NTerm × Ty))
+  cons : List (String × Nat)
+  avail : List (List (Term × Ty))
 
-def Scheme.mkCase (s : Scheme) (scrut : NTerm) (bodies : List NTerm) : NTerm :=
-  .cas scrut (NAlts.ofList ((s.cons.zip bodies).map fun ((c, vs), b) => (c, vs, b)))
+def Scheme.mkCase (s : Scheme) (scrut : Term) (bodies : List Term) : Term :=
+  .cas scrut ((s.cons.zip bodies).foldr (fun ((c, n), b) rest => .alt c n b rest) .nil)
 
-def dataAEsquema (d : DatasH) (vs : List String) (f : NTerm) (ty : Ty) : Option Scheme :=
+def dataAEsquema (d : DatasH) (f : Term) (ty : Ty) : Option Scheme :=
   match ty with
   | .com a b =>
     if Ty.con d.1 == a then
-      let para := d.2.map fun (_, fs) => vs.zip fs
-      let tvarpara := para.map fun p => p.map fun (v, t) => (NTerm.var v, t)
-      let recs := tvarpara.map fun p =>
-        (p.filter fun (_, t) => t == a).map fun (e, _) => (NTerm.app f e, b)
-      some ⟨(d.2.zip para).map fun ((c, _), p) => (c, p.map Prod.fst),
-            List.zipWith (· ++ ·) recs tvarpara⟩
+      -- per constructor: its fields as (variable, type), by position from the left
+      let para := d.2.map fun (_, fs) =>
+        (fs.zipIdx.map fun (t, j) => (Term.var (fs.length - 1 - j), t))
+      let recs := para.map fun p =>
+        (p.filter fun (_, t) => t == a).map fun (e, _) => (Term.app f e, b)
+      some ⟨d.2.map fun (c, fs) => (c, fs.length), List.zipWith (· ++ ·) recs para⟩
     else none
   | _ => none
 
 /-! ## Expressions of a type -/
 
 /-- Atoms of `tts` whose type ends in `s`, with the parameter types that remain. -/
-def relevant (s : Ty) (tts : TEnv) : List (NTerm × List Ty) :=
+def relevant (s : Ty) (tts : TEnv) : List (Term × List Ty) :=
   tts.filterMap fun (e, t) => (s.returnsM t).map fun args => (e, args)
 
 /-- Haskell `enumApp n s tts`: applications of depth at most `n` of the typed atoms
 `tts` that have type `s`; atoms of type `s` come first, then the applications. -/
-def enumApp : Nat → Ty → TEnv → List NTerm
+def enumApp : Nat → Ty → TEnv → List Term
   | 0, s, tts => ((relevant s tts).filter fun (_, args) => args.isEmpty).map Prod.fst
   | n + 1, s, tts =>
     let rel := relevant s tts
@@ -135,48 +125,51 @@ def enumApp : Nat → Ty → TEnv → List NTerm
 /-- Haskell `enumAppRec`, with the rewrite-rule filter (`isNothing . applyRecT`) abstracted
 as a predicate `reject`: terms that a known rule could rewrite are dropped.  With the
 empty rule set of `Main.cerothRec` nothing is rejected. -/
-def enumAppRec (reject : NTerm → Bool) (n : Nat) (s : Ty) (tts : TEnv) : List NTerm :=
+def enumAppRec (reject : Term → Bool) (n : Nat) (s : Ty) (tts : TEnv) : List Term :=
   (enumApp n s tts).filter fun t => !reject t
 
-/-- Haskell `repiteAtmHasta n`: keep the terms in which no atom occurs `n` or more times. -/
-def repiteAtmHasta (n : Nat) (ts : List NTerm) : List NTerm :=
-  ts.filter fun t => let as := t.atoms; as.all fun a => as.count a < n
+/-- Haskell `repiteAtmHasta n`, for the bodies of a function with `k` parameters: keep the
+terms in which no atom occurs `n` or more times.  Atoms are counted by position (see
+`Atm`), so field `j` of one constructor is the same atom as field `j` of another. -/
+def repiteAtmHasta (k n : Nat) (ts : List Term) : List Term :=
+  ts.filter fun t => let as := termAtoms k 0 t; as.all fun a => as.count a < n
 
 /-- Haskell `enumFun rec f tipo datas ls`: the functions `f : tipo` defined by one `case`
 on the first parameter, whose branches are applications built from the other parameters,
-the fields, the recursive calls and the environment `ls`. -/
-def enumFun (reject : NTerm → Bool) (f : String) (tipo : Ty) (ds : List DatasH)
-    (ls : TEnv) : List NTerm :=
+the fields, the recursive calls and the environment `ls` (closed terms). -/
+def enumFun (reject : Term → Bool) (f : String) (tipo : Ty) (ds : List DatasH)
+    (ls : TEnv) : List Term :=
   match tipo with
   | .com (.con x) _ =>
     match ds.find? (·.1 == x) with
     | none => []
     | some d =>
-      let vs := armarPar tipo
-      let names := vs.map Prod.fst
-      let vs2 : TEnv := vs.map fun (v, t) => (NTerm.var v, t)
-      let free := varPool.filter fun v => !names.contains v
-      match dataAEsquema d free (NTerm.var f) tipo, vs2 with
-      | some sch, (scrut, _) :: others =>
-        let res := tipo.parsAndRet.2
-        let cas' := sch.avail.map fun cs => cs.map fun (e, t) =>
-          let (g, gs) := e.listParams
-          if g == NTerm.var f then ((NTerm.var f).mkApp (gs ++ others.map Prod.fst), res)
-          else (e, t)
-        let bodies := cas'.map fun c => enumAppRec reject 2 tipo.lastRet (others ++ c ++ ls)
-        let apps := (hilar bodies).map (sch.mkCase scrut)
-        repiteAtmHasta 3 (apps.map fun a => names.foldr NTerm.abs a)
-      | _, _ => []
+      let (ptys, res) := tipo.parsAndRet
+      let k := ptys.length
+      match dataAEsquema d (.const f) tipo with
+      | none => []
+      | some sch =>
+        -- parameters after the first, as seen from an alternative of arity `n`
+        let others (n : Nat) : TEnv :=
+          (ptys.zipIdx.drop 1).map fun (t, i) => (Term.var (k - 1 - i + n), t)
+        let bodies := (sch.cons.zip sch.avail).map fun ((_, n), avail) =>
+          let cas' := avail.map fun (e, t) =>
+            let (g, gs) := e.spine
+            if g == .const f then ((Term.const f).mkApp (gs ++ (others n).map Prod.fst), res)
+            else (e, t)
+          enumAppRec reject 2 tipo.lastRet (others n ++ cas' ++ ls)
+        let apps := (hilar bodies).map (sch.mkCase (.var (k - 1)))
+        (repiteAtmHasta k 3 apps).map fun a => (List.range k).foldl (fun t _ => .abs t) a
   | _ => []
 
 /-! ## Candidates of the first search (`Main.candidatosFst`) -/
 
 /-- Data types the first search uses: `datas!!1` and `datas!!3`. -/
-def fstTypes : List Ty := [datas[1]!, datas[3]!].map fun d => Ty.con d.1
+def fstTypes : List Ty := [1, 3].filterMap fun i => (datas[i]?).map fun d => Ty.con d.1
 
-def candidatosFst : List (NTerm × Ty) :=
+def candidatosFst : List (Term × Ty) :=
   ([1, 2].flatMap fun aridad => (armarTip aridad fstTypes).flatMap fun tipo =>
     (enumFun (fun _ => false) "f" tipo datas cerothTEnv).map fun e => (e, tipo)).filter
-    fun (e, _) => e.contains (.var "f")
+    fun (e, _) => mentions "f" e
 
 end MM.Strategic
