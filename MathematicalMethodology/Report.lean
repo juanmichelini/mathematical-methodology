@@ -1,5 +1,6 @@
 import MathematicalMethodology.Pretty
 import MathematicalMethodology.Examples.Lists
+import MathematicalMethodology.Examples.ListsStore
 
 /-!
 # Report
@@ -64,6 +65,12 @@ def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
   negatives.all fun (_, dev) => (negativeOutcome dev).isSome
 
+/-- Rows of the lemma-store classification: one per stored lemma. -/
+def storeRows : List String :=
+  let row (kind : String) (a : Affirm) : String := s!"| {kind} | `{escape a.pp}` |"
+  let r := MM.Examples.store
+  r.simp.map (row "simp") ++ r.reor.map (row "reor") ++ r.basu.map (row "basu")
+
 def markdown : String :=
   let pos := runDev listCtx development []
   String.intercalate "\n" <|
@@ -95,6 +102,17 @@ def markdown : String :=
     , s!"- negative tests rejected: {(negatives.filter fun (_, d) => (negativeOutcome d).isSome).length} of {negatives.length}"
     , s!"- overall: {if allOk then "ok" else "FAILED"}"
     , ""
+    , "## Lemma store"
+    , ""
+    , "Proven lemmas are classified for the (untrusted) tactic search, as `Rec.add` does in"
+    , "foundations `Prove.hs`: `simp` rewrites the bigger side to the smaller (sorted by the"
+    , "`fund` gap), `reor` holds permutation lemmas in both directions, `basu` the rest."
+    , "(`flod` and `floe` exist but, as in Haskell, `addAffirm` never fills them.)"
+    , ""
+    , "| store | lemma |"
+    , "|---|---|" ]
+    ++ storeRows ++
+    [ ""
     , "## Soundness"
     , ""
     , "Accepting a certificate is not just tested, it is proved correct in Lean"

@@ -14,3 +14,5 @@ import MathematicalMethodology.Semantics.Rewrite
 import MathematicalMethodology.Semantics.Induct
 import MathematicalMethodology.Semantics.CheckSound
 import MathematicalMethodology.Examples.ListsSound
+import MathematicalMethodology.Tactical.Store
+import MathematicalMethodology.Examples.ListsStore
