@@ -1,5 +1,5 @@
 import MathematicalMethodology.Strategic.Enumerate
-import MathematicalMethodology.Tactical.Store
+import MathematicalMethodology.Tactical.Prove
 import MathematicalMethodology.Strategic.Show
 
 /-!
@@ -186,16 +186,11 @@ def ampleAll (tenv : TEnv) (vs : List String) : List PTT :=
 
 /-! ## Conjectures -/
 
-/-- A conjecture with the (metadata) names of its variables. -/
-structure Conj where
-  names : List String
-  aff : Affirm
-
 /-- The typed variables as atoms of the environment (`vts'` in Haskell). -/
 def varAtoms (vts : VTs) : TEnv := vts.zipIdx.map fun ((_, t), i) => (Term.var i, t)
 
-/-- `reject ctx t`: would a stored rule rewrite `t` (Haskell `applyRecT [] rec`)?  `ctx` are
-the types of the variables. -/
+/-- `reject names t`: would a stored lemma rewrite `t` (Haskell `applyRecT [] rec`)?
+`names` are the names of the variables (`masOrd` orders atoms by name). -/
 abbrev Reject := List String → Term → Bool
 
 def noReject : Reject := fun _ _ => false
@@ -206,40 +201,19 @@ def conjeturasSoloConDep (reject : Reject) (env : Env) (tenv : TEnv) (p : PTT) :
   let deps := (dependencies env p.term).map atomTerm
   let depst := tenv.filter fun (g, _) => deps.contains g
   let ctx := p.vts.map (·.2.pp)
-  (enumAppRec (reject ctx) 2 p.ty (varAtoms p.vts ++ depst)).map fun r =>
+  (enumAppRec (reject p.names) 2 p.ty (varAtoms p.vts ++ depst)).map fun r =>
     ⟨p.vts.map (·.1), ⟨ctx, p.term, r⟩⟩
 
 /-- Haskell `conjeturasSimp`: only those whose left side is bigger (`fund`). -/
 def conjeturasSimp (reject : Reject) (env : Env) (tenv : TEnv) (p : PTT) : List Conj :=
   (conjeturasSoloConDep reject env tenv p).filter fun c => c.aff.lhs.fund env > c.aff.rhs.fund env
 
-/-! ### Ordering atoms by name (`masOrd`) -/
-
-/-- Haskell's `Ord Atm`: variables (and defined functions, which are variables there)
-before constructors, by name. -/
-def atomKey (names : List String) : Atom → Nat × String
-  | .var i => (0, names.getD i "")
-  | .const f => (0, f)
-  | .con c => (1, c)
-
-def cmpKey (a b : Nat × String) : Ordering :=
-  match compare a.1 b.1 with
-  | .eq => compare a.2 b.2
-  | o => o
-
-/-- Haskell `masOrd`, with atoms compared by name. -/
-def masOrdN (names : List String) (t1 t2 : Term) : Ordering :=
-  let k := fun (t : Term) => t.argAtoms.map (atomKey names)
-  match ((k t1).zipWith cmpKey (k t2)).filter (· != .eq) with
-  | o :: _ => o
-  | [] => ((t1.heights.zipWith compare t2.heights).filter (· != .eq)).headD .eq
-
 /-- Haskell `conjeturasPerm`: permutations of the left side's atoms, smallest first. -/
 def conjeturasPerm (reject : Reject) (tenv : TEnv) (p : PTT) : List Conj :=
   let ctx := p.vts.map (·.2.pp)
   let atoms := (p.term.atoms.map atomTerm).eraseDups
   let depst := tenv.filter fun (g, _) => atoms.contains g
-  let rs := (enumAppRec (reject ctx) 2 p.ty (varAtoms p.vts ++ depst)).take 100
+  let rs := (enumAppRec (reject p.names) 2 p.ty (varAtoms p.vts ++ depst)).take 100
   let sorted := rs.mergeSort fun x y => masOrdN p.names x y != .gt
   (sorted.map (fun r => (⟨p.vts.map (·.1), ⟨ctx, p.term, r⟩⟩ : Conj))).filter fun c =>
     soloPermuta c.aff && c.aff.lhs != c.aff.rhs
@@ -249,7 +223,7 @@ def conjeturasAll (reject : Reject) (tenv : TEnv) (p : PTT) : List Conj :=
   let ctx := p.vts.map (·.2.pp)
   let atoms := (p.term.atoms.map atomTerm).eraseDups
   let depst := tenv.filter fun (g, _) => atoms.contains g
-  let rs := (enumAppRec (reject ctx) 2 p.ty (varAtoms p.vts ++ depst)).take 1000
+  let rs := (enumAppRec (reject p.names) 2 p.ty (varAtoms p.vts ++ depst)).take 1000
   (rs.map (fun r => (⟨p.vts.map (·.1), ⟨ctx, p.term, r⟩⟩ : Conj))).filter fun c =>
     c.aff.lhs != c.aff.rhs
 
@@ -262,7 +236,7 @@ def plemas (reject : Reject) (env : Env) (tenv : TEnv) (v : String) : List (List
 
 /-- One line per conjecture, in the format of the Haskell dump used as ground truth:
 `a:T b:U |- lhs = rhs`. -/
-def Conj.show (c : Conj) : String :=
+def _root_.MM.Conj.show (c : Conj) : String :=
   " ".intercalate (c.names.zip c.aff.ctx |>.map fun (v, t) => s!"{v}:{t}") ++ " |- " ++
     showNamed c.names c.aff.lhs ++ " = " ++ showNamed c.names c.aff.rhs
 

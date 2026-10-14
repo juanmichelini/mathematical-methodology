@@ -5,6 +5,7 @@ import MathematicalMethodology.Examples.ListsSearch
 import MathematicalMethodology.Examples.Enumeration
 import MathematicalMethodology.Examples.ExportCheck
 import MathematicalMethodology.Examples.ConjecturesFst
+import MathematicalMethodology.Examples.ProveFst
 
 /-!
 # Report
@@ -78,13 +79,30 @@ def batchCount : Nat := (conjLines.filter fun (l : String) => l.startsWith "# ba
 def conjecturesMatchHaskell : Bool :=
   MM.Examples.ConjecturesFst.dump == include_str "../fixtures/haskell/conj_fst.txt"
 
+/-- Rows of the `paciencia` table: ours against foundations'. -/
+def pacienciaRows : List String :=
+  MM.Examples.ProveFst.haskellCounts.map fun (n, expected) =>
+    let got := MM.Examples.ProveFst.counts n
+    s!"| {n} | {got.length} | {got} | {expected} | {got == expected} |"
+
+def pacienciaOk : Bool :=
+  MM.Examples.ProveFst.haskellCounts.all fun (n, expected) => MM.Examples.ProveFst.counts n == expected
+
+/-- Is the proof trace identical to the Haskell's? -/
+def proveTraceMatches : Bool :=
+  MM.Examples.ProveFst.dump == include_str "../fixtures/haskell/prove_fst.txt"
+
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
+def allCertified : Bool :=
+  MM.Examples.ProveFst.certified.all fun (_, found, ok) => found == ok
+
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
   negatives.all (fun (_, dev) => (negativeOutcome dev).isSome) &&
   MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst &&
   exportUpToDate &&
-  conjecturesMatchHaskell
+  conjecturesMatchHaskell &&
+  pacienciaOk && proveTraceMatches && allCertified
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -199,6 +217,28 @@ def markdown : String :=
     , s!"{conjecturesMatchHaskell}. The functions of foundations `Test.hs` are checked against a hash of the"
     , "Haskell output by `lake exe haskell-check`."
     , ""
+    , "## Finding lemmas"
+    , ""
+    , "`Tactical/Prove.lean` is a faithful port of `mainTactic`, `cutSingleStepCycles`, `giveUp`"
+    , "and `prove`; `Strategic/FindLemmas.lean` of `findlemas`/`provell` (the first conjecture of a"
+    , "batch that is proven becomes a lemma for the rest). The first search keeps the functions with"
+    , "more than three lemmas, for several values of the search limit `paciencia`:"
+    , ""
+    , "| paciencia | kept | lemmas per kept function | foundations | same |"
+    , "|---|---|---|---|---|" ]
+    ++ pacienciaRows ++
+    [ ""
+    , s!"The whole trace of `provell` over the {MM.Strategic.candidatosFst.length} candidates (every conjecture tried,"
+    , "whether its proof completes, the smallest budget at which it does, the lemma chosen from each"
+    , s!"batch) equals the original Haskell's, line by line: {proveTraceMatches}."
+    , ""
+    , "Every lemma found is also proved by the checker-based search (`Tactical/Search.lean`, rigid"
+    , "induction hypotheses) and the certificate accepted by `Cert.check`:"
+    , ""
+    , "| candidate | lemmas found | certified by `Cert.check` |"
+    , "|---|---|---|" ]
+    ++ (MM.Examples.ProveFst.certified.map fun (i, a, b) => s!"| {i} | {a} | {b} |") ++
+    [ ""
     , "## Export to Lean"
     , ""
     , s!"The {MM.Strategic.candidatosFst.length} candidates (and the data types) are printed as plain Lean"

@@ -32,3 +32,6 @@ import MathematicalMethodology.Strategic.Conjecture
 import MathematicalMethodology.Strategic.Hash
 import MathematicalMethodology.Examples.ConjecturesFst
 import MathematicalMethodology.Examples.ConjecturesTest
+import MathematicalMethodology.Tactical.Prove
+import MathematicalMethodology.Strategic.FindLemmas
+import MathematicalMethodology.Examples.ProveFst

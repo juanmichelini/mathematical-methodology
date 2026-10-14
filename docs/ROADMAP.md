@@ -33,6 +33,12 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   Not ported, as no search calls them: `conjeturasFloatsDep`, `enumAppStarting*`,
   `armarUsarTodo*`, `joinVar`, `permutVars`, `instanceAll`, `toPTT`.
 
+- `findlemas`/`provell` and the `paciencia` limit (#25): `Tactical/Prove.lean`,
+  `Strategic/FindLemmas.lean`. On the 64 first-search candidates the whole `provell` trace
+  (conjectures tried, proofs completed, smallest budget for each, lemma chosen) is identical
+  to the Haskell's, and the `paciencia` table of foundations is reproduced (0 / 4,4,4 /
+  7,7,4). All 18 lemmas found are also certified by `Cert.check` via `Tactical/Search.lean`.
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by
