@@ -1,0 +1,112 @@
+## lemas 35
+OK   6 b1:Bool b2:Bool |- mayoria b1 b1 b2 = b1
+OK   6 x:Bool |- and x x = x
+OK   6 x:Bool |- ssi x x = True
+OK   18 x:Bool y:Bool |- not (ssi x y) = ssi (not x) y
+OK   13 x:Bool y:Bool |- ssi x y = ssi y x
+OK   14 x:Bool y:Bool |- not (xor x y) = xor (not x) y
+OK   17 x:Bool y:Bool |- xor x y = xor y x
+OK   7 x:Bool y:Bool z:Bool |- xor x (xor y z) = xor (xor x y) z
+OK   7 x:Nat |- suma x O = x
+OK   7 x:Nat y:Nat |- S (suma x y) = suma x (S y)
+OK   9 x:Nat y:Nat |- suma x y = suma y x
+OK   8 x:Nat y:Nat z:Nat |- suma x (suma y z) = suma (suma x y) z
+OK   2 y:Nat |- mult O y = O
+OK   8 x:Nat |- mult x O = O
+OK   3 x:Nat y:Nat |- mult (S x) y = suma y (mult x y)
+OK   3 x:Nat y:Nat |- mult (S x) y = suma y (mult x y)
+OK   11 x:Nat y:Nat |- mult x (S y) = suma x (mult x y)
+OK   2 x:Nat y:Nat |- mult (S x) y = suma (mult x y) y
+OK   3 x:Nat y:Nat |- mult x (S y) = suma (mult x y) x
+OK   14 x:Nat y:Nat z:Nat |- mult x (suma y z) = suma (mult x y) (mult x z)
+OK   16 x:Nat y:Nat z:Nat |- mult (suma y z) x = suma (mult x y) (mult x z)
+OK   9 x:Nat y:Nat |- mult x y = mult y x
+OK   11 x:Nat y:Nat z:Nat |- mult x (mult y z) = mult (mult x y) z
+OK   8 x:Nat |- doble x = suma x x
+OK   2 xs:List |- concat Nil xs = xs
+OK   7 xs:List |- concat xs Nil = xs
+OK   2 x:a xs:List ys:List |- concat (Cons x xs) ys = Cons x (concat xs ys)
+OK   8 xs:List ys:List zs:List |- concat xs (concat ys zs) = concat (concat xs ys) zs
+OK   2 x:a xs:List |- rev (Cons x xs) = concat (rev xs) (Cons x Nil)
+OK   4 x:a |- rev (Cons x Nil) = Cons x Nil
+OK   2  |- rev Nil = Nil
+OK   10 xs:List ys:List |- rev (concat xs ys) = concat (rev ys) (rev xs)
+OK   14 xs:List |- rev (rev xs) = xs
+OK   9 xs:List ys:List |- largo (concat xs ys) = suma (largo xs) (largo ys)
+OK   3 xs:List ys:List |- largo (concat xs ys) = largo (concat ys xs)
+## suma
+lemma a:Nat |- suma O a = a
+lemma a:Nat |- suma a O = a
+lemma a:Nat b:Nat |- suma (S a) b = S (suma b a)
+lemma b:Nat a:Nat |- suma a (S b) = S (suma a b)
+lemma c:Nat d:Nat |- suma c d = suma d c
+lemma a:Nat b:Nat f:Nat |- suma (suma a b) f = suma (suma a f) b
+lemma b:Nat e:Nat f:Nat |- suma b (suma e f) = suma (suma b e) f
+done 16
+## mult
+lemma a:Nat |- mult O a = O
+lemma a:Nat |- mult a O = O
+lemma a:Nat b:Nat |- mult (S a) b = suma (mult a b) b
+lemma b:Nat a:Nat |- mult a (S b) = suma a (mult a b)
+lemma a:Nat b:Nat f:Nat |- mult (suma a b) f = suma (mult b f) (mult f a)
+lemma b:Nat f:Nat a:Nat |- mult a (suma b f) = suma (mult a b) (mult a f)
+lemma c:Nat d:Nat |- mult c d = mult d c
+lemma b:Nat e:Nat f:Nat |- mult b (mult e f) = mult (mult b e) f
+done 16
+## flipexp
+lemma a:Nat |- flipexp O a = S O
+lemma a:Nat b:Nat |- flipexp (S a) b = mult (flipexp a b) b
+lemma a:Nat b:Nat f:Nat |- flipexp (suma a b) f = mult (flipexp a f) (flipexp b f)
+lemma a:Nat b:Nat f:Nat |- flipexp (mult a b) f = flipexp a (flipexp b f)
+done 6
+## min
+lemma a:Nat |- min O a = O
+lemma a:Nat |- min a O = O
+lemma c:Nat d:Nat |- min c d = min d c
+lemma b:Nat e:Nat f:Nat |- min b (min e f) = min (min b e) f
+done 10
+## max
+lemma a:Nat |- max O a = a
+lemma a:Nat |- max a O = a
+lemma c:Nat d:Nat |- max c d = max d c
+lemma b:Nat e:Nat f:Nat |- max b (max e f) = max (max b e) f
+done 10
+## absr
+lemma a:Nat |- absr O a = a
+lemma a:Nat |- absr a O = a
+lemma c:Nat d:Nat |- absr c d = absr d c
+done 6
+## and
+lemma a:Bool |- and True a = a
+lemma a:Bool |- and a True = a
+lemma a:Bool |- and False a = False
+lemma a:Bool |- and a False = False
+lemma c:Bool d:Bool |- and c d = and d c
+lemma a:Bool b:Bool f:Bool |- and (and a b) f = and (and a f) b
+lemma b:Bool e:Bool f:Bool |- and b (and e f) = and (and b e) f
+done 12
+## or
+lemma a:Bool |- or False a = a
+lemma a:Bool |- or a False = a
+lemma a:Bool |- or True a = True
+lemma a:Bool |- or a True = True
+lemma c:Bool d:Bool |- or c d = or d c
+lemma a:Bool b:Bool f:Bool |- or (or a b) f = or (or a f) b
+lemma b:Bool e:Bool f:Bool |- or b (or e f) = or (or b e) f
+done 12
+## not
+lemma  |- not True = False
+lemma  |- not False = True
+lemma a:Bool |- not (not a) = a
+done 4
+## concat
+lemma a:List |- concat Nil a = a
+lemma a:List |- concat a Nil = a
+lemma a:a b:List f:List |- concat (Cons a b) f = Cons a (concat b f)
+lemma b:List e:List f:List |- concat b (concat e f) = concat (concat b e) f
+done 6
+## rev
+lemma  |- rev Nil = Nil
+lemma a:List b:List |- rev (concat a b) = concat (rev b) (rev a)
+lemma a:List |- rev (rev a) = a
+done 5

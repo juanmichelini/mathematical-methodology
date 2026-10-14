@@ -1,5 +1,6 @@
 import MathematicalMethodology.Strategic.Syntax
 import MathematicalMethodology.Operational.Compute
+import MathematicalMethodology.Tactical.Prove
 
 /-!
 # foundations `Test.hs` environment
@@ -68,6 +69,77 @@ def tenv : TEnv :=
     (Term.const "largo", (.com (.con "List") (.con "Nat"))),
     (Term.con "Hoja", (.com (.con "Nat") (.con "TreeNat"))),
     (Term.con "Nodo", (.com (.con "TreeNat") (.com (.con "TreeNat") (.con "TreeNat"))))
+  ]
+
+/-- The variable names each definition uses (Haskell `usedVars`): fresh names for the fields of an induction avoid them. -/
+def defUsed : List (String × List String) :=
+  [
+    ("suma", ["k", "suma", "x", "y"]),
+    ("mult", ["k", "mult", "suma", "x", "y"]),
+    ("flipexp", ["flipexp", "k", "mult", "x", "y"]),
+    ("not", ["x"]),
+    ("and", ["x", "y"]),
+    ("or", ["x", "y"]),
+    ("ssi", ["x", "y"]),
+    ("xor", ["not", "x", "y"]),
+    ("mayoria", ["x", "y", "z"]),
+    ("par", ["k", "not", "par", "x"]),
+    ("doble", ["doble", "k", "x"]),
+    ("pred", ["k", "pred", "x"]),
+    ("min", ["j", "k", "min", "x", "y"]),
+    ("max", ["j", "k", "max", "x", "y"]),
+    ("absr", ["absr", "j", "k", "x", "y"]),
+    ("concat", ["concat", "k", "ks", "xs", "ys"]),
+    ("largo", ["ks", "largo", "xs"]),
+    ("rev", ["concat", "k", "ks", "rev", "xs"])
+  ]
+
+def lemascomp : List Conj :=
+  [
+    { names := ["y"], aff := ⟨["Nat"], (.app (.app (.const "suma") (.con "O")) (.var 0)), (.var 0)⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.con "S") (.app (.app (.const "suma") (.var 0)) (.var 1))), (.app (.app (.const "suma") (.app (.con "S") (.var 0))) (.var 1))⟩ },
+    { names := ["y"], aff := ⟨["Nat"], (.app (.app (.const "mult") (.con "O")) (.var 0)), (.con "O")⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "mult") (.app (.con "S") (.var 0))) (.var 1)), (.app (.app (.const "suma") (.var 1)) (.app (.app (.const "mult") (.var 0)) (.var 1)))⟩ },
+    { names := ["xs"], aff := ⟨["List"], (.app (.app (.const "concat") (.con "Nil")) (.var 0)), (.var 0)⟩ }
+  ]
+
+def lemas : List Conj :=
+  [
+    { names := ["b1", "b2"], aff := ⟨["Bool", "Bool"], (.app (.app (.app (.const "mayoria") (.var 0)) (.var 0)) (.var 1)), (.var 0)⟩ },
+    { names := ["x"], aff := ⟨["Bool"], (.app (.app (.const "and") (.var 0)) (.var 0)), (.var 0)⟩ },
+    { names := ["x"], aff := ⟨["Bool"], (.app (.app (.const "ssi") (.var 0)) (.var 0)), (.con "True")⟩ },
+    { names := ["x", "y"], aff := ⟨["Bool", "Bool"], (.app (.const "not") (.app (.app (.const "ssi") (.var 0)) (.var 1))), (.app (.app (.const "ssi") (.app (.const "not") (.var 0))) (.var 1))⟩ },
+    { names := ["x", "y"], aff := ⟨["Bool", "Bool"], (.app (.app (.const "ssi") (.var 0)) (.var 1)), (.app (.app (.const "ssi") (.var 1)) (.var 0))⟩ },
+    { names := ["x", "y"], aff := ⟨["Bool", "Bool"], (.app (.const "not") (.app (.app (.const "xor") (.var 0)) (.var 1))), (.app (.app (.const "xor") (.app (.const "not") (.var 0))) (.var 1))⟩ },
+    { names := ["x", "y"], aff := ⟨["Bool", "Bool"], (.app (.app (.const "xor") (.var 0)) (.var 1)), (.app (.app (.const "xor") (.var 1)) (.var 0))⟩ },
+    { names := ["x", "y", "z"], aff := ⟨["Bool", "Bool", "Bool"], (.app (.app (.const "xor") (.var 0)) (.app (.app (.const "xor") (.var 1)) (.var 2))), (.app (.app (.const "xor") (.app (.app (.const "xor") (.var 0)) (.var 1))) (.var 2))⟩ },
+    { names := ["x"], aff := ⟨["Nat"], (.app (.app (.const "suma") (.var 0)) (.con "O")), (.var 0)⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.con "S") (.app (.app (.const "suma") (.var 0)) (.var 1))), (.app (.app (.const "suma") (.var 0)) (.app (.con "S") (.var 1)))⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "suma") (.var 0)) (.var 1)), (.app (.app (.const "suma") (.var 1)) (.var 0))⟩ },
+    { names := ["x", "y", "z"], aff := ⟨["Nat", "Nat", "Nat"], (.app (.app (.const "suma") (.var 0)) (.app (.app (.const "suma") (.var 1)) (.var 2))), (.app (.app (.const "suma") (.app (.app (.const "suma") (.var 0)) (.var 1))) (.var 2))⟩ },
+    { names := ["y"], aff := ⟨["Nat"], (.app (.app (.const "mult") (.con "O")) (.var 0)), (.con "O")⟩ },
+    { names := ["x"], aff := ⟨["Nat"], (.app (.app (.const "mult") (.var 0)) (.con "O")), (.con "O")⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "mult") (.app (.con "S") (.var 0))) (.var 1)), (.app (.app (.const "suma") (.var 1)) (.app (.app (.const "mult") (.var 0)) (.var 1)))⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "mult") (.app (.con "S") (.var 0))) (.var 1)), (.app (.app (.const "suma") (.var 1)) (.app (.app (.const "mult") (.var 0)) (.var 1)))⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "mult") (.var 0)) (.app (.con "S") (.var 1))), (.app (.app (.const "suma") (.var 0)) (.app (.app (.const "mult") (.var 0)) (.var 1)))⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "mult") (.app (.con "S") (.var 0))) (.var 1)), (.app (.app (.const "suma") (.app (.app (.const "mult") (.var 0)) (.var 1))) (.var 1))⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "mult") (.var 0)) (.app (.con "S") (.var 1))), (.app (.app (.const "suma") (.app (.app (.const "mult") (.var 0)) (.var 1))) (.var 0))⟩ },
+    { names := ["x", "y", "z"], aff := ⟨["Nat", "Nat", "Nat"], (.app (.app (.const "mult") (.var 0)) (.app (.app (.const "suma") (.var 1)) (.var 2))), (.app (.app (.const "suma") (.app (.app (.const "mult") (.var 0)) (.var 1))) (.app (.app (.const "mult") (.var 0)) (.var 2)))⟩ },
+    { names := ["x", "y", "z"], aff := ⟨["Nat", "Nat", "Nat"], (.app (.app (.const "mult") (.app (.app (.const "suma") (.var 1)) (.var 2))) (.var 0)), (.app (.app (.const "suma") (.app (.app (.const "mult") (.var 0)) (.var 1))) (.app (.app (.const "mult") (.var 0)) (.var 2)))⟩ },
+    { names := ["x", "y"], aff := ⟨["Nat", "Nat"], (.app (.app (.const "mult") (.var 0)) (.var 1)), (.app (.app (.const "mult") (.var 1)) (.var 0))⟩ },
+    { names := ["x", "y", "z"], aff := ⟨["Nat", "Nat", "Nat"], (.app (.app (.const "mult") (.var 0)) (.app (.app (.const "mult") (.var 1)) (.var 2))), (.app (.app (.const "mult") (.app (.app (.const "mult") (.var 0)) (.var 1))) (.var 2))⟩ },
+    { names := ["x"], aff := ⟨["Nat"], (.app (.const "doble") (.var 0)), (.app (.app (.const "suma") (.var 0)) (.var 0))⟩ },
+    { names := ["xs"], aff := ⟨["List"], (.app (.app (.const "concat") (.con "Nil")) (.var 0)), (.var 0)⟩ },
+    { names := ["xs"], aff := ⟨["List"], (.app (.app (.const "concat") (.var 0)) (.con "Nil")), (.var 0)⟩ },
+    { names := ["x", "xs", "ys"], aff := ⟨["a", "List", "List"], (.app (.app (.const "concat") (.app (.app (.con "Cons") (.var 0)) (.var 1))) (.var 2)), (.app (.app (.con "Cons") (.var 0)) (.app (.app (.const "concat") (.var 1)) (.var 2)))⟩ },
+    { names := ["xs", "ys", "zs"], aff := ⟨["List", "List", "List"], (.app (.app (.const "concat") (.var 0)) (.app (.app (.const "concat") (.var 1)) (.var 2))), (.app (.app (.const "concat") (.app (.app (.const "concat") (.var 0)) (.var 1))) (.var 2))⟩ },
+    { names := ["x", "xs"], aff := ⟨["a", "List"], (.app (.const "rev") (.app (.app (.con "Cons") (.var 0)) (.var 1))), (.app (.app (.const "concat") (.app (.const "rev") (.var 1))) (.app (.app (.con "Cons") (.var 0)) (.con "Nil")))⟩ },
+    { names := ["x"], aff := ⟨["a"], (.app (.const "rev") (.app (.app (.con "Cons") (.var 0)) (.con "Nil"))), (.app (.app (.con "Cons") (.var 0)) (.con "Nil"))⟩ },
+    { names := [], aff := ⟨[], (.app (.const "rev") (.con "Nil")), (.con "Nil")⟩ },
+    { names := ["xs", "ys"], aff := ⟨["List", "List"], (.app (.const "rev") (.app (.app (.const "concat") (.var 0)) (.var 1))), (.app (.app (.const "concat") (.app (.const "rev") (.var 1))) (.app (.const "rev") (.var 0)))⟩ },
+    { names := ["xs"], aff := ⟨["List"], (.app (.const "rev") (.app (.const "rev") (.var 0))), (.var 0)⟩ },
+    { names := ["xs", "ys"], aff := ⟨["List", "List"], (.app (.const "largo") (.app (.app (.const "concat") (.var 0)) (.var 1))), (.app (.app (.const "suma") (.app (.const "largo") (.var 0))) (.app (.const "largo") (.var 1)))⟩ },
+    { names := ["xs", "ys"], aff := ⟨["List", "List"], (.app (.const "largo") (.app (.app (.const "concat") (.var 0)) (.var 1))), (.app (.const "largo") (.app (.app (.const "concat") (.var 1)) (.var 0)))⟩ }
   ]
 
 end MM.Examples.TestEnv

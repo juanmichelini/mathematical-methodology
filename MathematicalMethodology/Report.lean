@@ -8,6 +8,7 @@ import MathematicalMethodology.Examples.ConjecturesFst
 import MathematicalMethodology.Examples.ProveFst
 import MathematicalMethodology.Examples.FirstSearch
 import MathematicalMethodology.Examples.SecondSearch
+import MathematicalMethodology.Examples.TestSuite
 
 /-!
 # Report
@@ -116,6 +117,26 @@ def secondSearchMatches : Bool :=
   (MM.Examples.SecondSearch.dump == (include_str "../fixtures/haskell/snd_sel.txt")) &&
   MM.Examples.SecondSearch.measured == MM.Examples.SecondSearch.appendixB
 
+def suiteLines : List String := MM.Examples.TestSuite.dump.splitOn "\n"
+
+def suiteProved : Nat := (suiteLines.filter fun (l : String) => l.startsWith "OK").length
+
+def suiteMatches : Bool :=
+  (MM.Examples.TestSuite.dump == (include_str "../fixtures/haskell/test_suite.txt")) &&
+  suiteProved == MM.Examples.TestEnv.lemas.length
+
+/-- Name, number of lemmas found and finished proofs of each chain of `Test.hs`. -/
+def chainRows : List String :=
+  let rec go (ls : List String) (name : String) (n : Nat) (acc : List String) : List String :=
+    match ls with
+    | [] => acc.reverse
+    | l :: rest =>
+      if l.startsWith "## " && !l.startsWith "## lemas" then go rest (l.drop 3) 0 acc
+      else if l.startsWith "lemma " then go rest name (n + 1) acc
+      else if l.startsWith "done " then go rest name 0 (s!"| `{name}` | {n} | {l.drop 5} |" :: acc)
+      else go rest name n acc
+  go suiteLines "" 0 []
+
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
@@ -123,7 +144,8 @@ def allOk : Bool :=
   MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst &&
   exportUpToDate &&
   conjecturesMatchHaskell &&
-  pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches
+  pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches &&
+  suiteMatches
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -287,6 +309,20 @@ def markdown : String :=
     [ ""
     , "The candidates (in order), the definitions with Haskell's binder names, the variable names they use,"
     , s!"every lemma statement and the finished-proof counts equal what the original Haskell prints: {secondSearchMatches}."
+    , ""
+    , "## The lemma suite of `Test.hs`"
+    , ""
+    , s!"`Test.lemas` has {MM.Examples.TestEnv.lemas.length} hand-written lemmas about booleans, naturals and lists. Each is proved with"
+    , "`lemascomp` and the lemmas before it as hypotheses (`Test.provelemas 30`, as `check-lemmas` does):"
+    , s!"{suiteProved} of {MM.Examples.TestEnv.lemas.length} are proved, each at the same smallest budget as in the Haskell. The lemma chains of"
+    , "`Test.hs` (lemmas found for a function, some starting from the lemmas of another):"
+    , ""
+    , "| function | lemmas found | finished proofs |"
+    , "|---|---|---|" ]
+    ++ chainRows ++
+    [ ""
+    , "`flipexp` finds the two lemmas of thesis Sec. 10, `c^(a+b) = c^a * c^b` and `c^(a*b) = (c^b)^a`."
+    , s!"The whole output (every lemma with its smallest budget, every chain) equals the original Haskell's: {suiteMatches}."
     , ""
     , "## Export to Lean"
     , ""

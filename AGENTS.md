@@ -47,6 +47,9 @@ three levels, and the code is split the same way:
   including the binder renaming Haskell does when `f` becomes `f0`.
 - `Strategic/SecondSearch.lean`: `candidatosSnd`/`candidatosSndSel`/`namedSndSel` (f3..f30).
   Together with the first search these are the 31 functions of the thesis' Appendix B.
+- `Examples/TestEnv.lean` is *generated* from foundations' `Test.hs` (`scripts/haskell/TestEnv.hs`):
+  environment, types, data types, the 35 lemmas and the names the definitions use.
+  `Examples/TestSuite.lean` runs the suite and the lemma chains of `Test.hs`.
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
   `Strategic/Enumerate.lean` (port of the enumeration in `Propose.hs`) works directly on the
   de Bruijn `Term` (no named syntax). Foundations names all constructors' fields from one

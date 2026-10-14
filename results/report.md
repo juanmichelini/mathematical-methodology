@@ -195,6 +195,30 @@ finished proofs of each, against foundations' Appendix B comparison:
 The candidates (in order), the definitions with Haskell's binder names, the variable names they use,
 every lemma statement and the finished-proof counts equal what the original Haskell prints: true.
 
+## The lemma suite of `Test.hs`
+
+`Test.lemas` has 35 hand-written lemmas about booleans, naturals and lists. Each is proved with
+`lemascomp` and the lemmas before it as hypotheses (`Test.provelemas 30`, as `check-lemmas` does):
+35 of 35 are proved, each at the same smallest budget as in the Haskell. The lemma chains of
+`Test.hs` (lemmas found for a function, some starting from the lemmas of another):
+
+| function | lemmas found | finished proofs |
+|---|---|---|
+| `suma` | 7 | 16 |
+| `mult` | 8 | 16 |
+| `flipexp` | 4 | 6 |
+| `min` | 4 | 10 |
+| `max` | 4 | 10 |
+| `absr` | 3 | 6 |
+| `and` | 7 | 12 |
+| `or` | 7 | 12 |
+| `not` | 3 | 4 |
+| `concat` | 4 | 6 |
+| `rev` | 3 | 5 |
+
+`flipexp` finds the two lemmas of thesis Sec. 10, `c^(a+b) = c^a * c^b` and `c^(a*b) = (c^b)^a`.
+The whole output (every lemma with its smallest budget, every chain) equals the original Haskell's: true.
+
 ## Export to Lean
 
 The 64 candidates (and the data types) are printed as plain Lean
