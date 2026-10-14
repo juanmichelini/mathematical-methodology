@@ -50,6 +50,11 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   the candidates, definitions (with Haskell's binder names), lemma statements and counts are
   identical to the original Haskell's output. `lake exe results` runs it (about a minute).
 
+- The lemma suite and `flipexp` (#28): `Examples/TestSuite.lean`. All 35 lemmas of `Test.lemas`
+  are proved (each at the same smallest budget as in the Haskell), and the chains of `Test.hs`
+  (suma, mult, flipexp, min, max, absr, and, or, not, concat, rev) find the same lemmas and
+  finished-proof counts, including the two exponentiation lemmas of thesis Sec. 10.
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by

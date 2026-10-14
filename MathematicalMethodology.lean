@@ -39,3 +39,4 @@ import MathematicalMethodology.Strategic.FirstSearch
 import MathematicalMethodology.Examples.FirstSearch
 import MathematicalMethodology.Strategic.SecondSearch
 import MathematicalMethodology.Examples.SecondSearch
+import MathematicalMethodology.Examples.TestSuite
