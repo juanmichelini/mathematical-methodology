@@ -4,6 +4,7 @@ import MathematicalMethodology.Examples.ListsStore
 import MathematicalMethodology.Examples.ListsSearch
 import MathematicalMethodology.Examples.Enumeration
 import MathematicalMethodology.Examples.ExportCheck
+import MathematicalMethodology.Examples.ConjecturesFst
 
 /-!
 # Report
@@ -67,12 +68,23 @@ def negativeRows : List String :=
 def exportUpToDate : Bool :=
   MM.Export.fstFile == include_str "Generated/FstCandidates.lean"
 
+def conjLines : List String := MM.Examples.ConjecturesFst.dump.splitOn "\n"
+
+def conjCount : Nat := (conjLines.filter fun (l : String) => l.contains '|').length
+
+def batchCount : Nat := (conjLines.filter fun (l : String) => l.startsWith "# batch").length
+
+/-- Do the conjectures for the first-search candidates equal the Haskell's, line by line? -/
+def conjecturesMatchHaskell : Bool :=
+  MM.Examples.ConjecturesFst.dump == include_str "../fixtures/haskell/conj_fst.txt"
+
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
   negatives.all (fun (_, dev) => (negativeOutcome dev).isSome) &&
   MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst &&
-  exportUpToDate
+  exportUpToDate &&
+  conjecturesMatchHaskell
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -176,6 +188,17 @@ def markdown : String :=
     , "|---|---|" ]
     ++ candidateRows ++
     [ ""
+    , "## Conjectures"
+    , ""
+    , "`Strategic/Conjecture.lean` (port of `conjeturas*`, `ample*`, `instanceAny` of `Propose.hs`)"
+    , "proposes, for each candidate function, batches of equations to try to prove. For the"
+    , s!"{MM.Strategic.candidatosFst.length} first-search candidates it proposes"
+    , s!"{conjCount} conjectures in"
+    , s!"{batchCount} batches; the"
+    , "original Haskell prints the same statements, with the same variable names, in the same order:"
+    , s!"{conjecturesMatchHaskell}. The functions of foundations `Test.hs` are checked against a hash of the"
+    , "Haskell output by `lake exe haskell-check`."
+    , ""
     , "## Export to Lean"
     , ""
     , s!"The {MM.Strategic.candidatosFst.length} candidates (and the data types) are printed as plain Lean"

@@ -27,3 +27,8 @@ import MathematicalMethodology.Examples.Enumeration
 import MathematicalMethodology.Export.Lean
 import MathematicalMethodology.Generated.FstCandidates
 import MathematicalMethodology.Examples.ExportCheck
+import MathematicalMethodology.Examples.TestEnv
+import MathematicalMethodology.Strategic.Conjecture
+import MathematicalMethodology.Strategic.Hash
+import MathematicalMethodology.Examples.ConjecturesFst
+import MathematicalMethodology.Examples.ConjecturesTest

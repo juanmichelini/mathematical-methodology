@@ -50,4 +50,15 @@ def showFun (t : Term) : String :=
   String.join ((List.range k).map fun i => "\\" ++ letter (k - 1 - i) ++ " -> ") ++
     showTerm k 0 (funBody t)
 
+/-! ## Open terms with variable names (conjectures) -/
+
+/-- `toCLI` of a binder-free term whose free variable `i` is called `names[i]`. -/
+def showNamed (names : List String) : Term → String
+  | .var i => names.getD i s!"?{i}"
+  | .con c => c
+  | .const f => f
+  | .app x (.app y z) => showNamed names x ++ " (" ++ showNamed names (.app y z) ++ ")"
+  | .app x y => showNamed names x ++ " " ++ showNamed names y
+  | _ => "<binder>"
+
 end MM.Strategic

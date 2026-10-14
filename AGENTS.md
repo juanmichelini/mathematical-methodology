@@ -45,6 +45,10 @@ three levels, and the code is split the same way:
   `Strategic/Show.lean` rebuilds the Haskell names for display. Its output is compared, in
   order, with a list printed by the original Haskell (`Examples/HaskellFst.lean`).
   Nothing trusted imports it.
+- `Strategic/Conjecture.lean` ports the conjecture generation (`conjeturas*`, `ample*`,
+  `instanceAny`). Terms are de Bruijn; foundations' variable *names* are kept as metadata
+  (`PTT.vts`) because Appendix B prints them and `masOrd` orders atoms by name. Checked
+  against dumps of the original Haskell (`fixtures/haskell/`, `scripts/haskell/`).
 - **Export** (`MathematicalMethodology/Export/`, `Generated/`): prints data types and generated
   functions as plain Lean (#34). Untrusted display code. `lake exe export-lean >
   MathematicalMethodology/Generated/FstCandidates.lean` regenerates the committed file; it is a
