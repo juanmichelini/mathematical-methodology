@@ -43,6 +43,8 @@ three levels, and the code is split the same way:
   opaque constants, the cumulative step budget); `Strategic/FindLemmas.lean` is
   `findlemas`/`provell`. `Tactical/Search.lean` is the other search: it builds `Cert`s the
   checker can re-verify. Found lemmas are checked with it (`certify`).
+- `Strategic/FirstSearch.lean`: `candidatosFstSel`/`namedFstSel`/`fstEnv`/`fstTEnv`/`fstRec`,
+  including the binder renaming Haskell does when `f` becomes `f0`.
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
   `Strategic/Enumerate.lean` (port of the enumeration in `Propose.hs`) works directly on the
   de Bruijn `Term` (no named syntax). Foundations names all constructors' fields from one

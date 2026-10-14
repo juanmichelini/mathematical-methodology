@@ -39,6 +39,11 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   to the Haskell's, and the `paciencia` table of foundations is reproduced (0 / 4,4,4 /
   7,7,4). All 18 lemmas found are also certified by `Cert.check` via `Tactical/Search.lean`.
 
+- First search (#26): `Strategic/FirstSearch.lean`. 64 candidates, 3 kept (f0 = addition,
+  f1 = addition with a successor base, f2 = list append), 7+7+4 lemmas, 17+17+6 finished
+  proofs as in Appendix B; the definitions (with Haskell's refreshed binder names), the lemma
+  statements and the whole store `fstRec` are identical to the Haskell's.
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by
