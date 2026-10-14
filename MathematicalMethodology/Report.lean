@@ -7,6 +7,7 @@ import MathematicalMethodology.Examples.ExportCheck
 import MathematicalMethodology.Examples.ConjecturesFst
 import MathematicalMethodology.Examples.ProveFst
 import MathematicalMethodology.Examples.FirstSearch
+import MathematicalMethodology.Examples.SecondSearch
 
 /-!
 # Report
@@ -106,6 +107,15 @@ def firstSearchMatches : Bool :=
   (MM.Examples.FirstSearch.dump == (include_str "../fixtures/haskell/fst_sel.txt")) &&
   MM.Examples.FirstSearch.measured == MM.Examples.FirstSearch.appendixB
 
+def appendixBRows : List String :=
+  let names := (MM.Examples.FirstSearch.selected ++ MM.Examples.SecondSearch.selected).map (·.name)
+  (names.zip (MM.Examples.SecondSearch.measured.zip MM.Examples.SecondSearch.appendixB)).map
+    fun (n, (m, e)) => s!"| `{n}` | {m.1} | {m.2} | {e.1} | {e.2} | {m == e} |"
+
+def secondSearchMatches : Bool :=
+  (MM.Examples.SecondSearch.dump == (include_str "../fixtures/haskell/snd_sel.txt")) &&
+  MM.Examples.SecondSearch.measured == MM.Examples.SecondSearch.appendixB
+
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
@@ -113,7 +123,7 @@ def allOk : Bool :=
   MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst &&
   exportUpToDate &&
   conjecturesMatchHaskell &&
-  pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches
+  pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -263,6 +273,20 @@ def markdown : String :=
     , "The definitions (with the binder names Haskell gives them when `f` is renamed), the variable"
     , "names they use, the lemma statements and the whole lemma store `fstRec` (simp, reor, basu, in"
     , s!"order) equal what the original Haskell prints: {firstSearchMatches}."
+    , ""
+    , "## Second search (f3-f30) and Appendix B"
+    , ""
+    , s!"{(MM.Strategic.candidatosSnd MM.Examples.FirstSearch.selected).length} candidates use the recursive call and a function of the first search"
+    , s!"(foundations: 164); {MM.Examples.SecondSearch.selected.length} keep at least two lemmas proved by induction (foundations: 28),"
+    , "named `f3 … f30`. With `f0 … f2` these are the 31 functions of the thesis' Appendix B. Lemmas and"
+    , "finished proofs of each, against foundations' Appendix B comparison:"
+    , ""
+    , "| function | lemmas | finished proofs | Appendix B lemmas | Appendix B proofs | same |"
+    , "|---|---|---|---|---|---|" ]
+    ++ appendixBRows ++
+    [ ""
+    , "The candidates (in order), the definitions with Haskell's binder names, the variable names they use,"
+    , s!"every lemma statement and the finished-proof counts equal what the original Haskell prints: {secondSearchMatches}."
     , ""
     , "## Export to Lean"
     , ""

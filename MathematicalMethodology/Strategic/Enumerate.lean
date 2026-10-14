@@ -1,4 +1,5 @@
 import MathematicalMethodology.Strategic.Syntax
+import MathematicalMethodology.Strategic.Show
 
 /-!
 # Enumeration of data types and functions
@@ -137,7 +138,7 @@ def repiteAtmHasta (k n : Nat) (ts : List Term) : List Term :=
 /-- Haskell `enumFun rec f tipo datas ls`: the functions `f : tipo` defined by one `case`
 on the first parameter, whose branches are applications built from the other parameters,
 the fields, the recursive calls and the environment `ls` (closed terms). -/
-def enumFun (reject : Term → Bool) (f : String) (tipo : Ty) (ds : List DatasH)
+def enumFun (reject : List String → Term → Bool) (f : String) (tipo : Ty) (ds : List DatasH)
     (ls : TEnv) : List Term :=
   match tipo with
   | .com (.con x) _ =>
@@ -157,7 +158,7 @@ def enumFun (reject : Term → Bool) (f : String) (tipo : Ty) (ds : List DatasH)
             let (g, gs) := e.spine
             if g == .const f then ((Term.const f).mkApp (gs ++ (others n).map Prod.fst), res)
             else (e, t)
-          enumAppRec reject 2 tipo.lastRet (others n ++ cas' ++ ls)
+          enumAppRec (reject (altNames k n)) 2 tipo.lastRet (others n ++ cas' ++ ls)
         let apps := (hilar bodies).map (sch.mkCase (.var (k - 1)))
         (repiteAtmHasta k 3 apps).map fun a => (List.range k).foldl (fun t _ => .abs t) a
   | _ => []
@@ -169,7 +170,7 @@ def fstTypes : List Ty := [1, 3].filterMap fun i => (datas[i]?).map fun d => Ty.
 
 def candidatosFst : List (Term × Ty) :=
   ([1, 2].flatMap fun aridad => (armarTip aridad fstTypes).flatMap fun tipo =>
-    (enumFun (fun _ => false) "f" tipo datas cerothTEnv).map fun e => (e, tipo)).filter
+    (enumFun (fun _ _ => false) "f" tipo datas cerothTEnv).map fun e => (e, tipo)).filter
     fun (e, _) => mentions "f" e
 
 end MM.Strategic

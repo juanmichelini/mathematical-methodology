@@ -44,6 +44,12 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   proofs as in Appendix B; the definitions (with Haskell's refreshed binder names), the lemma
   statements and the whole store `fstRec` are identical to the Haskell's.
 
+- Second search and Appendix B (#27): `Strategic/SecondSearch.lean`. 164 candidates (41 unary,
+  123 binary), 28 kept (f3..f30; f3 is `reverse`, with `f3 (f2 a b) = f2 (f3 b) (f3 a)` and
+  `f3 (f3 a) = a`). All 31 functions match Appendix B's lemma and finished-proof counts, and
+  the candidates, definitions (with Haskell's binder names), lemma statements and counts are
+  identical to the original Haskell's output. `lake exe results` runs it (about a minute).
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by

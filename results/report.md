@@ -151,6 +151,50 @@ The definitions (with the binder names Haskell gives them when `f` is renamed), 
 names they use, the lemma statements and the whole lemma store `fstRec` (simp, reor, basu, in
 order) equal what the original Haskell prints: true.
 
+## Second search (f3-f30) and Appendix B
+
+164 candidates use the recursive call and a function of the first search
+(foundations: 164); 28 keep at least two lemmas proved by induction (foundations: 28),
+named `f3 … f30`. With `f0 … f2` these are the 31 functions of the thesis' Appendix B. Lemmas and
+finished proofs of each, against foundations' Appendix B comparison:
+
+| function | lemmas | finished proofs | Appendix B lemmas | Appendix B proofs | same |
+|---|---|---|---|---|---|
+| `f0` | 7 | 17 | 7 | 17 | true |
+| `f1` | 7 | 17 | 7 | 17 | true |
+| `f2` | 4 | 6 | 4 | 6 | true |
+| `f3` | 3 | 5 | 3 | 5 | true |
+| `f4` | 4 | 9 | 4 | 9 | true |
+| `f5` | 3 | 9 | 3 | 9 | true |
+| `f6` | 3 | 6 | 3 | 6 | true |
+| `f7` | 3 | 7 | 3 | 7 | true |
+| `f8` | 3 | 7 | 3 | 7 | true |
+| `f9` | 3 | 6 | 3 | 6 | true |
+| `f10` | 3 | 7 | 3 | 7 | true |
+| `f11` | 3 | 7 | 3 | 7 | true |
+| `f12` | 7 | 14 | 7 | 14 | true |
+| `f13` | 5 | 10 | 5 | 10 | true |
+| `f14` | 4 | 7 | 4 | 7 | true |
+| `f15` | 4 | 7 | 4 | 7 | true |
+| `f16` | 4 | 10 | 4 | 10 | true |
+| `f17` | 4 | 8 | 4 | 8 | true |
+| `f18` | 4 | 8 | 4 | 8 | true |
+| `f19` | 4 | 8 | 4 | 8 | true |
+| `f20` | 4 | 7 | 4 | 7 | true |
+| `f21` | 4 | 8 | 4 | 8 | true |
+| `f22` | 4 | 8 | 4 | 8 | true |
+| `f23` | 4 | 8 | 4 | 8 | true |
+| `f24` | 4 | 8 | 4 | 8 | true |
+| `f25` | 3 | 5 | 3 | 5 | true |
+| `f26` | 3 | 9 | 3 | 9 | true |
+| `f27` | 4 | 6 | 4 | 6 | true |
+| `f28` | 5 | 10 | 5 | 10 | true |
+| `f29` | 3 | 5 | 3 | 5 | true |
+| `f30` | 3 | 9 | 3 | 9 | true |
+
+The candidates (in order), the definitions with Haskell's binder names, the variable names they use,
+every lemma statement and the finished-proof counts equal what the original Haskell prints: true.
+
 ## Export to Lean
 
 The 64 candidates (and the data types) are printed as plain Lean
