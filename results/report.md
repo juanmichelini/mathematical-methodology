@@ -135,6 +135,22 @@ induction hypotheses) and the certificate accepted by `Cert.check`:
 | 24 | 7 | 7 |
 | 60 | 4 | 4 |
 
+## First search (f0-f2)
+
+Of the 64 candidates, 3 keep more than three
+lemmas (`candidatosFstSel`); they are named `f0, f1, f2`. Lemmas and finished proofs, against
+foundations' Appendix B comparison:
+
+| function | type | lemmas | finished proofs | Appendix B lemmas | Appendix B proofs |
+|---|---|---|---|---|---|
+| `f0` | `(C_,R -> (C_,R -> C_,R))` | 7 | 17 | 7 | 17 |
+| `f1` | `(C_,R -> (C_,R -> C_,R))` | 7 | 17 | 7 | 17 |
+| `f2` | `(C_,a_R -> (C_,a_R -> C_,a_R))` | 4 | 6 | 4 | 6 |
+
+The definitions (with the binder names Haskell gives them when `f` is renamed), the variable
+names they use, the lemma statements and the whole lemma store `fstRec` (simp, reor, basu, in
+order) equal what the original Haskell prints: true.
+
 ## Export to Lean
 
 The 64 candidates (and the data types) are printed as plain Lean

@@ -61,4 +61,32 @@ def showNamed (names : List String) : Term → String
   | .app x y => showNamed names x ++ " " ++ showNamed names y
   | _ => "<binder>"
 
+/-! ## Functions with explicit binder names -/
+
+/-- A binder-free body, with the variables named by `params` (from the left) and the fields
+`flds` of the enclosing alternative; the function being defined is shown as `self`. -/
+def showBodyN (params flds : List String) (self : String) : Term → String
+  | .var i =>
+    let n := flds.length
+    if i < n then flds.getD (n - 1 - i) "?" else params.getD (params.length - 1 - (i - n)) "?"
+  | .con c => c
+  | .const f => if f == "f" then self else f
+  | .app x (.app y z) => showBodyN params flds self x ++ " (" ++ showBodyN params flds self (.app y z) ++ ")"
+  | .app x y => showBodyN params flds self x ++ " " ++ showBodyN params flds self y
+  | _ => "<binder>"
+
+/-- `toCLI` of a generated function whose parameters and per-alternative field names are
+given (`fields` has one list per alternative of the top-level `case`). -/
+def showFunN (params : List String) (fields : List (List String)) (self : String) (t : Term) : String :=
+  let hdr := String.join (params.map fun p => "\\" ++ p ++ " -> ")
+  match funBody t with
+  | .cas s alts =>
+    let rec go : Nat → Alts → String
+      | _, .nil => ""
+      | i, .alt c _ b rest =>
+        let fs := fields.getD i []
+        c ++ String.join (fs.map (" " ++ ·)) ++ " -> " ++ showBodyN params fs self b ++ "; " ++ go (i + 1) rest
+    hdr ++ "case " ++ showBodyN params [] self s ++ " of { " ++ go 0 alts ++ "}"
+  | b => hdr ++ showBodyN params [] self b
+
 end MM.Strategic

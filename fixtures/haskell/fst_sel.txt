@@ -1,0 +1,59 @@
+## f0
+def \d -> \e -> case d of { C_,R.0 -> e; C_,R.1 g -> C_,R.1 (f0 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 g
+lemma a:C_,R |- f0 C_,R.0 a = a
+lemma a:C_,R |- f0 a C_,R.0 = a
+lemma a:C_,R b:C_,R |- f0 (C_,R.1 a) b = C_,R.1 (f0 b a)
+lemma b:C_,R a:C_,R |- f0 a (C_,R.1 b) = C_,R.1 (f0 a b)
+lemma c:C_,R d:C_,R |- f0 c d = f0 d c
+lemma a:C_,R b:C_,R g:C_,R |- f0 (f0 a b) g = f0 (f0 a g) b
+lemma b:C_,R e:C_,R g:C_,R |- f0 b (f0 e g) = f0 (f0 b e) g
+done 17
+## f1
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 e; C_,R.1 g -> C_,R.1 (f1 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 g
+lemma a:C_,R |- f1 C_,R.0 a = C_,R.1 a
+lemma a:C_,R |- f1 a C_,R.0 = C_,R.1 a
+lemma a:C_,R b:C_,R |- f1 (C_,R.1 a) b = C_,R.1 (f1 b a)
+lemma b:C_,R a:C_,R |- f1 a (C_,R.1 b) = C_,R.1 (f1 a b)
+lemma c:C_,R d:C_,R |- f1 c d = f1 d c
+lemma a:C_,R b:C_,R g:C_,R |- f1 (f1 a b) g = f1 (f1 a g) b
+lemma b:C_,R e:C_,R g:C_,R |- f1 b (f1 e g) = f1 (f1 b e) g
+done 17
+## f2
+def \e -> \g -> case e of { C_,a_R.0 -> g; C_,a_R.1 h i -> C_,a_R.1 h (f2 i g); }
+type (C_,a_R -> (C_,a_R -> C_,a_R))
+used e f2 g h i
+lemma a:C_,a_R |- f2 C_,a_R.0 a = a
+lemma a:C_,a_R |- f2 a C_,a_R.0 = a
+lemma a:a b:C_,a_R g:C_,a_R |- f2 (C_,a_R.1 a b) g = C_,a_R.1 a (f2 b g)
+lemma b:C_,a_R e:C_,a_R g:C_,a_R |- f2 b (f2 e g) = f2 (f2 b e) g
+done 6
+## fstRec
+simp a:a b:C_,a_R g:C_,a_R |- f2 (C_,a_R.1 a b) g = C_,a_R.1 a (f2 b g)
+simp b:C_,R a:C_,R |- f1 a (C_,R.1 b) = C_,R.1 (f1 a b)
+simp a:C_,R b:C_,R |- f1 (C_,R.1 a) b = C_,R.1 (f1 b a)
+simp b:C_,R a:C_,R |- f0 a (C_,R.1 b) = C_,R.1 (f0 a b)
+simp a:C_,R b:C_,R |- f0 (C_,R.1 a) b = C_,R.1 (f0 b a)
+simp a:C_,R |- f1 a C_,R.0 = C_,R.1 a
+simp a:C_,R |- f1 C_,R.0 a = C_,R.1 a
+simp a:C_,R |- f0 a C_,R.0 = a
+simp a:C_,R |- f0 C_,R.0 a = a
+simp a:C_,a_R |- f2 a C_,a_R.0 = a
+simp a:C_,a_R |- f2 C_,a_R.0 a = a
+reor a:C_,R b:C_,R g:C_,R |- f1 (f1 a g) b = f1 (f1 a b) g
+reor a:C_,R b:C_,R g:C_,R |- f0 (f0 a g) b = f0 (f0 a b) g
+reor a:C_,R b:C_,R g:C_,R |- f1 (f1 a b) g = f1 (f1 a g) b
+reor a:C_,R b:C_,R g:C_,R |- f0 (f0 a b) g = f0 (f0 a g) b
+reor b:C_,a_R e:C_,a_R g:C_,a_R |- f2 (f2 b e) g = f2 b (f2 e g)
+reor b:C_,R e:C_,R g:C_,R |- f1 (f1 b e) g = f1 b (f1 e g)
+reor b:C_,R e:C_,R g:C_,R |- f0 (f0 b e) g = f0 b (f0 e g)
+reor b:C_,a_R e:C_,a_R g:C_,a_R |- f2 b (f2 e g) = f2 (f2 b e) g
+reor b:C_,R e:C_,R g:C_,R |- f1 b (f1 e g) = f1 (f1 b e) g
+reor b:C_,R e:C_,R g:C_,R |- f0 b (f0 e g) = f0 (f0 b e) g
+reor c:C_,R d:C_,R |- f1 d c = f1 c d
+reor c:C_,R d:C_,R |- f0 d c = f0 c d
+reor c:C_,R d:C_,R |- f1 c d = f1 d c
+reor c:C_,R d:C_,R |- f0 c d = f0 d c

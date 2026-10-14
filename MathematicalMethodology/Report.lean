@@ -6,6 +6,7 @@ import MathematicalMethodology.Examples.Enumeration
 import MathematicalMethodology.Examples.ExportCheck
 import MathematicalMethodology.Examples.ConjecturesFst
 import MathematicalMethodology.Examples.ProveFst
+import MathematicalMethodology.Examples.FirstSearch
 
 /-!
 # Report
@@ -96,13 +97,23 @@ def proveTraceMatches : Bool :=
 def allCertified : Bool :=
   MM.Examples.ProveFst.certified.all fun (_, found, ok) => found == ok
 
+def firstSearchRows : List String :=
+  (MM.Examples.FirstSearch.selected.zip (MM.Examples.FirstSearch.measured.zip
+      MM.Examples.FirstSearch.appendixB)).map fun (s, (m, e)) =>
+    s!"| `{s.name}` | `{s.ty.pp}` | {m.1} | {m.2} | {e.1} | {e.2} |"
+
+def firstSearchMatches : Bool :=
+  (MM.Examples.FirstSearch.dump == (include_str "../fixtures/haskell/fst_sel.txt")) &&
+  MM.Examples.FirstSearch.measured == MM.Examples.FirstSearch.appendixB
+
+/-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
   negatives.all (fun (_, dev) => (negativeOutcome dev).isSome) &&
   MM.Examples.Enumeration.fstLines == MM.Examples.haskellFst &&
   exportUpToDate &&
   conjecturesMatchHaskell &&
-  pacienciaOk && proveTraceMatches && allCertified
+  pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -239,6 +250,20 @@ def markdown : String :=
     , "|---|---|---|" ]
     ++ (MM.Examples.ProveFst.certified.map fun (i, a, b) => s!"| {i} | {a} | {b} |") ++
     [ ""
+    , "## First search (f0-f2)"
+    , ""
+    , s!"Of the {MM.Strategic.candidatosFst.length} candidates, {MM.Examples.FirstSearch.selected.length} keep more than three"
+    , "lemmas (`candidatosFstSel`); they are named `f0, f1, f2`. Lemmas and finished proofs, against"
+    , "foundations' Appendix B comparison:"
+    , ""
+    , "| function | type | lemmas | finished proofs | Appendix B lemmas | Appendix B proofs |"
+    , "|---|---|---|---|---|---|" ]
+    ++ firstSearchRows ++
+    [ ""
+    , "The definitions (with the binder names Haskell gives them when `f` is renamed), the variable"
+    , "names they use, the lemma statements and the whole lemma store `fstRec` (simp, reor, basu, in"
+    , s!"order) equal what the original Haskell prints: {firstSearchMatches}."
+    , ""
     , "## Export to Lean"
     , ""
     , s!"The {MM.Strategic.candidatosFst.length} candidates (and the data types) are printed as plain Lean"
