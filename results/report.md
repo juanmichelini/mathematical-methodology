@@ -96,6 +96,17 @@ and the two lists are identical, in order: true.
 | `(C_,a_R -> (C_,a_R -> C_,R))` | 6 |
 | `(C_,a_R -> (C_,a_R -> C_,a_R))` | 6 |
 
+## Conjectures
+
+`Strategic/Conjecture.lean` (port of `conjeturas*`, `ample*`, `instanceAny` of `Propose.hs`)
+proposes, for each candidate function, batches of equations to try to prove. For the
+64 first-search candidates it proposes
+7432 conjectures in
+726 batches; the
+original Haskell prints the same statements, with the same variable names, in the same order:
+true. The functions of foundations `Test.hs` are checked against a hash of the
+Haskell output by `lake exe haskell-check`.
+
 ## Export to Lean
 
 The 64 candidates (and the data types) are printed as plain Lean

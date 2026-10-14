@@ -14,3 +14,7 @@ root = "Results"
 [[lean_exe]]
 name = "export-lean"
 root = "ExportMain"
+
+[[lean_exe]]
+name = "haskell-check"
+root = "HaskellCheck"

@@ -27,6 +27,12 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   the 64 first-search candidates compile in real Lean and `suma` and list `append` run
   (`Export/Lean.lean`, `Generated/FstCandidates.lean`, `Examples/ExportCheck.lean`).
 
+- Conjecture generation (#23): `Strategic/Conjecture.lean`. For the 64 first-search candidates
+  (8222 lines) and for the functions of `Test.hs` (89215 lines, `ampleAll`/`conjeturasAll`
+  included) the Lean conjectures are identical to the Haskell's, names and order included.
+  Not ported, as no search calls them: `conjeturasFloatsDep`, `enumAppStarting*`,
+  `armarUsarTodo*`, `joinVar`, `permutVars`, `instanceAll`, `toPTT`.
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by

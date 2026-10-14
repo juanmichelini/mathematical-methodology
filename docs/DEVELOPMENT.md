@@ -90,3 +90,20 @@ ghc -O0 -i<foundations>/code -outputdir build -main-is Fst.fstMain Fst.hs -o fst
 
 `Examples/HaskellFst.lean` holds that output (64 lines, backslashes escaped) and
 `Examples/Enumeration.lean` guards that the Lean list is identical to it, in order.
+
+### Oracle scripts and fixtures
+
+`scripts/haskell/` has the Haskell programs that print what the Lean port must reproduce, and
+`scripts/haskell/build.sh <foundations-dir> <Module> [out]` builds and runs one:
+
+| script | prints | Lean side |
+|---|---|---|
+| `Fst.hs` | the 64 first-search candidates | `Examples/HaskellFst.lean` (committed) |
+| `Conj.hs` | `plemas` for each candidate (8222 lines) | `fixtures/haskell/conj_fst.txt`, guard in `Examples/ConjecturesFst.lean` |
+| `TestConj.hs` | `plemas`/`pfindlemasAll` for `Test.hs` functions (89215 lines, 6 MB) | hash in `fixtures/haskell/conj_test.fnv`, checked by `lake exe haskell-check` |
+| `TestEnv.hs` | `Test.env`/`tenv`/`datas` as de Bruijn Lean | `Examples/TestEnv.lean` (generated) |
+
+To diff a large dump in full: `scripts/haskell/build.sh <foundations> TestConj /tmp/h.txt`,
+`lake exe haskell-check --dump conj_test > /tmp/l.txt`, `diff /tmp/h.txt /tmp/l.txt`.
+Caveat: Lake does not track files read with `include_str`; after changing a fixture, delete
+the importing module's build products (for example `find .lake/build -name 'HaskellCheck*' -delete`).
