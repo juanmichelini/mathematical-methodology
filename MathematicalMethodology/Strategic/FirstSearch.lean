@@ -58,6 +58,18 @@ mutual
       (c.renameConst a b, hs.map (·.renameConst a b), p.renameConst a b) :: renameCases a b r
 end
 
+mutual
+  /-- Number of finished leaves of a proof (the `\done`s of Appendix B). -/
+  def Proof.doneCount : Proof → Nat
+    | .done => 1
+    | .fail => 0
+    | .step _ _ p => p.doneCount
+    | .ind _ _ cs => casesDoneCount cs
+  def casesDoneCount : List (Comment × List Conj × Proof) → Nat
+    | [] => 0
+    | (_, _, p) :: r => p.doneCount + casesDoneCount r
+end
+
 end MM
 
 namespace MM.Strategic
@@ -132,6 +144,8 @@ structure Selected where
   /-- Binder names after the renaming (Haskell's). -/
   params : List String
   fields : List (List String)
+  /-- The variable names the renamed definition uses (Haskell `usedVars`). -/
+  used : List String
 
 def Selected.lemmas (s : Selected) : List Conj := s.proofs.filterMap Proof.head
 
@@ -140,14 +154,28 @@ def Selected.lemmas (s : Selected) : List Conj := s.proofs.filterMap Proof.head
 def selectFirst (n : Nat) : List Selected :=
   let kept := candidatosFst.filterMap fun (f, ty) =>
     let tenv : TEnv := (Term.const "f", ty) :: cerothTEnv
-    let cx := mkPCtx [("f", f)] datas
+    let cx := mkPCtx [("f", f)] datas (defNamesOf f)
     let bs := findlemas cx tenv n {} "f"
     let ps := bs.filterMap (·.chosen)
     if ps.length > 3 then some (f, ty, ps) else none
   kept.zipIdx.map fun ((f, ty, ps), i) =>
     let name := s!"f{i}"
     let (params, fields) := renamedBinders f name
-    ⟨name, f.renameConst "f" name, ty, ps.map (·.renameConst "f" name), params, fields⟩
+    ⟨name, f.renameConst "f" name, ty, ps.map (·.renameConst "f" name), params, fields,
+      renamedUsed f name⟩
+
+/-- Finished proofs of a function (the `\done`s of Appendix B). -/
+def Selected.done (s : Selected) : Nat := (s.proofs.map Proof.doneCount).foldl (· + ·) 0
+
+/-- A function as the oracle scripts print it: definition (with Haskell's binder names),
+type, variable names used, lemmas, finished proofs. -/
+def Selected.dump (s : Selected) : String :=
+  "\n".intercalate (
+    [ s!"## {s.name}"
+    , s!"def {showFunN s.params s.fields s.name s.def_}"
+    , s!"type {s.ty.pp}"
+    , s!"used {" ".intercalate s.used}" ]
+    ++ s.lemmas.map (fun l => s!"lemma {l.show}") ++ [s!"done {s.done}"])
 
 /-- Haskell `fstEnv`. -/
 def fstEnv (sel : List Selected) : Env := sel.map fun s => (s.name, s.def_)
@@ -161,19 +189,3 @@ def fstRec (sel : List Selected) : HRec :=
   HRec.addAll (fstEnv sel) {} (sel.flatMap Selected.lemmas)
 
 end MM.Strategic
-
-namespace MM
-
-mutual
-  /-- Number of finished leaves of a proof (the `\done`s of Appendix B). -/
-  def Proof.doneCount : Proof → Nat
-    | .done => 1
-    | .fail => 0
-    | .step _ _ p => p.doneCount
-    | .ind _ _ cs => casesDoneCount cs
-  def casesDoneCount : List (Comment × List Conj × Proof) → Nat
-    | [] => 0
-    | (_, _, p) :: r => p.doneCount + casesDoneCount r
-end
-
-end MM

@@ -47,7 +47,7 @@ def traceCand (cx : PCtx) (n : Nat) (rec : HRec) (bs : List (List Conj)) : List 
 def dump : String :=
   let blocks := candidatosFst.zipIdx.map fun ((f, ty), i) =>
     let tenv : TEnv := (Term.const "f", ty) :: cerothTEnv
-    let cx := mkPCtx [("f", f)] datas
+    let cx := mkPCtx [("f", f)] datas (defNamesOf f)
     let bs := plemas (rejectWith {}) cx.env tenv "f"
     let ls := traceCand cx 30 {} bs
     let k := (ls.filter (·.startsWith "# chose")).length
@@ -59,7 +59,7 @@ lemmas, with the lemmas they keep (`Main.candidatosFstSel`). -/
 def firstSearch (n : Nat) : List (Nat × List Conj) :=
   candidatosFst.zipIdx.filterMap fun ((f, ty), i) =>
     let tenv : TEnv := (Term.const "f", ty) :: cerothTEnv
-    let cx := mkPCtx [("f", f)] datas
+    let cx := mkPCtx [("f", f)] datas (defNamesOf f)
     let ls := lemmasOf (findlemas cx tenv n {} "f")
     if ls.length > 3 then some (i, ls) else none
 

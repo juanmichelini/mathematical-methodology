@@ -96,8 +96,8 @@ private def twoAlts (b0 b1 : Term) : Term :=
 /-! ## Functions -/
 
 -- the type of the function must start with a declared data type
-#guard (enumFun (fun _ => false) "f" (.com (.con "Z") (.con "Z")) datas cerothTEnv).isEmpty
-#guard (enumFun (fun _ => false) "f" (.con "C_,R") datas cerothTEnv).isEmpty
+#guard (enumFun (fun _ _ => false) "f" (.com (.con "Z") (.con "Z")) datas cerothTEnv).isEmpty
+#guard (enumFun (fun _ _ => false) "f" (.con "C_,R") datas cerothTEnv).isEmpty
 
 -- `suma` is among the candidates `Nat → Nat → Nat`
 #guard (candidatosFst.map fun (e, _) => showFun e).contains

@@ -16,13 +16,7 @@ open MM MM.Strategic
 def selected : List Selected := selectFirst 30
 
 def dump : String :=
-  let fns := selected.map fun s =>
-    "\n".intercalate (
-      [ s!"## {s.name}"
-      , s!"def {showFunN s.params s.fields s.name s.def_}"
-      , s!"type {s.ty.pp}"
-      , s!"used {" ".intercalate (renamedUsed (s.def_.renameConst s.name "f") s.name)}" ]
-      ++ s.lemmas.map (fun l => s!"lemma {l.show}") ++ [s!"done {(s.proofs.map Proof.doneCount).foldl (· + ·) 0}"])
+  let fns := selected.map Selected.dump
   let r := fstRec selected
   let store := ["## fstRec"] ++ r.simp.map (fun l => s!"simp {l.show}") ++
     r.reor.map (fun l => s!"reor {l.show}") ++ r.basu.map (fun l => s!"basu {l.show}")
@@ -34,7 +28,7 @@ def dump : String :=
 def appendixB : List (Nat × Nat) := [(7, 17), (7, 17), (4, 6)]
 
 def measured : List (Nat × Nat) :=
-  selected.map fun s => (s.lemmas.length, (s.proofs.map Proof.doneCount).foldl (· + ·) 0)
+  selected.map fun s => (s.lemmas.length, s.done)
 
 #guard measured == appendixB
 

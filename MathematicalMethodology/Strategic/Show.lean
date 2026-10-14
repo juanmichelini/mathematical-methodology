@@ -50,6 +50,12 @@ def showFun (t : Term) : String :=
   String.join ((List.range k).map fun i => "\\" ++ letter (k - 1 - i) ++ " -> ") ++
     showTerm k 0 (funBody t)
 
+/-- Names of the variables inside an alternative of arity `n` of a function with `k`
+parameters, indexed like the de Bruijn variables (field `j` is `letter (k + j)`, parameter
+`i` from the left is `letter (k - 1 - i)`). -/
+def altNames (k n : Nat) : List String :=
+  (List.range (n + k)).map fun i => if i < n then letter (k + (n - 1 - i)) else letter (i - n)
+
 /-! ## Open terms with variable names (conjectures) -/
 
 /-- `toCLI` of a binder-free term whose free variable `i` is called `names[i]`. -/

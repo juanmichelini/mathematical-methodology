@@ -34,13 +34,21 @@ mutual
     | .alt _ n b rest => max (max n (maxAltArity b)) (altsMaxArity rest)
 end
 
-/-- The variable names Haskell's version of a generated definition uses (see
-`Strategic/Show.lean`); fresh names for induction fields avoid them. -/
+/-- The variable names (Haskell `usedVars`) of a generated definition as the enumeration
+names it (see `Strategic/Show.lean`): its parameters and the fields and functions it
+mentions.  Fresh names for induction fields avoid them. -/
 def defNamesOf (t : Term) : List String :=
-  (List.range (funArity t + maxAltArity (funBody t))).map letter
+  let k := funArity t
+  let occ := (termAtoms k 0 (funBody t)).filterMap fun
+    | .param i => some (letter (k - 1 - i))
+    | .field j => some (letter (k + j))
+    | .const f => some f
+    | .con _ => none
+  ((List.range k).map (fun i => letter (k - 1 - i)) ++ occ).eraseDups
 
-def mkPCtx (env : Env) (ds : List DatasH) : PCtx :=
-  { env := env, data := dataDecls ds, defNames := (env.flatMap fun (_, t) => defNamesOf t).eraseDups }
+/-- The search context: definitions, data types, and the names the definitions use. -/
+def mkPCtx (env : Env) (ds : List DatasH) (used : List String) : PCtx :=
+  { env := env, data := dataDecls ds, defNames := used.eraseDups }
 
 /-- The lemma store as a filter for new conjectures (Haskell `applyRecT [] rec`). -/
 def rejectWith (rec : HRec) : Reject := fun names t => applyRecT rec names t

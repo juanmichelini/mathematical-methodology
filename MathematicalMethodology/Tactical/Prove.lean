@@ -380,6 +380,7 @@ def indcFst (cx : PCtx) (c : Conj) :
       some (.induction v, cases)
   | _, _ => none
 
+mutual
 /-- Haskell `mainTactic`, with `fuel` as the bound on the depth of the tree built (the
 Haskell tree is lazy and infinite; `giveUp` cuts it anyway). -/
 def mainTactic (cx : PCtx) : Nat → HRec → Conj → Proof
@@ -395,9 +396,26 @@ def mainTactic (cx : PCtx) : Nat → HRec → Conj → Proof
         | none =>
           match indcFst cx c with
           | some (cm, cases) =>
-            .ind c cm (cases.map fun (cc, hs, t) =>
-              (cc, hs, mainTactic cx fuel (rec.addAll cx.env hs) t))
+            .ind c cm (buildCases cx fuel rec cases)
           | none => .step c .noIdea .fail
+termination_by fuel _ _ => (2 * fuel, 0)
+
+/-- The cases of an induction.  `giveUp` shares the budget between them (each case gets
+what the previous ones left, less one) and drops everything after the first case that does
+not fit or fails, so later cases are built with exactly that budget, or not at all. -/
+def buildCases (cx : PCtx) (fuel : Nat) (rec : HRec)
+    (cases : List (Comment × List Conj × Conj)) : List (Comment × List Conj × Proof) :=
+  match cases with
+  | [] => []
+  | (cc, hs, t) :: rest =>
+    let p := mainTactic cx fuel (rec.addAll cx.env hs) t
+    if p.complete then (cc, hs, p) :: buildCases cx (fuel - 1 - p.size) rec rest
+    else [(cc, hs, p)]
+termination_by (2 * fuel + 1, cases.length)
+decreasing_by
+  all_goals simp_wf
+  all_goals first | omega | (apply Prod.Lex.left; omega) | (apply Prod.Lex.right; omega)
+end
 
 /-! ### Cutting: cycles and the step budget -/
 

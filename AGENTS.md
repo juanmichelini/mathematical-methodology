@@ -45,6 +45,8 @@ three levels, and the code is split the same way:
   checker can re-verify. Found lemmas are checked with it (`certify`).
 - `Strategic/FirstSearch.lean`: `candidatosFstSel`/`namedFstSel`/`fstEnv`/`fstTEnv`/`fstRec`,
   including the binder renaming Haskell does when `f` becomes `f0`.
+- `Strategic/SecondSearch.lean`: `candidatosSnd`/`candidatosSndSel`/`namedSndSel` (f3..f30).
+  Together with the first search these are the 31 functions of the thesis' Appendix B.
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
   `Strategic/Enumerate.lean` (port of the enumeration in `Propose.hs`) works directly on the
   de Bruijn `Term` (no named syntax). Foundations names all constructors' fields from one

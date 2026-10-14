@@ -1,0 +1,410 @@
+## candidates 164
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> C_,R.1 (f0 (f b) (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> C_,R.1 (f0 (f b) (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> C_,R.1 (f0 b (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> C_,R.1 (f0 b (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> C_,R.1 (f1 (f b) (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> C_,R.1 (f1 (f b) (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> C_,R.1 (f1 b (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> C_,R.1 (f1 b (f b)); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> f0 (f b) (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> f0 (f b) (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 b -> f0 (f b) (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> f0 b (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> f0 b (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 b -> f0 b (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> f1 (f b) (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> f1 (f b) (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 b -> f1 (f b) (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.0; C_,R.1 b -> f1 b (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 b -> f1 b (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 b -> f1 b (f b); }  ::  (C_,R -> C_,R)
+\a -> case a of { C_,R.0 -> C_,a_R.0; C_,R.1 b -> f2 (f b) (f b); }  ::  (C_,R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,R.0; C_,a_R.1 b c -> C_,R.1 (f0 (f c) (f c)); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 b c -> C_,R.1 (f0 (f c) (f c)); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.0; C_,a_R.1 b c -> C_,R.1 (f1 (f c) (f c)); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 b c -> C_,R.1 (f1 (f c) (f c)); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.0; C_,a_R.1 b c -> f0 (f c) (f c); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 b c -> f0 (f c) (f c); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 b c -> f0 (f c) (f c); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.0; C_,a_R.1 b c -> f1 (f c) (f c); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 b c -> f1 (f c) (f c); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 b c -> f1 (f c) (f c); }  ::  (C_,a_R -> C_,R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> C_,a_R.1 b (f2 (f c) (f c)); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> C_,a_R.1 b (f2 c (f c)); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> C_,a_R.1 b (f2 (f c) c); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> f2 (f c) (f c); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> f2 c (f c); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> f2 (f c) c; }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> f2 (f c) (C_,a_R.1 b (f c)); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> f2 c (C_,a_R.1 b (f c)); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> f2 (f c) (C_,a_R.1 b c); }  ::  (C_,a_R -> C_,a_R)
+\a -> case a of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 b c -> f2 (f c) (C_,a_R.1 b C_,a_R.0); }  ::  (C_,a_R -> C_,a_R)
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> C_,R.1 (f0 a (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> C_,R.1 (f0 a (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> C_,R.1 (f0 (f c a) (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> C_,R.1 (f0 (f c a) (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> a; C_,R.1 c -> C_,R.1 (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 a; C_,R.1 c -> C_,R.1 (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> C_,R.1 (f1 a (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> C_,R.1 (f1 a (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> C_,R.1 (f1 (f c a) (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> C_,R.1 (f1 (f c a) (f c a)); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> a; C_,R.1 c -> C_,R.1 (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 a; C_,R.1 c -> C_,R.1 (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f0 a (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f0 a (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f0 a (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f0 (f c a) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f0 (f c a) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f0 (f c a) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f0 (f1 a c) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f0 (f1 a c) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f0 (f1 a c) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> a; C_,R.1 c -> f0 (f c a) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 a; C_,R.1 c -> f0 (f c a) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 a); C_,R.1 c -> f0 (f c a) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f0 (f1 a (f c a)) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f0 (f1 a (f c a)) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f0 (f1 a (f c a)) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f0 a (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f0 a (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f0 a (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f0 a (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f0 a (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f0 a (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f1 a (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f1 a (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f1 a (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f1 (f c a) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f1 (f c a) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f1 (f c a) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f1 (f0 a c) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f1 (f0 a c) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f1 (f0 a c) (f c a); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> a; C_,R.1 c -> f1 (f c a) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 a; C_,R.1 c -> f1 (f c a) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 a); C_,R.1 c -> f1 (f c a) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f1 (f0 a (f c a)) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f1 (f0 a (f c a)) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f1 (f0 a (f c a)) c; }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f1 a (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f1 a (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f1 a (f0 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f1 a (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f1 a (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f1 a (f1 (f c a) c); }  ::  (C_,R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,a_R.0; C_,R.1 c -> f2 (f c a) (f c a); }  ::  (C_,R -> (C_,R -> C_,a_R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> C_,R.1 (f0 (f c a) (f c a)); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> C_,R.1 (f0 (f c a) (f c a)); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> C_,R.1 (f1 (f c a) (f c a)); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> C_,R.1 (f1 (f c a) (f c a)); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f0 (f c a) (f c a); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f0 (f c a) (f c a); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f0 (f c a) (f c a); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.0; C_,R.1 c -> f1 (f c a) (f c a); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 c -> f1 (f c a) (f c a); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 c -> f1 (f c a) (f c a); }  ::  (C_,R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,R.0 -> C_,a_R.0; C_,R.1 c -> f2 (f c a) a; }  ::  (C_,R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,R.0 -> C_,a_R.0; C_,R.1 c -> f2 a (f c a); }  ::  (C_,R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,R.0 -> C_,a_R.0; C_,R.1 c -> f2 (f c a) (f c a); }  ::  (C_,R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> C_,R.1 (f0 a (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> C_,R.1 (f0 a (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> C_,R.1 (f0 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> C_,R.1 (f0 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> C_,R.1 (f1 a (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> C_,R.1 (f1 a (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> C_,R.1 (f1 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> C_,R.1 (f1 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> f0 a (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> f0 a (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 c d -> f0 a (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> f0 (f d a) (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> f0 (f d a) (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 c d -> f0 (f d a) (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> f1 a (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> f1 a (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 c d -> f1 a (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> f1 (f d a) (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> f1 (f d a) (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 c d -> f1 (f d a) (f d a); }  ::  (C_,a_R -> (C_,R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> C_,a_R.1 c (f2 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) (f d a); }  ::  (C_,a_R -> (C_,R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) (C_,a_R.1 c (f d a)); }  ::  (C_,a_R -> (C_,R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> C_,R.1 (f0 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> C_,R.1 (f0 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> C_,R.1 (f1 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> C_,R.1 (f1 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> f0 (f d a) (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> f0 (f d a) (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 c d -> f0 (f d a) (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.0; C_,a_R.1 c d -> f1 (f d a) (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 C_,R.0; C_,a_R.1 c d -> f1 (f d a) (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,a_R.1 c d -> f1 (f d a) (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> C_,a_R.1 c (f2 (f d a) a); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> C_,a_R.1 c (f2 a (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> C_,a_R.1 c (f2 (f d a) (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> a; C_,a_R.1 c d -> C_,a_R.1 c (f2 d (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> a; C_,a_R.1 c d -> C_,a_R.1 c (f2 (f d a) d); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) a; }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 a (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> a; C_,a_R.1 c d -> f2 d (f d a); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> a; C_,a_R.1 c d -> f2 (f d a) d; }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) (C_,a_R.1 c a); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 a (C_,a_R.1 c (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) (C_,a_R.1 c (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> a; C_,a_R.1 c d -> f2 d (C_,a_R.1 c (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> a; C_,a_R.1 c d -> f2 (f d a) (C_,a_R.1 c d); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> a; C_,a_R.1 c d -> f2 (f d a) (C_,a_R.1 c C_,a_R.0); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 d (f2 (f d a) a); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) (f2 d a); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 d (f2 a (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 a (f2 d (f d a)); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 (f d a) (f2 a d); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+\b -> \a -> case b of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 c d -> f2 a (f2 (f d a) d); }  ::  (C_,a_R -> (C_,a_R -> C_,a_R))
+## f3
+def \d -> case d of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 e g -> f2 (f3 g) (C_,a_R.1 e C_,a_R.0); }
+type (C_,a_R -> C_,a_R)
+used d e f2 f3 g
+lemma  |- f3 C_,a_R.0 = C_,a_R.0
+lemma a:C_,a_R b:C_,a_R |- f3 (f2 a b) = f2 (f3 b) (f3 a)
+lemma a:C_,a_R |- f3 (f3 a) = a
+done 5
+## f4
+def \d -> \e -> case d of { C_,R.0 -> C_,R.0; C_,R.1 g -> C_,R.1 (f0 e (f4 g e)); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f4 g
+lemma a:C_,R |- f4 C_,R.0 a = C_,R.0
+lemma a:C_,R |- f4 a C_,R.0 = a
+lemma b:C_,R a:C_,R |- f4 a (C_,R.1 b) = f0 a (f4 a b)
+lemma a:C_,R b:C_,R g:C_,R |- f4 (f0 a b) g = f0 (f4 a g) (f4 b g)
+done 9
+## f5
+def \d -> \e -> case d of { C_,R.0 -> C_,R.0; C_,R.1 g -> C_,R.1 (f0 (f5 g e) (f5 g e)); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f5 g
+lemma a:C_,R |- f5 C_,R.0 a = C_,R.0
+lemma b:C_,R g:C_,R a:C_,R |- f5 a (f0 b g) = f5 a b
+lemma b:C_,R e:C_,R g:C_,R |- f5 b (f5 e g) = f5 b (f5 g e)
+done 9
+## f6
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 g -> C_,R.1 (f0 (f6 g e) (f6 g e)); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f6 g
+lemma a:C_,R |- f6 C_,R.0 a = C_,R.1 C_,R.0
+lemma b:C_,R a:C_,R |- f6 a (C_,R.1 b) = f6 a (f6 b b)
+lemma b:C_,R e:C_,R g:C_,R |- f6 b (f6 e g) = f6 b (f6 g e)
+done 6
+## f7
+def \d -> \e -> case d of { C_,R.0 -> e; C_,R.1 g -> C_,R.1 (f0 (f7 g e) g); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f7 g
+lemma a:C_,R |- f7 C_,R.0 a = a
+lemma b:C_,R a:C_,R |- f7 a (C_,R.1 b) = C_,R.1 (f7 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f7 a (f0 b g) = f0 (f7 a g) b
+done 7
+## f8
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 e; C_,R.1 g -> C_,R.1 (f0 (f8 g e) g); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f8 g
+lemma a:C_,R |- f8 C_,R.0 a = C_,R.1 a
+lemma b:C_,R a:C_,R |- f8 a (C_,R.1 b) = C_,R.1 (f8 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f8 a (f0 b g) = f0 (f8 a g) b
+done 7
+## f9
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 g -> C_,R.1 (f1 (f9 g e) (f9 g e)); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 f9 g
+lemma a:C_,R |- f9 C_,R.0 a = C_,R.1 C_,R.0
+lemma b:C_,R a:C_,R |- f9 a (C_,R.1 b) = f9 a (f9 b b)
+lemma b:C_,R e:C_,R g:C_,R |- f9 b (f9 e g) = f9 b (f9 g e)
+done 6
+## f10
+def \d -> \e -> case d of { C_,R.0 -> e; C_,R.1 g -> C_,R.1 (f1 (f10 g e) g); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 f10 g
+lemma a:C_,R |- f10 C_,R.0 a = a
+lemma b:C_,R a:C_,R |- f10 a (C_,R.1 b) = C_,R.1 (f10 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f10 a (f1 b g) = f1 (f10 a g) b
+done 7
+## f11
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 e; C_,R.1 g -> C_,R.1 (f1 (f11 g e) g); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 f11 g
+lemma a:C_,R |- f11 C_,R.0 a = C_,R.1 a
+lemma b:C_,R a:C_,R |- f11 a (C_,R.1 b) = C_,R.1 (f11 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f11 a (f1 b g) = f1 (f11 a g) b
+done 7
+## f12
+def \d -> \e -> case d of { C_,R.0 -> C_,R.0; C_,R.1 g -> f0 e (f12 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f12 g
+lemma a:C_,R |- f12 C_,R.0 a = C_,R.0
+lemma a:C_,R |- f12 a C_,R.0 = C_,R.0
+lemma a:C_,R b:C_,R |- f12 (C_,R.1 a) b = f0 (f12 a b) b
+lemma b:C_,R a:C_,R |- f12 a (C_,R.1 b) = f0 a (f12 a b)
+lemma a:C_,R b:C_,R g:C_,R |- f12 (f0 a b) g = f0 (f12 b g) (f12 g a)
+lemma b:C_,R g:C_,R a:C_,R |- f12 a (f0 b g) = f0 (f12 a b) (f12 a g)
+lemma c:C_,R d:C_,R |- f12 c d = f12 d c
+done 14
+## f13
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 g -> f0 e (f13 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f13 g
+lemma a:C_,R |- f13 C_,R.0 a = C_,R.1 C_,R.0
+lemma a:C_,R |- f13 a C_,R.0 = C_,R.1 C_,R.0
+lemma a:C_,R b:C_,R |- f13 (C_,R.1 a) b = f0 (f13 a b) b
+lemma b:C_,R a:C_,R |- f13 a (C_,R.1 b) = f0 a (f13 a b)
+lemma c:C_,R d:C_,R |- f13 c d = f13 d c
+done 10
+## f14
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 g -> f0 e (f14 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f14 g
+lemma a:C_,R |- f14 C_,R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+lemma a:C_,R |- f14 a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+lemma a:C_,R b:C_,R |- f14 (C_,R.1 a) b = f0 (f14 a b) b
+lemma c:C_,R d:C_,R |- f14 c d = f14 d c
+done 7
+## f15
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 g -> f0 (f15 g e) (f15 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f15 g
+lemma a:C_,R |- f15 C_,R.0 a = C_,R.1 C_,R.0
+lemma a:C_,R b:C_,R |- f15 (C_,R.1 a) b = f0 (f15 a b) (f15 a b)
+lemma b:C_,R a:C_,R |- f15 a (C_,R.1 b) = f15 a (f15 b b)
+lemma b:C_,R e:C_,R g:C_,R |- f15 b (f15 e g) = f15 b (f15 g e)
+done 7
+## f16
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 (C_,R.1 C_,R.0); C_,R.1 g -> f0 (f16 g e) (f16 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f16 g
+lemma a:C_,R |- f16 C_,R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+lemma a:C_,R b:C_,R |- f16 (C_,R.1 a) b = f0 (f16 a b) (f16 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f16 a (f0 b g) = f16 a b
+lemma b:C_,R e:C_,R g:C_,R |- f16 b (f16 e g) = f16 b (f16 g e)
+done 10
+## f17
+def \d -> \e -> case d of { C_,R.0 -> e; C_,R.1 g -> f0 (f17 g e) g; }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f17 g
+lemma a:C_,R |- f17 C_,R.0 a = a
+lemma a:C_,R b:C_,R |- f17 (C_,R.1 a) b = f0 a (f17 a b)
+lemma b:C_,R a:C_,R |- f17 a (C_,R.1 b) = C_,R.1 (f17 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f17 a (f0 b g) = f0 (f17 a g) b
+done 8
+## f18
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 e; C_,R.1 g -> f0 (f18 g e) g; }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f18 g
+lemma a:C_,R |- f18 C_,R.0 a = C_,R.1 a
+lemma a:C_,R b:C_,R |- f18 (C_,R.1 a) b = f0 a (f18 a b)
+lemma b:C_,R a:C_,R |- f18 a (C_,R.1 b) = C_,R.1 (f18 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f18 a (f0 b g) = f0 (f18 a g) b
+done 8
+## f19
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 (C_,R.1 e); C_,R.1 g -> f0 (f19 g e) g; }
+type (C_,R -> (C_,R -> C_,R))
+used d e f0 f19 g
+lemma a:C_,R |- f19 C_,R.0 a = C_,R.1 (C_,R.1 a)
+lemma a:C_,R b:C_,R |- f19 (C_,R.1 a) b = f0 a (f19 a b)
+lemma b:C_,R a:C_,R |- f19 a (C_,R.1 b) = C_,R.1 (f19 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f19 a (f0 b g) = f0 (f19 a g) b
+done 8
+## f20
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 C_,R.0; C_,R.1 g -> f1 (f20 g e) (f20 g e); }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 f20 g
+lemma a:C_,R |- f20 C_,R.0 a = C_,R.1 C_,R.0
+lemma a:C_,R b:C_,R |- f20 (C_,R.1 a) b = f1 (f20 a b) (f20 a b)
+lemma b:C_,R a:C_,R |- f20 a (C_,R.1 b) = f20 a (f20 b b)
+lemma b:C_,R e:C_,R g:C_,R |- f20 b (f20 e g) = f20 b (f20 g e)
+done 7
+## f21
+def \d -> \e -> case d of { C_,R.0 -> e; C_,R.1 g -> f1 (f21 g e) g; }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 f21 g
+lemma a:C_,R |- f21 C_,R.0 a = a
+lemma a:C_,R b:C_,R |- f21 (C_,R.1 a) b = f1 a (f21 a b)
+lemma b:C_,R a:C_,R |- f21 a (C_,R.1 b) = C_,R.1 (f21 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f21 a (f1 b g) = f1 (f21 a g) b
+done 8
+## f22
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 e; C_,R.1 g -> f1 (f22 g e) g; }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 f22 g
+lemma a:C_,R |- f22 C_,R.0 a = C_,R.1 a
+lemma a:C_,R b:C_,R |- f22 (C_,R.1 a) b = f1 a (f22 a b)
+lemma b:C_,R a:C_,R |- f22 a (C_,R.1 b) = C_,R.1 (f22 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f22 a (f1 b g) = f1 (f22 a g) b
+done 8
+## f23
+def \d -> \e -> case d of { C_,R.0 -> C_,R.1 (C_,R.1 e); C_,R.1 g -> f1 (f23 g e) g; }
+type (C_,R -> (C_,R -> C_,R))
+used d e f1 f23 g
+lemma a:C_,R |- f23 C_,R.0 a = C_,R.1 (C_,R.1 a)
+lemma a:C_,R b:C_,R |- f23 (C_,R.1 a) b = f1 a (f23 a b)
+lemma b:C_,R a:C_,R |- f23 a (C_,R.1 b) = C_,R.1 (f23 a b)
+lemma b:C_,R g:C_,R a:C_,R |- f23 a (f1 b g) = f1 (f23 a g) b
+done 8
+## f24
+def \c -> \e -> case c of { C_,a_R.0 -> C_,R.0; C_,a_R.1 g h -> f0 e (f24 h e); }
+type (C_,a_R -> (C_,R -> C_,R))
+used c e f0 f24 h
+lemma a:C_,R |- f24 C_,a_R.0 a = C_,R.0
+lemma a:C_,a_R |- f24 a C_,R.0 = C_,R.0
+lemma a:a b:C_,a_R g:C_,R |- f24 (C_,a_R.1 a b) g = f0 (f24 b g) g
+lemma b:C_,R g:C_,R a:C_,a_R |- f24 a (f0 b g) = f0 (f24 a b) (f24 a g)
+done 8
+## f25
+def \e -> \g -> case e of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 h i -> C_,a_R.1 h (f2 g (f25 i g)); }
+type (C_,a_R -> (C_,a_R -> C_,a_R))
+used e f2 f25 g h i
+lemma a:C_,a_R |- f25 C_,a_R.0 a = C_,a_R.0
+lemma a:C_,a_R |- f25 a C_,a_R.0 = a
+lemma a:C_,a_R b:C_,a_R g:C_,a_R |- f25 (f2 a b) g = f2 (f25 a g) (f25 b g)
+done 5
+## f26
+def \e -> \g -> case e of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 h i -> C_,a_R.1 h (f2 (f26 i g) (f26 i g)); }
+type (C_,a_R -> (C_,a_R -> C_,a_R))
+used e f2 f26 g h i
+lemma a:C_,a_R |- f26 C_,a_R.0 a = C_,a_R.0
+lemma b:C_,a_R g:C_,a_R a:C_,a_R |- f26 a (f2 b g) = f26 a b
+lemma b:C_,a_R e:C_,a_R g:C_,a_R |- f26 b (f26 e g) = f26 b (f26 g e)
+done 9
+## f27
+def \c -> \e -> case c of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 g h -> f2 (f27 h e) e; }
+type (C_,a_R -> (C_,a_R -> C_,a_R))
+used c e f2 f27 h
+lemma a:C_,a_R |- f27 C_,a_R.0 a = C_,a_R.0
+lemma a:C_,a_R |- f27 a C_,a_R.0 = C_,a_R.0
+lemma a:a b:C_,a_R g:C_,a_R |- f27 (C_,a_R.1 a b) g = f2 (f27 b g) g
+lemma a:C_,a_R b:C_,a_R g:C_,a_R |- f27 (f2 a b) g = f2 (f27 b g) (f27 a g)
+done 6
+## f28
+def \c -> \e -> case c of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 g h -> f2 e (f28 h e); }
+type (C_,a_R -> (C_,a_R -> C_,a_R))
+used c e f2 f28 h
+lemma a:C_,a_R |- f28 C_,a_R.0 a = C_,a_R.0
+lemma a:C_,a_R |- f28 a C_,a_R.0 = C_,a_R.0
+lemma a:a b:C_,a_R g:C_,a_R |- f28 (C_,a_R.1 a b) g = f2 g (f28 b g)
+lemma a:C_,a_R b:C_,a_R g:C_,a_R |- f28 (f2 a b) g = f2 (f28 b g) (f28 a g)
+lemma b:C_,a_R e:C_,a_R g:C_,a_R |- f28 b (f28 e g) = f28 (f28 e b) g
+done 10
+## f29
+def \e -> \g -> case e of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 h i -> f2 g (C_,a_R.1 h (f29 i g)); }
+type (C_,a_R -> (C_,a_R -> C_,a_R))
+used e f2 f29 g h i
+lemma a:C_,a_R |- f29 C_,a_R.0 a = C_,a_R.0
+lemma a:C_,a_R |- f29 a C_,a_R.0 = a
+lemma a:C_,a_R b:C_,a_R g:C_,a_R |- f29 (f2 a b) g = f2 (f29 a g) (f29 b g)
+done 5
+## f30
+def \e -> \g -> case e of { C_,a_R.0 -> C_,a_R.0; C_,a_R.1 h i -> f2 (f30 i g) (C_,a_R.1 h (f30 i g)); }
+type (C_,a_R -> (C_,a_R -> C_,a_R))
+used e f2 f30 g h i
+lemma a:C_,a_R |- f30 C_,a_R.0 a = C_,a_R.0
+lemma b:C_,a_R g:C_,a_R a:C_,a_R |- f30 a (f2 b g) = f30 a b
+lemma b:C_,a_R e:C_,a_R g:C_,a_R |- f30 b (f30 e g) = f30 b (f30 g e)
+done 9
