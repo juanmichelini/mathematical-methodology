@@ -65,7 +65,9 @@ three levels, and the code is split the same way:
   functions as plain Lean (#34). Untrusted display code. `lake exe export-lean >
   MathematicalMethodology/Generated/FstCandidates.lean` regenerates the committed file; it is a
   library module, so `lake build` compiles it, and a guard in `Examples/ExportCheck.lean`
-  checks it equals the generator's output.
+  checks it equals the generator's output. `lake exe export-lean appendixB >
+  MathematicalMethodology/Generated/AppendixB.lean` does the same for the 31 functions of
+  Appendix B (checked by `lake exe results`, which runs the searches).
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
   not trusted and nothing trusted may import them.

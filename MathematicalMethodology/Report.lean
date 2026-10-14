@@ -9,6 +9,7 @@ import MathematicalMethodology.Examples.ProveFst
 import MathematicalMethodology.Examples.FirstSearch
 import MathematicalMethodology.Examples.SecondSearch
 import MathematicalMethodology.Examples.TestSuite
+import MathematicalMethodology.Export.AppendixB
 
 /-!
 # Report
@@ -137,6 +138,11 @@ def chainRows : List String :=
       else go rest name n acc
   go suiteLines "" 0 []
 
+/-- Is the committed `Generated/AppendixB.lean` what the generator prints for f0 … f30? -/
+def appendixBExportUpToDate : Bool :=
+  MM.Export.appendixBFile (MM.Examples.FirstSearch.selected ++ MM.Examples.SecondSearch.selected) ==
+    (include_str "Generated/AppendixB.lean")
+
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allOk : Bool :=
   (runDev listCtx development []).all LemmaResult.ok &&
@@ -145,7 +151,7 @@ def allOk : Bool :=
   exportUpToDate &&
   conjecturesMatchHaskell &&
   pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches &&
-  suiteMatches
+  suiteMatches && appendixBExportUpToDate
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -325,6 +331,10 @@ def markdown : String :=
     , s!"The whole output (every lemma with its smallest budget, every chain) equals the original Haskell's: {suiteMatches}."
     , ""
     , "## Export to Lean"
+    , ""
+    , s!"The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,"
+    , "also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean"
+    , s!"(`Examples/ExportAppendixB.lean`). The committed file is the generator's output: {appendixBExportUpToDate}."
     , ""
     , s!"The {MM.Strategic.candidatosFst.length} candidates (and the data types) are printed as plain Lean"
     , "(`Export/Lean.lean`, `lake exe export-lean`) in `Generated/FstCandidates.lean`. That file is"

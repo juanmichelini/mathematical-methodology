@@ -221,6 +221,10 @@ The whole output (every lemma with its smallest budget, every chain) equals the 
 
 ## Export to Lean
 
+The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,
+also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean
+(`Examples/ExportAppendixB.lean`). The committed file is the generator's output: true.
+
 The 64 candidates (and the data types) are printed as plain Lean
 (`Export/Lean.lean`, `lake exe export-lean`) in `Generated/FstCandidates.lean`. That file is
 part of the library, so `lake build` compiles it: Lean itself accepts the definitions and their
