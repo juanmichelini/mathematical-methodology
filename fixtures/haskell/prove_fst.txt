@@ -1,0 +1,3358 @@
+## cand 0
+  fail fail b:C_,R |- f b = b
+  OK   7 b:C_,R |- f b = C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 b
+  fail fail b:C_,R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R |- f b = C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 1
+  fail fail b:C_,R |- f b = b
+  fail fail b:C_,R |- f b = C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 b
+  OK   7 b:C_,R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R |- f b = C_,R.1 C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 2
+  fail fail b:C_,R |- f b = b
+  fail fail b:C_,R |- f b = C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 b
+  fail fail b:C_,R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 b)
+  OK   7 b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 3
+  OK   7 b:C_,R |- f b = b
+  fail fail b:C_,R |- f b = C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 b
+  fail fail b:C_,R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R |- f b = b
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 4
+  fail fail b:C_,R |- f b = b
+  fail fail b:C_,R |- f b = C_,R.0
+  OK   7 b:C_,R |- f b = C_,R.1 b
+  fail fail b:C_,R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R |- f b = C_,R.1 b
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 5
+  fail fail b:C_,R |- f b = b
+  fail fail b:C_,R |- f b = C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 b
+  fail fail b:C_,R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2  |- f C_,R.0 = C_,R.0
+  fail fail  |- f C_,R.0 = C_,R.1 C_,R.0
+  fail fail  |- f C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# chose  |- f C_,R.0 = C_,R.0
+  fail fail a:C_,R |- f (C_,R.1 a) = a
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.0
+  fail fail a:C_,R |- f (C_,R.1 a) = f a
+  fail fail a:C_,R |- f (C_,R.1 a) = f (f a)
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 a
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 (f a)
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R |- f (f a) = a
+  fail fail a:C_,R |- f (f a) = C_,R.0
+  fail fail a:C_,R |- f (f a) = C_,R.1 a
+  fail fail a:C_,R |- f (f a) = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f (f a) = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f (f a) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R |- f b = b
+  fail fail b:C_,R |- f b = C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 b
+  fail fail b:C_,R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,R |- f (C_,R.1 a) = a
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.0
+  fail fail a:C_,R |- f (C_,R.1 a) = f a
+  fail fail a:C_,R |- f (C_,R.1 a) = f (f a)
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 a
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 (f a)
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f (C_,R.1 a) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R |- f (f a) = a
+  fail fail a:C_,R |- f (f a) = C_,R.0
+  fail fail a:C_,R |- f (f a) = C_,R.1 a
+  fail fail a:C_,R |- f (f a) = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f (f a) = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f (f a) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# lemmas 1
+## cand 6
+  OK   7 b:C_,R |- f b = C_,a_R.0
+# chose b:C_,R |- f b = C_,a_R.0
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 7
+  OK   7 b:C_,a_R |- f b = C_,R.0
+# chose b:C_,a_R |- f b = C_,R.0
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 8
+  fail fail b:C_,a_R |- f b = C_,R.0
+  OK   7 b:C_,a_R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,a_R |- f b = C_,R.1 C_,R.0
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 9
+  fail fail b:C_,a_R |- f b = C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 C_,R.0
+  OK   7 b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 10
+  fail fail b:C_,a_R |- f b = C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2  |- f C_,a_R.0 = C_,R.0
+  fail fail  |- f C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail  |- f C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# chose  |- f C_,a_R.0 = C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 C_,R.0
+  OK   2 a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (f b)
+  fail fail b:C_,a_R |- f b = C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# lemmas 2
+## cand 11
+  fail fail b:C_,a_R |- f b = C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail  |- f C_,a_R.0 = C_,R.0
+  OK   2  |- f C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail  |- f C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# chose  |- f C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 C_,R.0
+  OK   2 a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (f b)
+  fail fail b:C_,a_R |- f b = C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# lemmas 2
+## cand 12
+  fail fail b:C_,a_R |- f b = C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2  |- f C_,a_R.0 = C_,R.0
+  fail fail  |- f C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail  |- f C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# chose  |- f C_,a_R.0 = C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,a_R |- f b = C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 C_,R.0
+  fail fail b:C_,a_R |- f b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 1
+## cand 13
+  fail fail b:C_,a_R |- f b = b
+  OK   7 b:C_,a_R |- f b = C_,a_R.0
+# chose b:C_,a_R |- f b = C_,a_R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 14
+  OK   7 b:C_,a_R |- f b = b
+  fail fail b:C_,a_R |- f b = C_,a_R.0
+# chose b:C_,a_R |- f b = b
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 15
+  fail fail b:C_,a_R |- f b = b
+  fail fail b:C_,a_R |- f b = C_,a_R.0
+# none
+  OK   2  |- f C_,a_R.0 = C_,a_R.0
+# chose  |- f C_,a_R.0 = C_,a_R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail a:C_,a_R |- f (f a) = a
+  fail fail a:C_,a_R |- f (f a) = C_,a_R.0
+# none
+  fail fail b:C_,a_R |- f b = b
+  fail fail b:C_,a_R |- f b = C_,a_R.0
+# none
+# none
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = f (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a (f b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R |- f (C_,a_R.1 a b) = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail a:C_,a_R |- f (f a) = a
+  fail fail a:C_,a_R |- f (f a) = C_,a_R.0
+# none
+# none
+# none
+# lemmas 1
+## cand 16
+  fail fail c:C_,R d:C_,R |- f c d = c
+  OK   7 c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = d
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 17
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  OK   7 c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 18
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  OK   7 c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = C_,R.1 d
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 19
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  OK   7 c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 20
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  OK   7 c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 21
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  OK   7 c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 22
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2 a:C_,R |- f C_,R.0 a = a
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = f a a
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) a
+  fail fail a:C_,R |- f C_,R.0 a = f a (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f C_,R.0 a = a
+  OK   7 a:C_,R |- f a C_,R.0 = a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = f a a
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) a
+  fail fail a:C_,R |- f a C_,R.0 = f a (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f a C_,R.0 = a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a a)
+  OK   15 a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  OK   2 a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b b)
+  OK   17 b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   9 c:C_,R d:C_,R |- f c d = f d c
+# chose c:C_,R d:C_,R |- f c d = f d c
+  OK   17 a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f a g) b
+# chose a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f a g) b
+  OK   8 b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f b e) g
+# chose b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f b e) g
+# lemmas 7
+## cand 23
+  OK   7 c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = c
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 24
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R |- f C_,R.0 a = a
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = f a a
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) a
+  fail fail a:C_,R |- f C_,R.0 a = f a (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) (f a a)
+  OK   2 a:C_,R |- f C_,R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f C_,R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f a C_,R.0 = a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = f a a
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) a
+  fail fail a:C_,R |- f a C_,R.0 = f a (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) (f a a)
+  OK   7 a:C_,R |- f a C_,R.0 = C_,R.1 a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f a C_,R.0 = C_,R.1 a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a a)
+  OK   15 a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  OK   2 a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b b)
+  OK   17 b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   9 c:C_,R d:C_,R |- f c d = f d c
+# chose c:C_,R d:C_,R |- f c d = f d c
+  OK   19 a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f a g) b
+# chose a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f a g) b
+  OK   9 b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f b e) g
+# chose b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f b e) g
+# lemmas 7
+## cand 25
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  OK   7 c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,R |- f c d = C_,R.1 c
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 26
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2 a:C_,R |- f C_,R.0 a = a
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = f a a
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) a
+  fail fail a:C_,R |- f C_,R.0 a = f a (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f C_,R.0 a = a
+  fail fail a:C_,R |- f a C_,R.0 = a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = f a a
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) a
+  fail fail a:C_,R |- f a C_,R.0 = f a (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b b)
+  OK   16 b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# chose b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,R |- f a C_,R.0 = a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = f a a
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) a
+  fail fail a:C_,R |- f a C_,R.0 = f a (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,R d:C_,R |- f c d = f d c
+# none
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f a (f g b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f a g) b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f b a) g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f b (f g a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f b g) a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f g (f a b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f g a) b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f g (f b a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f g b) a
+# none
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f b e) g
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f b (f g e)
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f b g) e
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f e b) g
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f e (f g b)
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f e g) b
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f g (f b e)
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f g b) e
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f g (f e b)
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f g e) b
+# none
+# lemmas 2
+## cand 27
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R |- f C_,R.0 a = a
+  OK   2 a:C_,R |- f C_,R.0 a = C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = f a a
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) a
+  fail fail a:C_,R |- f C_,R.0 a = f a (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = f (f a a) (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (f a a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f C_,R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f C_,R.0 a = C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = f a a
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) a
+  fail fail a:C_,R |- f a C_,R.0 = f a (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,R d:C_,R |- f c d = c
+  fail fail c:C_,R d:C_,R |- f c d = d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,R |- f a C_,R.0 = a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = f a a
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) a
+  fail fail a:C_,R |- f a C_,R.0 = f a (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = f (f a a) (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 a
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (f a a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f a (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f b (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b a) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f a b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = f (f b b) (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 b
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (f b b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f b (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f a (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a b) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f b a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = f (f a a) (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 a
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f b a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (f a a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R a:C_,R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 b
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 a
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 a)
+  fail fail b:C_,R g:C_,R a:C_,R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,R d:C_,R |- f c d = f d c
+# none
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f a (f g b)
+  OK   10 a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f a g) b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f b a) g
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f b (f g a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f b g) a
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f g (f a b)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f g a) b
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f g (f b a)
+  fail fail a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f g b) a
+# chose a:C_,R b:C_,R g:C_,R |- f (f a b) g = f (f a g) b
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f b e) g
+  OK   7 b:C_,R e:C_,R g:C_,R |- f b (f e g) = f b (f g e)
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f e b) g
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f e (f g b)
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f g (f b e)
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f (f g b) e
+  fail fail b:C_,R e:C_,R g:C_,R |- f b (f e g) = f g (f e b)
+# chose b:C_,R e:C_,R g:C_,R |- f b (f e g) = f b (f g e)
+# lemmas 3
+## cand 28
+  OK   7 c:C_,R d:C_,R |- f c d = C_,a_R.0
+# chose c:C_,R d:C_,R |- f c d = C_,a_R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 29
+  fail fail c:C_,R d:C_,a_R |- f c d = c
+  OK   7 c:C_,R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,a_R |- f c d = C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 30
+  fail fail c:C_,R d:C_,a_R |- f c d = c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+  OK   7 c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 31
+  fail fail c:C_,R d:C_,a_R |- f c d = c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 c)
+  OK   7 c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 32
+  OK   7 c:C_,R d:C_,a_R |- f c d = c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,a_R |- f c d = c
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 33
+  fail fail c:C_,R d:C_,a_R |- f c d = c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.0
+  OK   7 c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 34
+  fail fail c:C_,R d:C_,a_R |- f c d = c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2 a:C_,a_R |- f C_,R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f C_,R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f C_,R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,a_R |- f C_,R.0 a = C_,R.0
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,R d:C_,a_R |- f c d = c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 c
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 c)
+  fail fail c:C_,R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = a
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.0
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = f a b
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = f (f a b) b
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 a
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 (f a b)
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,a_R |- f (C_,R.1 a) b = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.0
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 a
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 C_,R.0
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 1
+## cand 35
+  OK   7 c:C_,R d:C_,a_R |- f c d = d
+# chose c:C_,R d:C_,a_R |- f c d = d
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 36
+  fail fail c:C_,R d:C_,a_R |- f c d = d
+  OK   7 c:C_,R d:C_,a_R |- f c d = C_,a_R.0
+# chose c:C_,R d:C_,a_R |- f c d = C_,a_R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 37
+  OK   7 c:C_,a_R d:C_,R |- f c d = d
+# chose c:C_,a_R d:C_,R |- f c d = d
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 38
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  OK   7 c:C_,a_R d:C_,R |- f c d = C_,R.0
+# chose c:C_,a_R d:C_,R |- f c d = C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 39
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  OK   7 c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# chose c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 40
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  OK   7 c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 41
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  OK   7 c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# chose c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 42
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  OK   7 c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 43
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+  OK   2 a:C_,R |- f C_,a_R.0 a = a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 a)
+# chose a:C_,R |- f C_,a_R.0 a = a
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  OK   2 a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+# chose a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  OK   16 b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+# chose b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+# none
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+# none
+# none
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+# none
+# lemmas 3
+## cand 44
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R |- f C_,a_R.0 a = a
+  OK   2 a:C_,R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  OK   2 a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 2
+## cand 45
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+  fail fail a:C_,R |- f C_,a_R.0 a = a
+  OK   2 a:C_,R |- f C_,a_R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 a)
+# chose a:C_,R |- f C_,a_R.0 a = C_,R.1 a
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  OK   16 b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+# chose b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  OK   2 a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+# chose a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+# none
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+# none
+# none
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+# none
+# lemmas 3
+## cand 46
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R |- f C_,a_R.0 a = a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 a
+  OK   2 a:C_,R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  OK   2 a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 2
+## cand 47
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+  OK   2 a:C_,R |- f C_,a_R.0 a = a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 a)
+# chose a:C_,R |- f C_,a_R.0 a = a
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+# none
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  OK   16 b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+# chose b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+# none
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+# none
+# none
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+# none
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+# none
+# lemmas 2
+## cand 48
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,R |- f C_,a_R.0 a = a
+  OK   2 a:C_,R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 a
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 a)
+  fail fail a:C_,R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,a_R d:C_,R |- f c d = d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 d
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 d)
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = f a (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 b
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 C_,R.0
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (f a b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 b)
+  fail fail b:C_,R a:C_,a_R |- f a (C_,R.1 b) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 g
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 C_,R.0
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 g)
+  fail fail b:C_,a_R g:C_,R a:C_,a_R |- f a (f b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 1
+## cand 49
+  fail fail c:C_,a_R d:C_,R |- f c d = c
+  OK   7 c:C_,a_R d:C_,R |- f c d = C_,a_R.0
+# chose c:C_,a_R d:C_,R |- f c d = C_,a_R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 50
+  OK   7 c:C_,a_R d:C_,R |- f c d = c
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,a_R.0
+# chose c:C_,a_R d:C_,R |- f c d = c
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 51
+  fail fail c:C_,a_R d:C_,R |- f c d = c
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,a_R.0
+# none
+  OK   2 a:C_,R |- f C_,a_R.0 a = C_,a_R.0
+# chose a:C_,R |- f C_,a_R.0 a = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = b
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f (f b g) g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,R g:C_,R |- f (f a b) g = C_,a_R.0
+# none
+  fail fail c:C_,a_R d:C_,R |- f c d = c
+  fail fail c:C_,a_R d:C_,R |- f c d = C_,a_R.0
+# none
+# none
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = b
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = f (f b g) g
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R g:C_,R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,R g:C_,R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,R g:C_,R |- f (f a b) g = C_,a_R.0
+# none
+# lemmas 1
+## cand 52
+  OK   7 c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+# chose c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 53
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  OK   7 c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 54
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  OK   7 c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# chose c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 55
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2 a:C_,a_R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,a_R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g b)
+  OK   2 a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 2
+## cand 56
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a a
+  OK   2 a:C_,a_R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,a_R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g b)
+  OK   2 a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 2
+## cand 57
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  OK   2 a:C_,a_R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,R.1 (C_,R.1 C_,R.0)
+# chose a:C_,a_R |- f C_,a_R.0 a = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 C_,R.0
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# none
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 C_,R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 C_,R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,R.1 (C_,R.1 C_,R.0)
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 C_,R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,R.1 (C_,R.1 C_,R.0)
+# none
+# lemmas 1
+## cand 58
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  OK   7 c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# chose c:C_,a_R d:C_,a_R |- f c d = d
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 59
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  OK   7 c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# chose c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 60
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# none
+  OK   2 a:C_,a_R |- f C_,a_R.0 a = a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,a_R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f (f a a) a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a (f a a)
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f (f a a) (f a a)
+# chose a:C_,a_R |- f C_,a_R.0 a = a
+  OK   7 a:C_,a_R |- f a C_,a_R.0 = a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,a_R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) (f a a)
+# chose a:C_,a_R |- f a C_,a_R.0 = a
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g b)
+  OK   2 a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# chose a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,a_R.0
+# none
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = b
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = a
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = C_,a_R.0
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# none
+# none
+# none
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,a_R.0
+# none
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = b
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = a
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = C_,a_R.0
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = f d c
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f a (f g b)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f a g) b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f b a) g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f b (f g a)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f b g) a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f g (f a b)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f g a) b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f g (f b a)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f g b) a
+# none
+  OK   8 b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f b e) g
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f b (f g e)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f b g) e
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f e b) g
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f e (f g b)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f e g) b
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f g (f b e)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f g b) e
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f g (f e b)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f g e) b
+# chose b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f b e) g
+# lemmas 4
+## cand 61
+  OK   7 c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# chose c:C_,a_R d:C_,a_R |- f c d = c
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# none
+# lemmas 1
+## cand 62
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# none
+  OK   2 a:C_,a_R |- f C_,a_R.0 a = a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = C_,a_R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f (f a a) a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a (f a a)
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f (f a a) (f a a)
+# chose a:C_,a_R |- f C_,a_R.0 a = a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,a_R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) (f a a)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,a_R.0
+# none
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = b
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = a
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = C_,a_R.0
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# none
+# none
+  fail fail a:C_,a_R |- f a C_,a_R.0 = a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,a_R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) (f a a)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,a_R.0
+# none
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = b
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = a
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = C_,a_R.0
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = f d c
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f a (f g b)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f a g) b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f b a) g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f b (f g a)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f b g) a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f g (f a b)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f g a) b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f g (f b a)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f g b) a
+# none
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f b e) g
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f b (f g e)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f b g) e
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f e b) g
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f e (f g b)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f e g) b
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f g (f b e)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f g b) e
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f g (f e b)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f g e) b
+# none
+# lemmas 1
+## cand 63
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# none
+  fail fail a:C_,a_R |- f C_,a_R.0 a = a
+  OK   2 a:C_,a_R |- f C_,a_R.0 a = C_,a_R.0
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f (f a a) a
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f a (f a a)
+  fail fail a:C_,a_R |- f C_,a_R.0 a = f (f a a) (f a a)
+# chose a:C_,a_R |- f C_,a_R.0 a = C_,a_R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,a_R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) (f a a)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,a_R.0
+# none
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = b
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = a
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = C_,a_R.0
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = c
+  fail fail c:C_,a_R d:C_,a_R |- f c d = d
+  fail fail c:C_,a_R d:C_,a_R |- f c d = C_,a_R.0
+# none
+# none
+  fail fail a:C_,a_R |- f a C_,a_R.0 = a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = C_,a_R.0
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) a
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f a (f a a)
+  fail fail a:C_,a_R |- f a C_,a_R.0 = f (f a a) (f a a)
+# none
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f b (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f g (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g b) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f b g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = f (f g g) (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a b
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a g
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a C_,a_R.0
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f b g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (f g g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a b)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a g)
+  fail fail a:a b:C_,a_R g:C_,a_R |- f (C_,a_R.1 a b) g = C_,a_R.1 a (C_,a_R.1 a C_,a_R.0)
+# none
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f g (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f a (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a g) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f g a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = f (f a a) (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b g
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b a
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b C_,a_R.0
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f g a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (f a a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b g)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b a)
+  fail fail b:a g:C_,a_R a:C_,a_R |- f a (C_,a_R.1 b g) = C_,a_R.1 b (C_,a_R.1 b C_,a_R.0)
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = C_,a_R.0
+# none
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = b
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = g
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = a
+  fail fail b:C_,a_R g:C_,a_R a:C_,a_R |- f a (f b g) = C_,a_R.0
+# none
+  fail fail c:C_,a_R d:C_,a_R |- f c d = f d c
+# none
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f a (f g b)
+  OK   10 a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f a g) b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f b a) g
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f b (f g a)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f b g) a
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f g (f a b)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f g a) b
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f g (f b a)
+  fail fail a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f g b) a
+# chose a:C_,a_R b:C_,a_R g:C_,a_R |- f (f a b) g = f (f a g) b
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f b e) g
+  OK   7 b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f b (f g e)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f e b) g
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f e (f g b)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f g (f b e)
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f (f g b) e
+  fail fail b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f g (f e b)
+# chose b:C_,a_R e:C_,a_R g:C_,a_R |- f b (f e g) = f b (f g e)
+# lemmas 3

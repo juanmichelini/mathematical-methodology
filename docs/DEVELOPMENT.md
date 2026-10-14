@@ -101,6 +101,7 @@ ghc -O0 -i<foundations>/code -outputdir build -main-is Fst.fstMain Fst.hs -o fst
 | `Fst.hs` | the 64 first-search candidates | `Examples/HaskellFst.lean` (committed) |
 | `Conj.hs` | `plemas` for each candidate (8222 lines) | `fixtures/haskell/conj_fst.txt`, guard in `Examples/ConjecturesFst.lean` |
 | `TestConj.hs` | `plemas`/`pfindlemasAll` for `Test.hs` functions (89215 lines, 6 MB) | hash in `fixtures/haskell/conj_test.fnv`, checked by `lake exe haskell-check` |
+| `ProveTrace.hs` | `provell` trace for each candidate: tried conjectures, complete or not, smallest budget, lemma chosen (3358 lines) | `fixtures/haskell/prove_fst.txt`, guard in `Examples/ProveFst.lean` |
 | `TestEnv.hs` | `Test.env`/`tenv`/`datas` as de Bruijn Lean | `Examples/TestEnv.lean` (generated) |
 
 To diff a large dump in full: `scripts/haskell/build.sh <foundations> TestConj /tmp/h.txt`,

@@ -38,6 +38,11 @@ three levels, and the code is split the same way:
   `mainTactic`) are untrusted: nothing in `Cert.lean`, `Operational/` or `Semantics/` may
   import them. The search builds each next goal with the checker's own functions, so a
   bug there can only make it fail, never make a false statement pass.
+- `Tactical/Prove.lean` is a faithful port of Haskell's `mainTactic`/`giveUp`/`prove` with
+  `Proof` trees (names as metadata, induction hypotheses as quantified lemmas, fields as
+  opaque constants, the cumulative step budget); `Strategic/FindLemmas.lean` is
+  `findlemas`/`provell`. `Tactical/Search.lean` is the other search: it builds `Cert`s the
+  checker can re-verify. Found lemmas are checked with it (`certify`).
 - **Strategic**: enumeration of data types, functions and conjectures. Untrusted.
   `Strategic/Enumerate.lean` (port of the enumeration in `Propose.hs`) works directly on the
   de Bruijn `Term` (no named syntax). Foundations names all constructors' fields from one

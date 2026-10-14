@@ -107,6 +107,34 @@ original Haskell prints the same statements, with the same variable names, in th
 true. The functions of foundations `Test.hs` are checked against a hash of the
 Haskell output by `lake exe haskell-check`.
 
+## Finding lemmas
+
+`Tactical/Prove.lean` is a faithful port of `mainTactic`, `cutSingleStepCycles`, `giveUp`
+and `prove`; `Strategic/FindLemmas.lean` of `findlemas`/`provell` (the first conjecture of a
+batch that is proven becomes a lemma for the rest). The first search keeps the functions with
+more than three lemmas, for several values of the search limit `paciencia`:
+
+| paciencia | kept | lemmas per kept function | foundations | same |
+|---|---|---|---|---|
+| 5 | 0 | [] | [] | true |
+| 10 | 3 | [4, 4, 4] | [4, 4, 4] | true |
+| 20 | 3 | [7, 7, 4] | [7, 7, 4] | true |
+| 30 | 3 | [7, 7, 4] | [7, 7, 4] | true |
+| 40 | 3 | [7, 7, 4] | [7, 7, 4] | true |
+
+The whole trace of `provell` over the 64 candidates (every conjecture tried,
+whether its proof completes, the smallest budget at which it does, the lemma chosen from each
+batch) equals the original Haskell's, line by line: true.
+
+Every lemma found is also proved by the checker-based search (`Tactical/Search.lean`, rigid
+induction hypotheses) and the certificate accepted by `Cert.check`:
+
+| candidate | lemmas found | certified by `Cert.check` |
+|---|---|---|
+| 22 | 7 | 7 |
+| 24 | 7 | 7 |
+| 60 | 4 | 4 |
+
 ## Export to Lean
 
 The 64 candidates (and the data types) are printed as plain Lean
