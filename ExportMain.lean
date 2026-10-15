@@ -1,5 +1,6 @@
 import MathematicalMethodology.Export.Lean
 import MathematicalMethodology.Export.AppendixB
+import MathematicalMethodology.Export.Proofs
 import MathematicalMethodology.Examples.SecondSearch
 
 /-- `lake exe export-lean > MathematicalMethodology/Generated/FstCandidates.lean`
@@ -10,5 +11,10 @@ def main (args : List String) : IO UInt32 := do
   | ["appendixB"] =>
     IO.print (MM.Export.appendixBFile
       (MM.Examples.FirstSearch.selected ++ MM.Examples.SecondSearch.selected))
+  | ["proofs"] =>
+    let (txt, bad) := MM.Export.proofsFile
+      (MM.Examples.FirstSearch.selected ++ MM.Examples.SecondSearch.selected)
+    IO.print txt
+    IO.eprintln s!"theorems with no tactic for some step: {bad}"
   | _ => IO.print MM.Export.fstFile
   return 0

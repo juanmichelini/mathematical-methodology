@@ -62,24 +62,28 @@ def masOrdN (names : List String) (t1 t2 : Term) : Ordering := masOrdNN names t1
 /-! ## Computation: `cWide`, `cNotCase` -/
 
 /-- Haskell `cWide`: the first position (root, function part, argument, `case` scrutinee,
-body of a lambda) where `cr` applies. -/
-def cWide (cr : Term → Option Term) : Term → Option Term
+body of a lambda) where `cr` applies.  `cr` may return a payload (the binding of a lemma
+rewrite), which is passed through. -/
+def cWideG {α : Type} (cr : Term → Option (Term × α)) : Term → Option (Term × α)
   | .app e f =>
     match cr (.app e f) with
     | some u => some u
     | none =>
-      match cWide cr e with
-      | some e' => some (.app e' f)
-      | none => (cWide cr f).map fun f' => .app e f'
+      match cWideG cr e with
+      | some (e', a) => some (.app e' f, a)
+      | none => (cWideG cr f).map fun (f', a) => (.app e f', a)
   | .cas e alts =>
     match cr (.cas e alts) with
     | some u => some u
-    | none => (cWide cr e).map fun e' => .cas e' alts
+    | none => (cWideG cr e).map fun (e', a) => (.cas e' alts, a)
   | .abs b =>
     match cr (.abs b) with
     | some u => some u
-    | none => (cWide cr b).map Term.abs
+    | none => (cWideG cr b).map fun (b', a) => (.abs b', a)
   | t => cr t
+
+def cWide (cr : Term → Option Term) (t : Term) : Option Term :=
+  (cWideG (fun x => (cr x).map fun y => (y, ())) t).map (·.1)
 
 /-- Haskell `cApp`: beta at the root. -/
 def cApp : Term → Option Term
@@ -182,20 +186,23 @@ def instRhs (b : List (Nat × Term)) : Term → Option Term
     some (.app f' a')
   | _ => none
 
-/-- Haskell `aLemma`: rewrite at the root with the lemma `l` if it matches. -/
-def aLemma (l : Conj) (t : Term) : Option Term :=
+/-- Haskell `aLemma`: rewrite at the root with the lemma `l` if it matches; also the
+binding of its variables (needed to export the step). -/
+def aLemmaB (l : Conj) (t : Term) : Option (Term × Binding) :=
   match instanciar l.aff.lhs t [] with
-  | some b => instRhs b l.aff.rhs
+  | some b => (instRhs b l.aff.rhs).map fun r => (r, b)
   | none => none
 
-/-- Haskell `cBottomUp`. -/
-def cBottomUp (cr : Term → Option Term) : Term → Option Term
+def aLemma (l : Conj) (t : Term) : Option Term := (aLemmaB l t).map (·.1)
+
+/-- Haskell `cBottomUp`: function part, then argument, then the root. -/
+def cBottomUpG {α : Type} (cr : Term → Option (Term × α)) : Term → Option (Term × α)
   | .app x y =>
-    match cBottomUp cr x with
-    | some x' => some (.app x' y)
+    match cBottomUpG cr x with
+    | some (x', a) => some (.app x' y, a)
     | none =>
-      match cBottomUp cr y with
-      | some y' => some (.app x y')
+      match cBottomUpG cr y with
+      | some (y', a) => some (.app x y', a)
       | none => cr (.app x y)
   | .var i => cr (.var i)
   | .con c => cr (.con c)
@@ -239,7 +246,8 @@ inductive Reason | simp | flod | floe | reor
 
 inductive SideComment where
   | compute
-  | lemma (r : Reason) (a : Conj)
+  /-- A rewrite with the lemma `a` (as stored: possibly flipped), with the binding of its variables. -/
+  | lemma (r : Reason) (a : Conj) (b : List (Nat × Term))
 
 inductive Comment where
   | noIdea
@@ -249,7 +257,9 @@ inductive Comment where
   | right (s : SideComment)
   | both (s t : SideComment)
   | induction (v : String)
-  | caso (v : String)
+  /-- A case of an induction on `v`: the constructor, its fields (opaque constants in the
+  statements) and which of them are recursive (they have an induction hypothesis). -/
+  | caso (v con : String) (fields recs : List String)
 
 /-- Haskell `Proof`. -/
 inductive Proof where
@@ -304,32 +314,38 @@ def bothSides (f : Term → Option (SideComment × Term)) (c : Conj) : Option (C
   | some (a, l), none => some (.left a, { c with aff := { c.aff with lhs := l } })
   | none, none => none
 
-/-- Haskell `applyLemmasC`: the first lemma of the list that applies somewhere. -/
-def applyLemmasC (cr : (Term → Option Term) → Term → Option Term) (ls : List Conj) (t : Term) :
-    Option (Conj × Term) :=
-  ls.findSome? fun u => (cr (aLemma u) t).map fun w => (u, w)
+/-- Haskell `applyLemmasC`: the first lemma of the list that applies somewhere (with the
+binding of its variables). -/
+def applyLemmasB
+    (cr : (Term → Option (Term × Binding)) → Term → Option (Term × Binding))
+    (ls : List Conj) (t : Term) : Option (Conj × Term × Binding) :=
+  ls.findSome? fun u => (cr (aLemmaB u) t).map fun (w, b) => (u, w, b)
+
+/-- Where a lemma may be applied: anywhere, or bottom-up and only if it makes the term
+smaller (`masOrd`). -/
+def wideRule : (Term → Option (Term × Binding)) → Term → Option (Term × Binding) := cWideG
+
+def guardedRule (names : List String) :
+    (Term → Option (Term × Binding)) → Term → Option (Term × Binding) := fun f =>
+  cBottomUpG fun x => (f x).filter fun (y, _) => masOrdN names x y == .gt
 
 /-- Haskell `applyRec`: stored lemmas by class (simp, flod, floe, then reor with its
 `masOrd` guard), on each side. -/
 def applyRecH (rec : HRec) (c : Conj) : Option (Comment × Conj) :=
-  let side (r : Reason) (ls : List Conj) (cr : (Term → Option Term) → Term → Option Term) :=
-    bothSides (fun t => (applyLemmasC cr ls t).map fun (l, w) => (.lemma r l, w)) c
-  let wide : (Term → Option Term) → Term → Option Term := cWide
-  let guarded : (Term → Option Term) → Term → Option Term := fun f =>
-    cBottomUp fun x => (f x).filter fun y => masOrdN c.names x y == .gt
-  (side .simp rec.simp wide).orElse fun _ =>
-  (side .flod rec.flod wide).orElse fun _ =>
-  (side .floe rec.floe wide).orElse fun _ =>
-  side .reor rec.reor guarded
+  let side (r : Reason) (ls : List Conj)
+      (cr : (Term → Option (Term × Binding)) → Term → Option (Term × Binding)) :=
+    bothSides (fun t => (applyLemmasB cr ls t).map fun (l, w, b) => (.lemma r l b, w)) c
+  (side .simp rec.simp wideRule).orElse fun _ =>
+  (side .flod rec.flod wideRule).orElse fun _ =>
+  (side .floe rec.floe wideRule).orElse fun _ =>
+  side .reor rec.reor (guardedRule c.names)
 
 /-- Haskell `applyRecT env rec t` (no goal variables): does some stored lemma rewrite `t`?
 `names` are the names of the variables `t` mentions. -/
 def applyRecT (rec : HRec) (names : List String) (t : Term) : Bool :=
-  let wide : (Term → Option Term) → Term → Option Term := cWide
-  let guarded : (Term → Option Term) → Term → Option Term := fun f =>
-    cBottomUp fun x => (f x).filter fun y => masOrdN names x y == .gt
-  (applyLemmasC wide rec.simp t).isSome || (applyLemmasC wide rec.flod t).isSome ||
-  (applyLemmasC wide rec.floe t).isSome || (applyLemmasC guarded rec.reor t).isSome
+  (applyLemmasB wideRule rec.simp t).isSome || (applyLemmasB wideRule rec.flod t).isSome ||
+  (applyLemmasB wideRule rec.floe t).isSome ||
+  (applyLemmasB (guardedRule names) rec.reor t).isSome
 
 /-- Haskell `computeDontEndInCas`. -/
 def computeDontEndInCas (env : Env) (t : Term) : Option (SideComment × Term) :=
@@ -376,7 +392,8 @@ def indcFst (cx : PCtx) (c : Conj) :
         let goal : Conj := { names := vs, aff := sub ((Term.con con).mkApp fields) }
         let hs : List Conj := ((fnames.zip fs).filter (·.2 == d.name)).map fun (k, _) =>
           { names := vs, aff := sub (.const k) }
-        (Comment.caso v, hs, goal)
+        let recs := (((fnames.zip fs).filter (·.2 == d.name)).map (·.1))
+        (Comment.caso v con fnames recs, hs, goal)
       some (.induction v, cases)
   | _, _ => none
 

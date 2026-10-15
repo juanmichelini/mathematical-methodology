@@ -68,6 +68,9 @@ three levels, and the code is split the same way:
   checks it equals the generator's output. `lake exe export-lean appendixB >
   MathematicalMethodology/Generated/AppendixB.lean` does the same for the 31 functions of
   Appendix B (checked by `lake exe results`, which runs the searches).
+  `lake exe export-lean proofs` prints the lemmas of Appendix B as Lean theorems with the proofs
+  the search found (`Generated/AppendixBProofs.lean`, #35); `lake build` makes Lean check them,
+  `scripts/check-axioms.sh` and `scripts/check-negative-export.sh` run in CI.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
   not trusted and nothing trusted may import them.

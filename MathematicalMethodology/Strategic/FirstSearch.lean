@@ -37,7 +37,7 @@ def Conj.renameConst (a b : String) (c : Conj) : Conj :=
 
 def SideComment.renameConst (a b : String) : SideComment → SideComment
   | .compute => .compute
-  | .lemma r l => .lemma r (l.renameConst a b)
+  | .lemma r l bd => .lemma r (l.renameConst a b) (bd.map fun (i, t) => (i, t.renameConst a b))
 
 def Comment.renameConst (a b : String) : Comment → Comment
   | .left s => .left (s.renameConst a b)
