@@ -40,3 +40,6 @@ import MathematicalMethodology.Examples.FirstSearch
 import MathematicalMethodology.Strategic.SecondSearch
 import MathematicalMethodology.Examples.SecondSearch
 import MathematicalMethodology.Examples.TestSuite
+import MathematicalMethodology.Export.AppendixB
+import MathematicalMethodology.Generated.AppendixB
+import MathematicalMethodology.Examples.ExportAppendixB
