@@ -12,6 +12,13 @@ jobs:
       # Installs the pinned toolchain and runs `lake build`, which runs the #guard tests.
       - uses: leanprover/lean-action@v1
 
+      # Lean's kernel checks the exported theorems when the library is built; check that none depends
+      # on an axiom or `sorry`, and that Lean rejects wrong theorems.
+      - name: Exported proofs
+        run: |
+          sh scripts/check-axioms.sh
+          sh scripts/check-negative-export.sh
+
       # Compare large dumps of the strategic level with hashes of the original Haskell's output.
       - name: Compare with the Haskell
         run: lake exe haskell-check

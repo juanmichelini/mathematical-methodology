@@ -221,6 +221,13 @@ The whole output (every lemma with its smallest budget, every chain) equals the 
 
 ## Export to Lean
 
+The 123 lemmas found for f0 … f30 are exported as Lean theorems with the proofs the search found
+(`Export/Proofs.lean`, `lake exe export-lean proofs`, `Generated/AppendixBProofs.lean`). The file is a module of
+the library, so `lake build` has Lean's kernel check every theorem, independently of this project's checker;
+`scripts/check-axioms.sh` confirms none depends on an axiom or `sorry`, and `scripts/check-negative-export.sh`
+that Lean rejects wrong theorems. Steps with no tactic (unmapped): 
+0. The committed file is the generator's output: true.
+
 The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,
 also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean
 (`Examples/ExportAppendixB.lean`). The committed file is the generator's output: true.

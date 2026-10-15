@@ -58,6 +58,12 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
 - Export of the 31 functions of Appendix B (#47): `Generated/AppendixB.lean`; Lean accepts all of
   them, and addition, append and `reverse` (f3) run.
 
+- Proofs as Lean theorems (#35, parity plus): `Export/Proofs.lean`, `Generated/AppendixBProofs.lean`:
+  the 123 lemmas of f0..f30 compile in plain Lean, depend on no axioms, no `sorry`, no unmapped step.
+  `Triv` -> `try rfl`; `Compute` -> `change`; lemma/hypothesis rewrites -> `conv => lhs; rw [..]`;
+  induction with the quantified hypothesis -> `induction x generalizing y z`. Includes
+  `f3 (f2 a b) = f2 (f3 b) (f3 a)` and `f3 (f3 a) = a` (reverse).
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by
