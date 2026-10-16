@@ -11,6 +11,7 @@ import MathematicalMethodology.Examples.SecondSearch
 import MathematicalMethodology.Examples.TestSuite
 import MathematicalMethodology.Export.AppendixB
 import MathematicalMethodology.Export.Proofs
+import MathematicalMethodology.Export.Cert
 
 /-!
 # Report
@@ -97,6 +98,10 @@ def pacienciaOk : Bool :=
 def proveTraceMatches : Bool :=
   MM.Examples.ProveFst.dump == include_str "../fixtures/haskell/prove_fst.txt"
 
+/-- Is the committed `Generated/Lists.lean` what the generator prints for the list development? -/
+def listsExportUpToDate : Bool :=
+  MM.Export.exportIs MM.Export.listsFile (include_str "Generated/Lists.lean")
+
 /-- Everything behaved as expected: good certificates accepted, bad ones rejected. -/
 def allCertified : Bool :=
   MM.Examples.ProveFst.certified.all fun (_, found, ok) => found == ok
@@ -161,7 +166,8 @@ def allOk : Bool :=
   exportUpToDate &&
   conjecturesMatchHaskell &&
   pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches &&
-  suiteMatches && appendixBExportUpToDate && proofsExportUpToDate && proofsExport.2 == 0
+  suiteMatches && appendixBExportUpToDate && proofsExportUpToDate && proofsExport.2 == 0 &&
+  listsExportUpToDate
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -348,6 +354,12 @@ def markdown : String :=
     , "`scripts/check-axioms.sh` confirms none depends on an axiom or `sorry`, and `scripts/check-negative-export.sh`"
     , "that Lean rejects wrong theorems. Steps with no tactic (unmapped): "
     , s!"{proofsExport.2}. The committed file is the generator's output: {proofsExportUpToDate}."
+    , ""
+    , "The development of `Examples/Lists.lean` (`append`, `rev` and the lemmas `append_nil`, `append_assoc`,"
+    , "`rev_append`, `rev_rev`) is exported from the checker's own certificates (`Export/Cert.lean`,"
+    , "`lake exe export-lean lists`, `Generated/Lists.lean`): the exporter replays `Cert.check` and refuses any"
+    , "development the checker rejects. Lean's kernel checks the four theorems when the library is built"
+    , s!"(`scripts/check-axioms.sh` also covers this file). The committed file is the generator's output: {listsExportUpToDate}."
     , ""
     , s!"The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,"
     , "also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean"

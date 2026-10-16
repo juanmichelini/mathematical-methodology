@@ -71,6 +71,10 @@ three levels, and the code is split the same way:
   `lake exe export-lean proofs` prints the lemmas of Appendix B as Lean theorems with the proofs
   the search found (`Generated/AppendixBProofs.lean`, #35); `lake build` makes Lean check them,
   `scripts/check-axioms.sh` and `scripts/check-negative-export.sh` run in CI.
+  `lake exe export-lean lists` prints the *checker's* certificates for the list development
+  (`Export/Cert.lean`, `Generated/Lists.lean`): it replays `Cert.check` and refuses developments
+  the checker rejects; Lean's kernel then re-checks the theorems. Both generated files are covered
+  by the same CI scripts.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
   not trusted and nothing trusted may import them.

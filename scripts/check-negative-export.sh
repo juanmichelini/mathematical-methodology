@@ -27,4 +27,29 @@ check "false step: change to a different statement" '
 theorem bad3 (a : C_u_cR) : f0 C_u_cR.C_u_cR_d0 a = a := by
   change C_u_cR.C_u_cR_d1 a = a
   try rfl'
+# The same for the export of the checker's own certificates (Generated/Lists.lean).
+checkL() {
+  T="$(mktemp -t neg.XXXXXX).lean"
+  printf '%s\n' "import MathematicalMethodology.Generated.Lists" "set_option linter.unusedVariables false" "namespace ListsEx" "$2" "end ListsEx" > "$T"
+  if lake env lean "$T" > /dev/null 2>&1; then echo "FAIL: Lean accepted: $1"; bad=1; else echo "ok: Lean rejected: $1"; fi
+}
+checkL "false statement (append x nil = nil) with the proof of append_nil" '
+theorem badL1 {ty_Elem : Type} (x : ExList ty_Elem) :
+    append x (ExList.nil : ExList ty_Elem) = (ExList.nil : ExList ty_Elem) := by
+  induction x with
+  | nil =>
+    change (ExList.nil : ExList ty_Elem) = (ExList.nil : ExList ty_Elem)
+    try rfl
+  | cons f0 f1 ih_f1 =>
+    change ExList.cons f0 (append f1 (ExList.nil : ExList ty_Elem)) = (ExList.nil : ExList ty_Elem)
+    conv => lhs; rw [ih_f1]
+    try rfl'
+checkL "true statement (rev (rev x) = x), induction case left unproved" '
+theorem badL2 {ty_Elem : Type} (x : ExList ty_Elem) : rev (rev x) = x := by
+  induction x with
+  | nil => try rfl
+  | cons f0 f1 ih_f1 => try rfl'
+checkL "a step the checker would not accept: rewrite with a lemma that does not apply" '
+theorem badL3 {ty_Elem : Type} (x : ExList ty_Elem) : rev x = x := by
+  conv => lhs; rw [rev_rev x]'
 exit $bad

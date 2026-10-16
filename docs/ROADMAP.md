@@ -64,6 +64,15 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   induction with the quantified hypothesis -> `induction x generalizing y z`. Includes
   `f3 (f2 a b) = f2 (f3 b) (f3 a)` and `f3 (f3 a) = a` (reverse).
 
+- The checker's own certificates as Lean theorems (#35): `Export/Cert.lean`, `Generated/Lists.lean`
+  (`rev (rev xs) = xs` and its three lemmas). The exporter replays `Cert.check` (`computeWide`,
+  `rewriteFirst` with the instance the matcher found, `inductCases`), prints `change` / `conv => lhs;
+  rw [..]` / `induction ... with` and refuses developments the checker rejects. Lean's kernel accepts
+  the four theorems with no axioms; `scripts/check-negative-export.sh` shows it rejects wrong ones.
+  Limits: only first-order statements are printed (the exporter fails loudly otherwise), and
+  `rw` rewrites every occurrence of an instance where the checker rewrites the first, so a
+  certificate relying on that difference would fail to compile (none of the examples does).
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by
