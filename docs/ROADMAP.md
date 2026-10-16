@@ -73,6 +73,16 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   `rw` rewrites every occurrence of an instance where the checker rewrites the first, so a
   certificate relying on that difference would fail to compile (none of the examples does).
 
+- Traces (#39): `lake exe trace [dir] [first|all]` writes `enumerated.txt`, `conjectured.txt`,
+  `attempted.txt`, `proved.txt` and `summary.txt` (default `trace/`, git-ignored, not committed).
+  Everything is kept, not just the proved lemmas: 64 + 164 candidates, every conjecture of every
+  batch (about 7 400 + 400 000), whether it was tried or skipped because a stored lemma rewrites it,
+  and every attempt with its outcome; a failure says why (no rule applies / cycle cut / step budget
+  exhausted). Each artifact is printed as the de Bruijn term and as Lean text; the 123 lemmas of the
+  31 kept functions also link their Lean theorem. Two runs are byte-identical. Limits: the Lean text
+  of a candidate or conjecture is printed, not compiled (only the kept functions and their lemmas
+  are library modules); the full run takes minutes and about 150 MB.
+
 ## Next, in rough order
 
 1. **Discharge the soundness assumptions mechanically.** `SigSound` is currently proved by

@@ -19,6 +19,13 @@ jobs:
           sh scripts/check-axioms.sh
           sh scripts/check-negative-export.sh
 
+      # The trace executable (first search only: seconds). It exits non-zero if the kept functions
+      # are not the three of Appendix B; the output is not committed.
+      - name: Traces (first search)
+        run: |
+          lake build trace
+          lake exe trace "$RUNNER_TEMP/trace" first
+
       # Compare large dumps of the strategic level with hashes of the original Haskell's output.
       - name: Compare with the Haskell
         run: lake exe haskell-check
