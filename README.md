@@ -21,6 +21,7 @@ it needs (`append_nil`, `append_assoc`, `rev_append`).
 ```
 lake build                            # builds and runs the #guard tests
 lake exe results > results/report.md  # regenerate the committed report
+lake exe trace [dir] [first|all]      # write traces of everything enumerated/conjectured/attempted (not committed)
 ```
 
 Tests are `#guard` checks inside the Lean files, so a successful build means they pass.

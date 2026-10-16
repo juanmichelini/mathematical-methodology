@@ -2,3 +2,4 @@
 /build/
 *.olean
 lake-manifest.json.bak
+/trace/

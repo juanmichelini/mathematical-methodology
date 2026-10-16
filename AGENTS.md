@@ -75,6 +75,10 @@ three levels, and the code is split the same way:
   (`Export/Cert.lean`, `Generated/Lists.lean`): it replays `Cert.check` and refuses developments
   the checker rejects; Lean's kernel then re-checks the theorems. Both generated files are covered
   by the same CI scripts.
+- `Trace.lean` and `TraceMain.lean` (`lake exe trace [dir] [first|all]`, #39) write traces of what was
+  enumerated, conjectured, attempted (failures with their reason) and proved, each artifact in its
+  de Bruijn form and in its Lean export form. Output only: the directory (`trace/`) is git-ignored and
+  nothing is committed; the run is deterministic. Display code, nothing trusted imports it.
 - `Examples/` holds worked developments (currently `rev (rev xs) = xs`).
 - `Pretty.lean`, `Report.lean` and `Results.lean` are display and reporting only; they are
   not trusted and nothing trusted may import them.

@@ -18,3 +18,7 @@ root = "ExportMain"
 [[lean_exe]]
 name = "haskell-check"
 root = "HaskellCheck"
+
+[[lean_exe]]
+name = "trace"
+root = "TraceMain"
