@@ -40,11 +40,11 @@ commit.
 - **Parity: reached.** The 31 functions of Appendix B, their lemma statements and finished-proof
   counts, and the 64 / 164 candidate counts match the original Haskell, which was run on GHC to
   compare. The 31 functions export to Lean and run (`Generated/AppendixB.lean`).
-- **Parity plus: not reached.** The 123 Appendix B lemmas (with the search's proofs) and the list
-  development (with the checker's certificates, `rev (rev xs) = xs`) compile in Lean with no axioms
-  (`Generated/AppendixBProofs.lean`, `Generated/Lists.lean`). Not yet: the 35-lemma suite and
-  chains of `Test.hs`, and a gate that makes a lemma count as proved only if its Lean theorem
-  compiles ([#53](https://github.com/juanmichelini/mathematical-methodology/issues/53)).
+- **Parity plus: not reached.** The 123 Appendix B lemmas, with the proofs the search found,
+  compile in Lean with no axioms (`Generated/AppendixBProofs.lean`). Not yet: the 35-lemma suite
+  and chains of `Test.hs`, and a gate that makes a lemma count as proved only if its Lean theorem
+  compiles ([#53](https://github.com/juanmichelini/mathematical-methodology/issues/53)). Hand-written
+  certificates are not counted (they are not mechanical).
 - **Traces**: `lake exe trace` records everything enumerated, conjectured and attempted, not only
   what was proved (not committed).
 
