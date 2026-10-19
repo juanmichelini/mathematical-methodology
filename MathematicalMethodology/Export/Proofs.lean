@@ -169,25 +169,29 @@ def exportTheorem (ds : List DatasH) (avail : List Avail) (name : String) (c : C
     String :=
   "\n".intercalate (theoremHeader ds name c :: proofLines ds avail "  " p) ++ "\n"
 
-/-- The theorems of all selected functions, in order; each can use every earlier lemma. -/
-def proofsOf (ds : List DatasH) (sel : List Selected) : List String × Nat :=
-  let rec go (avail : List Avail) : List Selected → List String × Nat
-    | [] => ([], 0)
-    | s :: rest =>
-      let idx := s.proofs.zipIdx
-      let (texts, avail', bad) := idx.foldl
+/-- Theorems for groups of proofs, in order; each can use every earlier theorem.  A group is a
+name prefix and the proofs found for it; theorem `i` of group `g` is called `g_l{i+1}`.
+Returns the theorems, the lemma-to-name list, and the number of steps with no tactic. -/
+def theoremsFor (ds : List DatasH) (initial : List Avail) (groups : List (String × List Proof)) :
+    List String × List Avail × Nat :=
+  groups.foldl
+    (fun (acc : List String × List Avail × Nat) (g, proofs) =>
+      proofs.zipIdx.foldl
         (fun (acc : List String × List Avail × Nat) (p, i) =>
           let (texts, av, bad) := acc
           match p.head with
           | none => acc
           | some c =>
-            let name := s!"{sanitize s.name}_l{i + 1}"
-            let t := exportTheorem ds av name c p
-            (texts ++ [t], av ++ [⟨name, c⟩], bad + countUnmapped (proofLines ds av "  " p)))
-        ([], avail, 0)
-      let (more, bad2) := go avail' rest
-      (texts ++ more, bad + bad2)
-  go [] sel
+            let name := s!"{sanitize g}_l{i + 1}"
+            (texts ++ [exportTheorem ds av name c p], av ++ [⟨name, c⟩],
+              bad + countUnmapped (proofLines ds av "  " p)))
+        acc)
+    ([], initial, 0)
+
+/-- The theorems of all selected functions, in order; each can use every earlier lemma. -/
+def proofsOf (ds : List DatasH) (sel : List Selected) : List String × Nat :=
+  let (ts, _, bad) := theoremsFor ds [] (sel.map fun s => (s.name, s.proofs))
+  (ts, bad)
 
 def proofsFile (sel : List Selected) : String × Nat :=
   let (ts, bad) := proofsOf datas sel

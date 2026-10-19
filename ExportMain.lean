@@ -1,6 +1,7 @@
 import MathematicalMethodology.Export.Lean
 import MathematicalMethodology.Export.AppendixB
 import MathematicalMethodology.Export.Proofs
+import MathematicalMethodology.Export.Suite
 import MathematicalMethodology.Examples.SecondSearch
 
 /-- `lake exe export-lean > MathematicalMethodology/Generated/FstCandidates.lean`
@@ -16,5 +17,9 @@ def main (args : List String) : IO UInt32 := do
       (MM.Examples.FirstSearch.selected ++ MM.Examples.SecondSearch.selected)
     IO.print txt
     IO.eprintln s!"theorems with no tactic for some step: {bad}"
+  | ["suite"] =>
+    let (txt, n, failed, bad) := MM.Export.suiteFile
+    IO.print txt
+    IO.eprintln s!"theorems: {n}; lemmas the system failed to prove: {failed.length} {failed}; steps with no tactic: {bad}"
   | _ => IO.print MM.Export.fstFile
   return 0

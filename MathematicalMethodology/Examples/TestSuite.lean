@@ -57,8 +57,8 @@ def chainLines (name : String) (bs : List BatchResult) : List String :=
 /-- Lemmas of the proofs found, as statements. -/
 def lemmasOfBatches (bs : List BatchResult) : List Conj := lemmasOf bs
 
-/-- The chains of `Test.hs`. -/
-def chains : List String :=
+/-- The chains of `Test.hs`: for each function, the batches `findlemas` produced, in order. -/
+def chainData : List (String × List BatchResult) :=
   let find (e : Env) (t : TEnv) (rec_ : HRec) (f : String) := findlemas (ctxFor e) t 30 rec_ f
   let lsuma := find (env.take 3) (tenv.take 5) {} "suma"
   let lsumar := HRec.addAll env {} (lemmasOf lsuma)
@@ -67,11 +67,24 @@ def chains : List String :=
   let lexp := find (env.take 5) (tenv.take 6) lmultr "flipexp"
   let lconcat := find env tenv {} "concat"
   let lconcatr := HRec.addAll env {} (lemmasOf lconcat)
-  chainLines "suma" lsuma ++ chainLines "mult" lmult ++ chainLines "flipexp" lexp ++
-  chainLines "min" (find env tenv {} "min") ++ chainLines "max" (find env tenv {} "max") ++
-  chainLines "absr" (find env tenv {} "absr") ++ chainLines "and" (find env tenv {} "and") ++
-  chainLines "or" (find env tenv {} "or") ++ chainLines "not" (find env tenv {} "not") ++
-  chainLines "concat" lconcat ++ chainLines "rev" (find env tenv lconcatr "rev")
+  [("suma", lsuma), ("mult", lmult), ("flipexp", lexp),
+   ("min", find env tenv {} "min"), ("max", find env tenv {} "max"),
+   ("absr", find env tenv {} "absr"), ("and", find env tenv {} "and"),
+   ("or", find env tenv {} "or"), ("not", find env tenv {} "not"),
+   ("concat", lconcat), ("rev", find env tenv lconcatr "rev")]
+
+def chains : List String :=
+  chainData.flatMap fun (n, bs) => chainLines n bs
+
+/-- `provelemas 30`: the proof of each of the 35 lemmas, from `lemascomp` and the lemmas before it. -/
+def lemmaProofs : List Proof :=
+  let cx := ctxFor env
+  lemas.zipIdx.map fun (l, n) => prove cx 30 (HRec.addAll env {} (lemascomp ++ lemas.take n)) l
+
+/-- The proofs of the five `lemascomp` lemmas (each from those before it). -/
+def compProofs : List Proof :=
+  let cx := ctxFor env
+  lemascomp.zipIdx.map fun (l, n) => prove cx 30 (HRec.addAll env {} (lemascomp.take n)) l
 
 def dump : String :=
   "\n".intercalate (s!"## lemas {lemas.length}" :: lemmaLines ++ chains) ++ "\n"

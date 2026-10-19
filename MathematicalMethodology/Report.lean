@@ -11,6 +11,7 @@ import MathematicalMethodology.Examples.SecondSearch
 import MathematicalMethodology.Examples.TestSuite
 import MathematicalMethodology.Export.AppendixB
 import MathematicalMethodology.Export.Proofs
+import MathematicalMethodology.Export.Suite
 
 /-!
 # Report
@@ -150,6 +151,11 @@ def proofsExport : String × Nat :=
 
 def proofsExportUpToDate : Bool := proofsExport.1 == (include_str "Generated/AppendixBProofs.lean")
 
+/-- The data types, functions and proofs of `Test.hs` (the 35 lemmas and the chains). -/
+def suiteExport := MM.Export.suiteFile
+
+def suiteExportUpToDate : Bool := suiteExport.1 == (include_str "Generated/Suite.lean")
+
 def theoremCount : Nat :=
   (proofsExport.1.splitOn "\n").filter (fun (l : String) => l.startsWith "theorem ") |>.length
 
@@ -161,7 +167,8 @@ def allOk : Bool :=
   exportUpToDate &&
   conjecturesMatchHaskell &&
   pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches &&
-  suiteMatches && appendixBExportUpToDate && proofsExportUpToDate && proofsExport.2 == 0
+  suiteMatches && appendixBExportUpToDate && proofsExportUpToDate && proofsExport.2 == 0 &&
+  suiteExportUpToDate && suiteExport.2.2.2 == 0
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -348,6 +355,14 @@ def markdown : String :=
     , "`scripts/check-axioms.sh` confirms none depends on an axiom or `sorry`, and `scripts/check-negative-export.sh`"
     , "that Lean rejects wrong theorems. Steps with no tactic (unmapped): "
     , s!"{proofsExport.2}. The committed file is the generator's output: {proofsExportUpToDate}."
+    , ""
+    , "Everything the system proves in the suite is exported the same way (`Export/Suite.lean`, `lake exe export-lean suite`,"
+    , "`Generated/Suite.lean`): the data types and functions of `Test.env`, the `lemascomp` lemmas, the 35 lemmas (each"
+    , "may use exactly the theorems the Haskell's `provelemas` gives it) and the lemmas of every chain. "
+    , s!"{suiteExport.2.1} theorems are printed; steps with no tactic: {suiteExport.2.2.2}. A lemma the system could not prove is not"
+    , s!"printed as a theorem: {suiteExport.2.2.1.length} ({", ".intercalate suiteExport.2.2.1}); the Haskell takes it as given. The committed file"
+    , s!"is the generator's output: {suiteExportUpToDate}. `scripts/gate-compile.py` is the compile gate: a proof counts only if"
+    , "Lean accepts its theorem; CI runs it on every generated proofs file and a negative test shows it rejects a corrupted proof."
     , ""
     , s!"The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,"
     , "also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean"

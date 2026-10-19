@@ -19,6 +19,18 @@ jobs:
           sh scripts/check-axioms.sh
           sh scripts/check-negative-export.sh
 
+      # The compile gate: every generated proofs file is regenerated on the clean runner, must equal the
+      # committed copy, and every theorem in it must compile (found N, compiled N).
+      - name: Compile gate
+        run: |
+          lake build export-lean
+          for m in proofs suite; do
+            case $m in proofs) f=AppendixBProofs;; suite) f=Suite;; esac
+            lake exe export-lean $m > /tmp/$f.lean 2> /dev/null
+            diff -u MathematicalMethodology/Generated/$f.lean /tmp/$f.lean
+            python3 scripts/gate-compile.py /tmp/$f.lean
+          done
+
       # The trace executable (first search only: seconds). It exits non-zero if the kept functions
       # are not the three of Appendix B; the output is not committed.
       - name: Traces (first search)

@@ -21,3 +21,4 @@ check() { # file module namespace
 }
 
 check MathematicalMethodology/Generated/AppendixBProofs.lean MathematicalMethodology.Generated.AppendixBProofs AppB
+check MathematicalMethodology/Generated/Suite.lean MathematicalMethodology.Generated.Suite SuiteEx

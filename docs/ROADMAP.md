@@ -64,6 +64,13 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   induction with the quantified hypothesis -> `induction x generalizing y z`. Includes
   `f3 (f2 a b) = f2 (f3 b) (f3 a)` and `f3 (f3 a) = a` (reverse).
 
+- Everything proved in the suite as Lean theorems (#53): `Export/Suite.lean`, `Generated/Suite.lean`
+  (93 theorems: `lemascomp`, the 35 lemmas, the chains), plus `scripts/gate-compile.py`, the compile
+  gate (found N, compiled N; negative test with a corrupted proof). One `lemascomp` lemma the system
+  does not prove is reported, not exported. Still open for #53: the gate is not inside the discovery
+  loop (a lemma still counts as found when its Lean theorem fails; the gate reports it), and only
+  developments of the repository are exported, not arbitrary new ones.
+
 - Traces (#39): `lake exe trace [dir] [first|all]` writes `enumerated.txt`, `conjectured.txt`,
   `attempted.txt`, `proved.txt` and `summary.txt` (default `trace/`, git-ignored, not committed).
   Everything is kept, not just the proved lemmas: 64 + 164 candidates, every conjecture of every
