@@ -58,20 +58,11 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
 - Export of the 31 functions of Appendix B (#47): `Generated/AppendixB.lean`; Lean accepts all of
   them, and addition, append and `reverse` (f3) run.
 
-- Proofs as Lean theorems (#35, parity plus): `Export/Proofs.lean`, `Generated/AppendixBProofs.lean`:
+- Proofs as Lean theorems (#35; not yet parity plus, see #53): `Export/Proofs.lean`, `Generated/AppendixBProofs.lean`:
   the 123 lemmas of f0..f30 compile in plain Lean, depend on no axioms, no `sorry`, no unmapped step.
   `Triv` -> `try rfl`; `Compute` -> `change`; lemma/hypothesis rewrites -> `conv => lhs; rw [..]`;
   induction with the quantified hypothesis -> `induction x generalizing y z`. Includes
   `f3 (f2 a b) = f2 (f3 b) (f3 a)` and `f3 (f3 a) = a` (reverse).
-
-- The checker's own certificates as Lean theorems (#35): `Export/Cert.lean`, `Generated/Lists.lean`
-  (`rev (rev xs) = xs` and its three lemmas). The exporter replays `Cert.check` (`computeWide`,
-  `rewriteFirst` with the instance the matcher found, `inductCases`), prints `change` / `conv => lhs;
-  rw [..]` / `induction ... with` and refuses developments the checker rejects. Lean's kernel accepts
-  the four theorems with no axioms; `scripts/check-negative-export.sh` shows it rejects wrong ones.
-  Limits: only first-order statements are printed (the exporter fails loudly otherwise), and
-  `rw` rewrites every occurrence of an instance where the checker rewrites the first, so a
-  certificate relying on that difference would fail to compile (none of the examples does).
 
 - Traces (#39): `lake exe trace [dir] [first|all]` writes `enumerated.txt`, `conjectured.txt`,
   `attempted.txt`, `proved.txt` and `summary.txt` (default `trace/`, git-ignored, not committed).
