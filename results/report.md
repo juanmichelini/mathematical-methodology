@@ -228,6 +228,14 @@ the library, so `lake build` has Lean's kernel check every theorem, independentl
 that Lean rejects wrong theorems. Steps with no tactic (unmapped): 
 0. The committed file is the generator's output: true.
 
+Everything the system proves in the suite is exported the same way (`Export/Suite.lean`, `lake exe export-lean suite`,
+`Generated/Suite.lean`): the data types and functions of `Test.env`, the `lemascomp` lemmas, the 35 lemmas (each
+may use exactly the theorems the Haskell's `provelemas` gives it) and the lemmas of every chain. 
+93 theorems are printed; steps with no tactic: 0. A lemma the system could not prove is not
+printed as a theorem: 1 (comp: x:Nat y:Nat |- mult (S x) y = suma y (mult x y)); the Haskell takes it as given. These are exactly the expected assumed lemmas: true. The committed file
+is the generator's output: true. `scripts/gate-compile.py` is the compile gate: a proof counts only if
+Lean accepts its theorem; CI runs it on every generated proofs file and a negative test shows it rejects a corrupted proof.
+
 The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,
 also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean
 (`Examples/ExportAppendixB.lean`). The committed file is the generator's output: true.

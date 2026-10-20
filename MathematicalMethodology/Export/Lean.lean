@@ -76,25 +76,36 @@ def exportData (ds : List DatasH) (d : DatasH) : String :=
   s!"inductive {head} where\n{"\n".intercalate ctors}\n  deriving DecidableEq, Repr\n"
 
 mutual
-  /-- `self` is the Lean name of the function being defined (`.const "f"`); `k` parameters,
-  `n` = arity of the enclosing alternative (names as in `Strategic/Show.lean`). -/
-  def leanTerm (ds : List DatasH) (self : String) (k n : Nat) : Term → String
-    | .var i => if i < n then letter (k + (n - 1 - i)) else letter (i - n)
+  /-- `self` is the Lean name of the function being defined (`.const "f"`); `k` is its number of
+  parameters and `ctx` the names of the variables in scope, de Bruijn index 0 first (the
+  parameters, then the fields of every enclosing alternative).  A field of the `j`-th
+  enclosing-and-own alternative variable is called `letter (k + j)`, so nested `case`s never
+  reuse a name. -/
+  def leanTerm (ds : List DatasH) (self : String) (k : Nat) (ctx : List String) : Term → String
+    | .var i => ctx.getD i s!"_v{i}"
     | .con c => ctorName ds c
     | .const f => if f == "f" then self else sanitize f
     | .app x (.app y z) =>
-      leanTerm ds self k n x ++ " (" ++ leanTerm ds self k n (.app y z) ++ ")"
-    | .app x y => leanTerm ds self k n x ++ " " ++ leanTerm ds self k n y
-    | .abs b => "fun _ => " ++ leanTerm ds self k n b
+      leanTerm ds self k ctx x ++ " (" ++ leanTerm ds self k ctx (.app y z) ++ ")"
+    | .app x y => leanTerm ds self k ctx x ++ " " ++ leanTerm ds self k ctx y
+    | .abs b => "fun _ => " ++ leanTerm ds self k ctx b
     | .cas s alts =>
-      s!"match {leanTerm ds self k n s} with\n{(leanAlts ds self k alts).trimRight}"
+      s!"(match {leanTerm ds self k ctx s} with\n{(leanAlts ds self k ctx alts).trimRight})"
 
-  def leanAlts (ds : List DatasH) (self : String) (k : Nat) : Alts → String
+  def leanAlts (ds : List DatasH) (self : String) (k : Nat) (ctx : List String) : Alts → String
     | .nil => ""
     | .alt c n b rest =>
-      let pat := String.join ((List.range n).map fun j => " " ++ letter (k + j))
-      s!"| {ctorName ds c}{pat} => {leanTerm ds self k n b}\n{leanAlts ds self k rest}"
+      let fields := (List.range n).map fun j => letter (k + (ctx.length - k) + j)
+      let pat := String.join (fields.map (" " ++ ·))
+      s!"| {ctorName ds c}{pat} => {leanTerm ds self k (fields.reverse ++ ctx) b}\n{leanAlts ds self k ctx rest}"
 end
+
+/-- A `match` is parenthesised wherever it occurs, so that a nested one does not swallow the
+alternatives that follow it; the outermost one needs no parentheses. -/
+def unparen (t : Term) (s : String) : String :=
+  match t with
+  | .cas .. => (s.drop 1).dropRight 1
+  | _ => s
 
 /-- `def name {ty_a …} (b : T) (a : T) : R := match b with …` for a generated function. -/
 def exportFun (ds : List DatasH) (name : String) (tipo : Ty) (t : Term) : String :=
@@ -104,7 +115,7 @@ def exportFun (ds : List DatasH) (name : String) (tipo : Ty) (t : Term) : String
   let implicit := vars.map fun v => s!" \{{paramName v} : Type}"
   let params := (ptys.zipIdx.map fun (ty, i) => s!" ({letter (k - 1 - i)} : {renderTy ds ty})")
   s!"def {name}{String.join implicit}{String.join params} : {renderTy ds res} :=\n  " ++
-    (leanTerm ds name k 0 (funBody t)).replace "\n" "\n  " ++ "\n"
+    (unparen (funBody t) (leanTerm ds name k ((List.range k).map letter) (funBody t))).replace "\n" "\n  " ++ "\n"
 
 /-- A whole file: the data types, then the functions. -/
 def exportFile (title : String) (ns : String) (ds : List DatasH) (funs : List (String × Ty × Term)) : String :=

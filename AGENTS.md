@@ -71,6 +71,11 @@ three levels, and the code is split the same way:
   `lake exe export-lean proofs` prints the lemmas of Appendix B as Lean theorems with the proofs
   the search found (`Generated/AppendixBProofs.lean`, #35); `lake build` makes Lean check them,
   `scripts/check-axioms.sh` and `scripts/check-negative-export.sh` run in CI.
+  `lake exe export-lean suite` does the same for everything proved in `Examples/TestSuite.lean`
+  (`Export/Suite.lean`, `Generated/Suite.lean`, #53): the data types and functions of `Test.hs`, the
+  35 lemmas and the lemma chains. `scripts/gate-compile.py FILE` is the compile gate: it reports
+  `found N, compiled M` per generated file and fails if any theorem does not compile; CI
+  regenerates each file, diffs it against the committed copy and runs the gate.
   Only proofs the system found are exported: a hand-written certificate is not a mechanical result.
 - `Trace.lean` and `TraceMain.lean` (`lake exe trace [dir] [first|all]`, #39) write traces of what was
   enumerated, conjectured, attempted (failures with their reason) and proved, each artifact in its
