@@ -154,6 +154,11 @@ def proofsExportUpToDate : Bool := proofsExport.1 == (include_str "Generated/App
 /-- The data types, functions and proofs of `Test.hs` (the 35 lemmas and the chains). -/
 def suiteExport := MM.Export.suiteFile
 
+/-- A development written for the export, not taken from the thesis (#59). -/
+def treesExport := MM.Export.treesFile
+
+def treesExportUpToDate : Bool := treesExport.1 == (include_str "Generated/Trees.lean")
+
 def suiteExportUpToDate : Bool := suiteExport.1 == (include_str "Generated/Suite.lean")
 
 def theoremCount : Nat :=
@@ -168,7 +173,8 @@ def allOk : Bool :=
   conjecturesMatchHaskell &&
   pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches &&
   suiteMatches && appendixBExportUpToDate && proofsExportUpToDate && proofsExport.2 == 0 &&
-  suiteExportUpToDate && suiteExport.2.2.2 == 0 && suiteExport.2.2.1 == MM.Export.suiteAssumed
+  suiteExportUpToDate && suiteExport.2.2.2 == 0 && suiteExport.2.2.1 == MM.Export.suiteAssumed &&
+  treesExportUpToDate && treesExport.2.2.1.isEmpty && treesExport.2.2.2 == 0
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -363,6 +369,12 @@ def markdown : String :=
     , s!"printed as a theorem: {suiteExport.2.2.1.length} ({", ".intercalate suiteExport.2.2.1}); the Haskell takes it as given. These are exactly the expected assumed lemmas: {suiteExport.2.2.1 == MM.Export.suiteAssumed}. The committed file"
     , s!"is the generator's output: {suiteExportUpToDate}. `scripts/gate-compile.py` is the compile gate: a proof counts only if"
     , "Lean accepts its theorem; CI runs it on every generated proofs file and a negative test shows it rejects a corrupted proof."
+    , ""
+    , "A development the exporter was not written against (`Examples/Trees.lean`, #59): polymorphic binary trees with `mirror`,"
+    , "`size` and `flatten` (and `suma`, `concat`, `rev`). The system found the lemmas, including `mirror (mirror t) = t`, and the same"
+    , s!"generator exported them (`lake exe export-lean trees`, `Generated/Trees.lean`): {treesExport.2.1} theorems, lemmas the system"
+    , s!"failed to prove: {treesExport.2.2.1.length}, steps with no tactic: {treesExport.2.2.2}. The committed file is the generator's output:"
+    , s!"{treesExportUpToDate}. CI runs the compile gate on it like on the others."
     , ""
     , s!"The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,"
     , "also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean"

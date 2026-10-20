@@ -24,8 +24,8 @@ jobs:
       - name: Compile gate
         run: |
           lake build export-lean
-          for m in proofs suite; do
-            case $m in proofs) f=AppendixBProofs;; suite) f=Suite;; esac
+          for m in proofs suite trees; do
+            case $m in proofs) f=AppendixBProofs;; suite) f=Suite;; trees) f=Trees;; esac
             lake exe export-lean $m > /tmp/$f.lean 2> /dev/null
             diff -u MathematicalMethodology/Generated/$f.lean /tmp/$f.lean
             python3 scripts/gate-compile.py /tmp/$f.lean

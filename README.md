@@ -46,7 +46,8 @@ commit.
   no axioms, and a compile gate (`scripts/gate-compile.py`) reports found vs compiled and fails
   on any proof that does not compile. Not yet: the gate sits outside the discovery loop, one
   `lemascomp` lemma of `Test.hs` is not proved by the system (the Haskell takes it as given), and
-  only these developments are covered, not an arbitrary new one
+  only a few developments are covered (a third, polymorphic trees, was written as a generality test and
+  passes), not an arbitrary new one
   ([#53](https://github.com/juanmichelini/mathematical-methodology/issues/53)).
 - **Traces**: `lake exe trace` records everything enumerated, conjectured and attempted, not only
   what was proved (not committed).

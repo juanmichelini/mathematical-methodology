@@ -76,6 +76,8 @@ three levels, and the code is split the same way:
   35 lemmas and the lemma chains. `scripts/gate-compile.py FILE` is the compile gate: it reports
   `found N, compiled M` per generated file and fails if any theorem does not compile; CI
   regenerates each file, diffs it against the committed copy and runs the gate.
+  `lake exe export-lean trees` does it for `Examples/Trees.lean` (#59), a development that is not
+  from the thesis (polymorphic trees), as a generality test; the same gate runs on it in CI.
   Only proofs the system found are exported: a hand-written certificate is not a mechanical result.
 - `Trace.lean` and `TraceMain.lean` (`lake exe trace [dir] [first|all]`, #39) write traces of what was
   enumerated, conjectured, attempted (failures with their reason) and proved, each artifact in its
