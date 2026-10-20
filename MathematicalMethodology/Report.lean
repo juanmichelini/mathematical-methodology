@@ -154,6 +154,11 @@ def proofsExportUpToDate : Bool := proofsExport.1 == (include_str "Generated/App
 /-- The data types, functions and proofs of `Test.hs` (the 35 lemmas and the chains). -/
 def suiteExport := MM.Export.suiteFile
 
+/-- The only lemma of the suite the system does not prove: a `lemascomp` fact that needs `suma`
+commutativity, which the suite proves later.  The Haskell takes it as given.  Anything else
+unproved (or this one becoming provable) changes the report and must be looked at. -/
+def suiteAssumed : List String := ["comp: x:Nat y:Nat |- mult (S x) y = suma y (mult x y)"]
+
 def suiteExportUpToDate : Bool := suiteExport.1 == (include_str "Generated/Suite.lean")
 
 def theoremCount : Nat :=
@@ -168,7 +173,7 @@ def allOk : Bool :=
   conjecturesMatchHaskell &&
   pacienciaOk && proveTraceMatches && allCertified && firstSearchMatches && secondSearchMatches &&
   suiteMatches && appendixBExportUpToDate && proofsExportUpToDate && proofsExport.2 == 0 &&
-  suiteExportUpToDate && suiteExport.2.2.2 == 0
+  suiteExportUpToDate && suiteExport.2.2.2 == 0 && suiteExport.2.2.1 == suiteAssumed
 
 /-- Rows of the lemma-store classification: one per stored lemma. -/
 def storeRows : List String :=
@@ -360,7 +365,7 @@ def markdown : String :=
     , "`Generated/Suite.lean`): the data types and functions of `Test.env`, the `lemascomp` lemmas, the 35 lemmas (each"
     , "may use exactly the theorems the Haskell's `provelemas` gives it) and the lemmas of every chain. "
     , s!"{suiteExport.2.1} theorems are printed; steps with no tactic: {suiteExport.2.2.2}. A lemma the system could not prove is not"
-    , s!"printed as a theorem: {suiteExport.2.2.1.length} ({", ".intercalate suiteExport.2.2.1}); the Haskell takes it as given. The committed file"
+    , s!"printed as a theorem: {suiteExport.2.2.1.length} ({", ".intercalate suiteExport.2.2.1}); the Haskell takes it as given. These are exactly the expected assumed lemmas: {suiteExport.2.2.1 == suiteAssumed}. The committed file"
     , s!"is the generator's output: {suiteExportUpToDate}. `scripts/gate-compile.py` is the compile gate: a proof counts only if"
     , "Lean accepts its theorem; CI runs it on every generated proofs file and a negative test shows it rejects a corrupted proof."
     , ""
