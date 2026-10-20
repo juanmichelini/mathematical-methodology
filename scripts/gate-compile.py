@@ -42,6 +42,8 @@ if r.returncode != 0 and not failed and not other:
 found = len(thm_at)
 ok = found - len(failed)
 print(f"{path}: found {found}, compiled {ok}")
+if failed or other:
+    print("  INVARIANT VIOLATED (should not happen): the system proved these lemmas, so Lean must accept their theorems")
 for t, msg in failed.items():
     print(f"  FAILED {t}: {msg}")
 for msg in other:

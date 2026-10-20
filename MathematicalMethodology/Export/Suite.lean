@@ -21,6 +21,11 @@ namespace MM.Export
 
 open MM MM.Strategic MM.Examples MM.Examples.TestEnv MM.Examples.TestSuite
 
+/-- The only lemma of the suite the system does not prove: a `lemascomp` fact that needs `suma`
+commutativity, which the suite proves later.  The Haskell takes it as given.  Anything else
+unproved (or this one becoming provable) changes the report and must be looked at. -/
+def suiteAssumed : List String := ["comp: x:Nat y:Nat |- mult (S x) y = suma y (mult x y)"]
+
 /-- Signature of a function of the environment. -/
 def sigOf (f : String) : Option Ty := (tenv.find? (·.1 == Term.const f)).map (·.2)
 
