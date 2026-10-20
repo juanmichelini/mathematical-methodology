@@ -71,6 +71,12 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   loop (a lemma still counts as found when its Lean theorem fails; the gate reports it), and only
   developments of the repository are exported, not arbitrary new ones.
 
+- A development the exporter was not written against (#59): `Examples/Trees.lean`, `Generated/Trees.lean`.
+  Polymorphic trees with `mirror`, `size`, `flatten`; the system finds 21 lemmas (including
+  `mirror (mirror t) = t`) and all 21 compile (found 21, compiled 21, axiom-free). One data point, written
+  by the same author as the exporter and in the same family (first-order, structural recursion);
+  other families (mutual or nested types, higher-order functions) are untested.
+
 - Traces (#39): `lake exe trace [dir] [first|all]` writes `enumerated.txt`, `conjectured.txt`,
   `attempted.txt`, `proved.txt` and `summary.txt` (default `trace/`, git-ignored, not committed).
   Everything is kept, not just the proved lemmas: 64 + 164 candidates, every conjecture of every

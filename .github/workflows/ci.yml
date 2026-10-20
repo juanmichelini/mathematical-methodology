@@ -10,7 +10,11 @@ jobs:
       - uses: actions/checkout@v4
 
       # Installs the pinned toolchain and runs `lake build`, which runs the #guard tests.
+      # No build cache: `include_str` files (the committed generated files, the Haskell fixtures) are not
+      # tracked by Lake, so a cached module could keep the text of an older copy (seen on #60).
       - uses: leanprover/lean-action@v1
+        with:
+          use-github-cache: false
 
       # Lean's kernel checks the exported theorems when the library is built; check that none depends
       # on an axiom or `sorry`, and that Lean rejects wrong theorems.
@@ -24,8 +28,8 @@ jobs:
       - name: Compile gate
         run: |
           lake build export-lean
-          for m in proofs suite; do
-            case $m in proofs) f=AppendixBProofs;; suite) f=Suite;; esac
+          for m in proofs suite trees; do
+            case $m in proofs) f=AppendixBProofs;; suite) f=Suite;; trees) f=Trees;; esac
             lake exe export-lean $m > /tmp/$f.lean 2> /dev/null
             diff -u MathematicalMethodology/Generated/$f.lean /tmp/$f.lean
             python3 scripts/gate-compile.py /tmp/$f.lean

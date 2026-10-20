@@ -27,5 +27,12 @@ def main (args : List String) : IO UInt32 := do
     if bad != 0 || failed != MM.Export.suiteAssumed then
       IO.eprintln "INVARIANT VIOLATED (should not happen): every lemma the system proves must have a Lean proof; only the known assumed lemma may be missing"
       return 1
+  | ["trees"] =>
+    let (txt, n, failed, bad) := MM.Export.treesFile
+    IO.print txt
+    IO.eprintln s!"theorems: {n}; lemmas the system failed to prove: {failed.length} {failed}; steps with no tactic: {bad}"
+    if bad != 0 || !failed.isEmpty then
+      IO.eprintln "INVARIANT VIOLATED (should not happen): every lemma the system proves must have a Lean proof"
+      return 1
   | _ => IO.print MM.Export.fstFile
   return 0

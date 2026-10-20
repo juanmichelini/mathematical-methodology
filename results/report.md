@@ -236,6 +236,12 @@ printed as a theorem: 1 (comp: x:Nat y:Nat |- mult (S x) y = suma y (mult x y));
 is the generator's output: true. `scripts/gate-compile.py` is the compile gate: a proof counts only if
 Lean accepts its theorem; CI runs it on every generated proofs file and a negative test shows it rejects a corrupted proof.
 
+A development the exporter was not written against (`Examples/Trees.lean`, #59): polymorphic binary trees with `mirror`,
+`size` and `flatten` (and `suma`, `concat`, `rev`). The system found the lemmas, including `mirror (mirror t) = t`, and the same
+generator exported them (`lake exe export-lean trees`, `Generated/Trees.lean`): 21 theorems, lemmas the system
+failed to prove: 0, steps with no tactic: 0. The committed file is the generator's output:
+true. CI runs the compile gate on it like on the others.
+
 The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,
 also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean
 (`Examples/ExportAppendixB.lean`). The committed file is the generator's output: true.
