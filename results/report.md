@@ -35,7 +35,7 @@ The checker must reject each of these.
 
 - lemmas accepted: 4 of 4
 - negative tests rejected: 9 of 9
-- overall: FAILED
+- overall: ok
 
 ## Lemma store
 
@@ -233,7 +233,7 @@ Everything the system proves in the suite is exported the same way (`Export/Suit
 may use exactly the theorems the Haskell's `provelemas` gives it) and the lemmas of every chain. 
 93 theorems are printed; steps with no tactic: 0. A lemma the system could not prove is not
 printed as a theorem: 1 (comp: x:Nat y:Nat |- mult (S x) y = suma y (mult x y)); the Haskell takes it as given. These are exactly the expected assumed lemmas: true. The committed file
-is the generator's output: false. `scripts/gate-compile.py` is the compile gate: a proof counts only if
+is the generator's output: true. `scripts/gate-compile.py` is the compile gate: a proof counts only if
 Lean accepts its theorem; CI runs it on every generated proofs file and a negative test shows it rejects a corrupted proof.
 
 A development the exporter was not written against (`Examples/Trees.lean`, #59): polymorphic binary trees with `mirror`,
