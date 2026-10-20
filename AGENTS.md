@@ -71,10 +71,7 @@ three levels, and the code is split the same way:
   `lake exe export-lean proofs` prints the lemmas of Appendix B as Lean theorems with the proofs
   the search found (`Generated/AppendixBProofs.lean`, #35); `lake build` makes Lean check them,
   `scripts/check-axioms.sh` and `scripts/check-negative-export.sh` run in CI.
-  `lake exe export-lean lists` prints the *checker's* certificates for the list development
-  (`Export/Cert.lean`, `Generated/Lists.lean`): it replays `Cert.check` and refuses developments
-  the checker rejects; Lean's kernel then re-checks the theorems. Both generated files are covered
-  by the same CI scripts.
+  Only proofs the system found are exported: a hand-written certificate is not a mechanical result.
 - `Trace.lean` and `TraceMain.lean` (`lake exe trace [dir] [first|all]`, #39) write traces of what was
   enumerated, conjectured, attempted (failures with their reason) and proved, each artifact in its
   de Bruijn form and in its Lean export form. Output only: the directory (`trace/`) is git-ignored and

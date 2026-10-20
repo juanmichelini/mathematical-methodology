@@ -228,12 +228,6 @@ the library, so `lake build` has Lean's kernel check every theorem, independentl
 that Lean rejects wrong theorems. Steps with no tactic (unmapped): 
 0. The committed file is the generator's output: true.
 
-The development of `Examples/Lists.lean` (`append`, `rev` and the lemmas `append_nil`, `append_assoc`,
-`rev_append`, `rev_rev`) is exported from the checker's own certificates (`Export/Cert.lean`,
-`lake exe export-lean lists`, `Generated/Lists.lean`): the exporter replays `Cert.check` and refuses any
-development the checker rejects. Lean's kernel checks the four theorems when the library is built
-(`scripts/check-axioms.sh` also covers this file). The committed file is the generator's output: true.
-
 The 31 functions of Appendix B (f0 … f30) are printed as plain Lean in `Generated/AppendixB.lean`,
 also a module of the library (so `lake build` compiles it); f0, f1, f2 and f3 (reverse) run in Lean
 (`Examples/ExportAppendixB.lean`). The committed file is the generator's output: true.

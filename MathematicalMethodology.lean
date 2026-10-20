@@ -45,8 +45,5 @@ import MathematicalMethodology.Generated.AppendixB
 import MathematicalMethodology.Examples.ExportAppendixB
 import MathematicalMethodology.Export.Proofs
 import MathematicalMethodology.Generated.AppendixBProofs
-import MathematicalMethodology.Export.Cert
-import MathematicalMethodology.Generated.Lists
-import MathematicalMethodology.Examples.ExportLists
 import MathematicalMethodology.Trace
 import MathematicalMethodology.Examples.TraceCheck
