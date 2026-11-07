@@ -68,13 +68,14 @@ const fstCandidates = (() => {
 const NAV = [
   ['index.html', 'Overview'],
   ['method.html', 'The method'],
-  ['results.html', 'CI results'],
-  ['appendix-b.html', 'Appendix B'],
-  ['developments.html', 'More developments'],
+  ['verification.html', 'Verification'],
+  ['results.html', 'Results'],
 ];
+// pages under Results keep that tab highlighted
+const tabOf = (file) => (file.startsWith('results-') ? 'results.html' : file);
 
 const page = (file, title, body, extra = '') => {
-  const nav = NAV.map(([f, t]) => `<a href="${f}"${f === file ? ' aria-current="page"' : ''}>${t}</a>`).join('');
+  const nav = NAV.map(([f, t]) => `<a href="${f}"${f === tabOf(file) ? ' aria-current="page"' : ''}>${t}</a>`).join('');
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -133,7 +134,7 @@ const proofHtml = (lines) => {
 const lemmaHtml = (l, leanFiles, tag) => {
   const thm = l.id ? leanFiles.thms.get(l.id) : null;
   const search = `${tag} ${l.statement} ${l.id || ''}`.toLowerCase();
-  return `<details class="lemma ${l.proved ? 'ok' : 'assumed'}" data-q="${esc(search)}">
+  return `<details class="lemma ${l.proved ? 'ok' : 'assumed'}"${l.id ? ` id="lemma-${esc(l.id)}"` : ''} data-q="${esc(search)}">
 <summary>${statementHtml(l.statement)}${
     l.proved
       ? `<span class="badge lean" title="the Lean theorem this lemma was exported to">${esc(l.id)}</span><span class="badge n" title="finished proofs">${l.done}</span>`
@@ -197,25 +198,24 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
 </section>
 
 <section>
-<h2>What the system produced</h2>
-<div class="stats">
-${stat(json.appendixB.length, 'functions found', 'f0 … f30, the thesis’ Appendix B')}
-${stat(counts.appendixB.lemmas, 'lemmas proved about them', `${finished} finished proofs`)}
-${stat(counts.suite.proved, 'lemmas in the suite', `the Test.hs lemmas and chains; ${counts.suite.unproved} taken as given`)}
-${stat(counts.trees.proved, 'lemmas on a new development', 'polymorphic trees, not in the thesis')}
-${stat(`${totalTheorems} / ${totalProved}`, 'Lean theorems / lemmas proved', 'one theorem for every lemma, checked at build')}
+<h2>The three parts</h2>
+<div class="cards">
+<a class="card" href="method.html"><h3>1. The method</h3><p>What the thesis says, section by section (the language, the three levels, the five tactics, how the system proposes what to prove), each next to the Lean code that implements it.</p></a>
+<a class="card" href="verification.html"><h3>2. Verification</h3><p>How we know the Lean version is right: the checker rejects wrong proofs, the searches reproduce what the original Haskell program did, and Lean accepts every proof the system finds. The report CI regenerates on every change.</p></a>
+<a class="card" href="results.html"><h3>3. Results</h3><p>What the method found: the ${json.appendixB.length} functions of the thesis’ Appendix B, the thesis’ <code>Test</code> lemmas, and a new development, each lemma with its proof and its Lean theorem.</p></a>
 </div>
-<p>Every lemma on these pages has two forms: the proof the system found, printed the way the thesis prints proofs, and the Lean theorem it was exported to. The generator that writes the Lean file and the one that writes this site use the same numbering, so the pairing is by name and the build fails if a lemma has no theorem or a theorem no lemma. That Lean accepts the theorems is checked by the project’s CI (the “compile gate”), not by this site.</p>
 </section>
 
 <section>
-<h2>Where to look</h2>
-<div class="cards">
-<a class="card" href="method.html"><h3>The method</h3><p>The thesis, section by section (the language, the three levels, the five tactics, how the system proposes), each next to the Lean source that implements it.</p></a>
-<a class="card" href="results.html"><h3>CI results</h3><p>The report CI regenerates on every change: what the checker accepts and rejects, the searches, the comparison with the original Haskell.</p></a>
-<a class="card" href="appendix-b.html"><h3>Appendix B</h3><p>The ${json.appendixB.length} functions and ${counts.appendixB.lemmas} lemmas, each with its proof and its Lean theorem.</p></a>
-<a class="card" href="developments.html"><h3>More developments</h3><p>The 35-lemma suite, its lemma chains, and a development the exporter was not written against.</p></a>
+<h2>In numbers</h2>
+<div class="stats">
+${stat(json.appendixB.length, 'functions found', 'f0 … f30, the thesis’ Appendix B')}
+${stat(counts.appendixB.lemmas, 'lemmas proved about them', `${finished} finished proofs`)}
+${stat(counts.suite.proved, 'lemmas in the thesis’ Test module', `${counts.suite.unproved} taken as given, not proved`)}
+${stat(counts.trees.proved, 'lemmas on a new development', 'polymorphic trees, not in the thesis')}
+${stat(`${totalTheorems} / ${totalProved}`, 'Lean theorems / lemmas proved', 'one theorem for every lemma, checked at build')}
 </div>
+<p>Every lemma has two forms: the proof the system found, printed the way the thesis prints proofs, and the Lean theorem it was exported to. The generator that writes the Lean files and the one that writes this site number them the same way, so the pairing is by name and the build fails if a lemma has no theorem or a theorem no lemma. That Lean accepts the theorems is checked by the project’s CI (the “compile gate”), not by this site.</p>
 </section>`));
 }
 
@@ -276,7 +276,7 @@ ${stat(`${totalTheorems} / ${totalProved}`, 'Lean theorems / lemmas proved', 'on
 <blockquote>On its first pass, it discovered the addition (f0 in appendix B) and the concatenation (f2). It also discovered a variant of addition (f1), that is the function (λ x y . x+y +1). [...] We then ran the method again, this time searching for functions that used addition and concatenation as auxiliary functions. It found reverse f3 and the fact that it is its own inverse. [...] The method found multiplication (f12) and many variants of it.</blockquote></div>
 <div class="inlean"><h4>In Lean</h4><p class="note">The same runs, read from this build’s data.</p>
 ${['f0', 'f1', 'f2', 'f3', 'f12'].map((n) => { const f = json.appendixB.find((x) => x.name === n); return `<p><code>${n}</code> = <code>${esc(f.definition)}</code> <small>${f.lemmas.length} lemmas</small></p>`; }).join('')}
-<p><a href="appendix-b.html">All ${json.appendixB.length} functions with their proofs →</a></p></div></div></section>`;
+<p><a href="results-appendix-b.html">All ${json.appendixB.length} functions with their proofs →</a></p></div></div></section>`;
 
   const toc = [...SECTIONS, { id: 'results', num: '10', title: 'Results' }]
     .map((s) => `<a href="#${s.id}"><span>§${esc(s.num)}</span> ${esc(s.title)}</a>`).join('');
@@ -289,43 +289,84 @@ ${resultsSection}
 </div></div>`));
 }
 
-// ---- CI results (the report)
+// ---- Verification (the CI report, grouped by the question it answers)
+const GROUPS = [
+  ['Does the checker reject what is wrong?', 'The only trusted piece is the proof checker. These sections show it accepts correct certificates, rejects wrong ones, and that its soundness is a Lean theorem.',
+    ['development-lists', 'negative-tests', 'soundness']],
+  ['Does the search do what the original program did?', 'The searches are untrusted ports of the thesis’ Haskell program. Each stage is compared with output printed by the original: enumeration in order, conjectures, the lemmas found, and the 31 functions of Appendix B.',
+    ['summary', 'lemma-store', 'tactic-search', 'enumeration', 'conjectures', 'finding-lemmas', 'first-search-f0-f2', 'second-search-f3-f30-and-appendix-b', 'the-lemma-suite-of-test-hs']],
+  ['Does Lean accept what the system found?', 'Every proof the system finds is printed as a Lean theorem and Lean checks it. A proof that does not compile is a reported failure, not a silent gap.',
+    ['export-to-lean']],
+];
 {
-  const toc = rep.sections.filter((s) => s.title).map((s) => `<a href="#${s.id}">${esc(s.title.replace(/`/g, ''))}</a>`).join('');
-  write('results.html', page('results.html', 'CI results', `
-<div class="layout"><aside class="toc"><b>Report</b>${toc}</aside><div>
-<h1>${esc(rep.title)} <small>as CI generates them</small></h1>
-<p class="lead">This is <code>results/report.md</code>, rendered. CI regenerates it with <code>lake exe results</code> on a clean machine and fails if it differs from the committed copy, so this page is what the last passing build produced. ${ciBadge}</p>
-${rep.sections.map((s) => s.title ? `<section class="rep" id="${s.id}"><h2>${esc(s.title)}</h2>${s.html}</section>` : s.html).join('')}
-<p class="muted">The detail behind “Appendix B” and “The lemma suite” is on <a href="appendix-b.html">Appendix B</a> and <a href="developments.html">More developments</a>, with each proof and its Lean theorem.</p>
+  const have = rep.sections.filter((x) => x.title).map((x) => x.id);
+  const assigned = GROUPS.flatMap((g) => g[2]);
+  for (const id of have) if (!assigned.includes(id)) throw new Error(`site: report section "${id}" is not assigned to a Verification group`);
+  for (const id of assigned) if (!have.includes(id)) throw new Error(`site: Verification group names a report section that does not exist: ${id}`);
+  const byId = new Map(rep.sections.filter((x) => x.title).map((x) => [x.id, x]));
+  const toc = GROUPS.map(([t, , ids]) => `<b class="tocgrp">${esc(t)}</b>` + ids.map((id) => `<a href="#${id}">${esc(byId.get(id).title.replace(/`/g, ''))}</a>`).join('')).join('');
+  const pairRows = [['Appendix B', counts.appendixB], ['The Test suite', counts.suite], ['Trees', counts.trees]]
+    .map(([n, c]) => `<tr><td>${n}</td><td>${c.lemmas}</td><td>${c.proved}</td><td>${c.theorems}</td></tr>`).join('');
+  write('verification.html', page('verification.html', 'Verification', `
+<div class="layout"><aside class="toc"><b>Verification</b>${toc}</aside><div>
+<h1>Verification <small>as CI generates it</small></h1>
+<p class="lead">How we know the Lean version is right. This is <code>results/report.md</code>, rendered: CI regenerates it with <code>lake exe results</code> on a clean machine and fails if it differs from the committed copy. The sections are grouped by the question each one answers.</p>
+<p>${ciBadge}</p>
+<section class="rep"><h2>Lemmas and Lean theorems</h2>
+<p>Each lemma the system proves is exported as one Lean theorem. This site is built from both and fails if they do not pair up by name.</p>
+<div class="tablewrap"><table><thead><tr><th>development</th><th>lemmas</th><th>proved</th><th>Lean theorems</th></tr></thead><tbody>${pairRows}</tbody></table></div>
+<p class="muted">Lean accepting the theorems is checked by CI (the compile gate and axiom check), not by this site.</p></section>
+${GROUPS.map(([t, d, ids]) => `<div class="vgroup"><h2 class="vq">${esc(t)}</h2><p class="lead">${esc(d)}</p>${ids.map((id) => { const x = byId.get(id); return `<section class="rep" id="${x.id}"><h3>${esc(x.title)}</h3>${x.html}</section>`; }).join('')}</div>`).join('')}
 </div></div>`));
 }
 
 const filterBox = `<div class="filter"><input id="q" type="search" placeholder="Filter lemmas (e.g. f3, suma, rev)" autocomplete="off"><button id="expand" type="button">Expand all</button><span id="shown"></span></div>`;
 
-// ---- Appendix B
-{
-  write('appendix-b.html', page('appendix-b.html', 'Appendix B', `
-<h1>Appendix B <small>${json.appendixB.length} functions · ${counts.appendixB.lemmas} lemmas</small></h1>
-<p class="lead">The functions the method found by itself, f0 … f30 in the thesis’ numbering, with every lemma it proved about them. Open a lemma to see the proof as the thesis prints proofs and the Lean theorem it was exported to. The counts equal the original Haskell’s (see <a href="results.html#second-search-f3-f30-and-appendix-b">the report</a>).</p>
-${filterBox}
-${json.appendixB.map((f) => funHtml(f, lean.appendixB, 'appendixb')).join('')}`));
-}
-
-// ---- developments
-{
-  const dev = (name, title, d, leanFiles, blurb) => `
-<section class="dev" id="${name}"><h2>${title}</h2><p>${blurb}</p>
+// ---- Results
+const dev = (name, title, d, leanFiles, blurb) => `
+<section class="dev" id="${name}"><p>${blurb}</p>
 ${d.functions.map((f) => funHtml({ ...f, lemmas: null }, leanFiles, name)).join('')}
 ${d.groups.map((g) => `<section class="grp" data-fn="${esc(g.name)}"><h3>${esc(g.name.replace(/^chain_/, 'lemmas found for ').replace(/^lemma$/, 'the 35 lemmas of Test.lemas').replace(/^comp$/, 'lemascomp, the five starting lemmas'))}</h3><div class="lemmas">${g.lemmas.map((l) => lemmaHtml(l, leanFiles, `${name} ${g.name}`)).join('')}</div></section>`).join('')}
 </section>`;
-  write('developments.html', page('developments.html', 'More developments', `
-<h1>More developments <small>${counts.suite.lemmas + counts.trees.lemmas} lemmas</small></h1>
-<p class="lead">Two developments beyond Appendix B. The first is the thesis’ own <code>Test</code> module. The second was written to test the export: nothing in the exporter was built for it.</p>
+{
+  const fn = (n) => { const f = json.appendixB.find((x) => x.name === n); if (!f) throw new Error(`site: no ${n} in Appendix B`); return f; };
+  const lem = (n, st) => { const l = fn(n).lemmas.find((x) => x.statement === st); if (!l) throw new Error(`site: ${n} has no lemma "${st}"`); return l; };
+  const rev = lem('f3', 'a:C_,a_R |- f3 (f3 a) = a');
+  const claims = [
+    ['Addition is discovered first (f0)', 'f0', fn('f0'), 'f0 is defined by recursion on its first argument and has commutativity and associativity among its lemmas.', lem('f0', 'c:C_,R d:C_,R |- f0 c d = f0 d c')],
+    ['A variant of addition, x+y+1 (f1)', 'f1', fn('f1'), 'Same shape as f0 with a successor in the base case.', lem('f1', 'c:C_,R d:C_,R |- f1 c d = f1 d c')],
+    ['Concatenation (f2)', 'f2', fn('f2'), 'Recursion on a list; has the two units and associativity.', lem('f2', 'b:C_,a_R e:C_,a_R g:C_,a_R |- f2 b (f2 e g) = f2 (f2 b e) g')],
+    ['Reverse (f3), and that it is its own inverse', 'f3', fn('f3'), 'Found in the second search, using f2 as an auxiliary function.', rev],
+  ];
+  const claimRows = claims.map(([c, n, f, note, l]) => `<tr><td>${c}</td><td><code>${n}</code> = <code>${esc(f.definition)}</code></td><td>${statementHtml(l.statement)} <small>(${l.done ? 'proof finished' : 'assumed'})</small></td><td><a href="results-appendix-b.html#lemma-${esc(l.id)}">proof</a></td></tr>`).join('');
+  const card = (href, h, n, text) => `<a class="card" href="${href}"><h3>${h}</h3><p><b>${n}</b> · ${text}</p></a>`;
+  write('results.html', page('results.html', 'Results', `
+<h1>Results</h1>
+<p class="lead">What the method found. Every lemma on these pages has the proof the system found, printed the way the thesis prints proofs, and the Lean theorem it was exported to.</p>
+<div class="cards">
+${card('results-appendix-b.html', 'Appendix B', `${json.appendixB.length} functions, ${counts.appendixB.lemmas} lemmas`, 'The functions the system found by itself, f0 … f30, with every lemma about them. This is what the thesis reports.')}
+${card('results-suite.html', 'The Test suite', `${counts.suite.proved} lemmas`, 'The thesis’ own <code>Test</code> module: Booleans, naturals and lists. The 35 lemmas and the chains of lemmas, proved in order.')}
+${card('results-trees.html', 'A new development', `${counts.trees.proved} lemmas`, 'Polymorphic trees. Not in the thesis, written to test the pipeline: nothing in the exporter was built for it.')}
+</div>
+<section><h2>What the thesis says, and what this run produced</h2>
+<p>The thesis’ §10 reports a handful of discoveries. Each row is looked up in the data this site is built from; the build fails if one is missing.</p>
+<div class="tablewrap"><table><thead><tr><th>thesis</th><th>found</th><th>lemma</th><th></th></tr></thead><tbody>${claimRows}</tbody></table></div></section>`));
+
+  const sub = (file, title, small, lead, body) => write(file, page(file, title, `
+<p class="crumbs"><a href="results.html">Results</a> › ${esc(title)}</p>
+<h1>${esc(title)} <small>${small}</small></h1>
+<p class="lead">${lead}</p>
 ${filterBox}
-${dev('suite', 'The lemma suite and the chains of <code>Test.hs</code>', json.suite, lean.suite, `Booleans, naturals and lists; ${counts.suite.proved} lemmas proved of ${counts.suite.lemmas}. Each of the 35 lemmas is proved from the five starting lemmas and the lemmas before it; the chains are the lemmas the method finds for a function, some starting from those of another (<code>flipexp</code> finds the two exponentiation lemmas of thesis §10).`)}
-${dev('trees', 'A development the exporter was not written against: polymorphic trees', json.trees, lean.trees, `A new data type (<code>Tree</code>, leaves of any type) with <code>mirror</code>, <code>size</code> and <code>flatten</code>. ${counts.trees.proved} lemmas found, including <code>mirror (mirror t) = t</code>. The inputs are written by hand, as the thesis’ <code>Test</code> is; the lemmas and proofs are found by the system.`)}
-`));
+${body}`));
+  sub('results-appendix-b.html', 'Appendix B', `${json.appendixB.length} functions · ${counts.appendixB.lemmas} lemmas`,
+    'The functions the method found by itself, f0 … f30 in the thesis’ numbering, with every lemma it proved about them. Open a lemma to see the proof as the thesis prints proofs and the Lean theorem.',
+    json.appendixB.map((f) => funHtml(f, lean.appendixB, 'appendixb')).join(''));
+  sub('results-suite.html', 'The Test suite', `${counts.suite.lemmas} lemmas`,
+    'The thesis’ own <code>Test</code> module, proved by the system.',
+    dev('suite', '', json.suite, lean.suite, `Booleans, naturals and lists; ${counts.suite.proved} lemmas proved of ${counts.suite.lemmas}. ${counts.suite.unproved} lemma(s) taken as given, as the original program does.`));
+  sub('results-trees.html', 'A new development', `${counts.trees.lemmas} lemmas`,
+    'Polymorphic trees. Written to test the export on something the exporter was not built for.',
+    dev('trees', '', json.trees, lean.trees, 'A new data type (<code>Tree</code>, leaves of any type) with <code>mirror</code>, <code>size</code> and <code>flatten</code>, proved the same way.'));
 }
 
 console.log(`site: built ${fs.readdirSync(OUT).filter((f) => f.endsWith('.html')).length} pages in ${path.relative(ROOT, OUT)}`);
