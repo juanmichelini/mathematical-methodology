@@ -33,7 +33,14 @@ the generated functions export to Lean and run there.
 
 *Parity plus*: the proofs the system generates **compile in Lean automatically**, i.e.
 mechanically from the method, for any development it proves, not only for files we chose to
-commit.
+commit. A *development* is the input to the method: data types, function definitions and the
+lemmas to attempt. "Any" means one we did not write the exporter against.
+
+**Why the compile gate sits after the search.** A lemma is *proved* when the system's own checker
+accepts it; that is the result. The Lean theorem is a second, equivalent proof of a statement
+already established, so Lean failing to compile it means the exporter cannot express that proof,
+not that the lemma is unproved. The gate therefore reports it (found N, compiled M) and fails CI
+rather than discarding the lemma from the search.
 
 ### Where it stands
 
@@ -44,11 +51,14 @@ commit.
   exported to Lean by the generator and compiled: the 123 Appendix B lemmas and the 93 theorems
   of the `Test.hs` suite and chains (`Generated/AppendixBProofs.lean`, `Generated/Suite.lean`),
   no axioms, and a compile gate (`scripts/gate-compile.py`) reports found vs compiled and fails
-  on any proof that does not compile. Not yet: the gate sits outside the discovery loop, one
+  on any proof that does not compile. Not yet: one
   `lemascomp` lemma of `Test.hs` is not proved by the system (the Haskell takes it as given), and
-  only a few developments are covered (a third, polymorphic trees, was written as a generality test and
-  passes), not an arbitrary new one
-  ([#53](https://github.com/juanmichelini/mathematical-methodology/issues/53)).
+  only three developments are covered: Appendix B, the `Test.hs` suite (both from the thesis) and
+  polymorphic trees, which one author wrote as a generality test. An arbitrary new development may use
+  something the exporter has not met (for example mutual recursion, non-structural recursion,
+  several type parameters, function-valued fields). Then the Lean file would not compile and the
+  gate would say so; what is untested is how often that happens, not whether it is noticed
+  ([#53](https://github.com/juanmichelini/mathematical-methodology/issues/53), closed).
 - **Traces**: `lake exe trace` records everything enumerated, conjectured and attempted, not only
   what was proved (not committed).
 
