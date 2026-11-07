@@ -192,7 +192,7 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
   write('index.html', page('index.html', 'Overview', `
 <section class="hero">
 <p class="kicker">${esc(THESIS.title)} · ${esc(THESIS.author)}, ${esc(THESIS.school)}, ${THESIS.year}</p>
-<h1>A method for doing mathematics, written down so that a machine can run it.</h1>
+<h1>A method for doing mathematics, written down so that humans can follow it and a machine can run it.</h1>
 <p class="lead">The thesis describes a method humans can follow with a pen: one that splits the work into what to prove, how to prove it and everything else, and that reduces the rest to patience. This project is that method as a Lean program. The system proposes data types, functions and conjectures, tries to prove them with five tactics, keeps what it proves, and exports every proof as a Lean theorem that Lean itself checks.</p>
 <p>${ciBadge}</p>
 </section>
