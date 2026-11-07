@@ -67,9 +67,10 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
 - Everything proved in the suite as Lean theorems (#53): `Export/Suite.lean`, `Generated/Suite.lean`
   (93 theorems: `lemascomp`, the 35 lemmas, the chains), plus `scripts/gate-compile.py`, the compile
   gate (found N, compiled N; negative test with a corrupted proof). One `lemascomp` lemma the system
-  does not prove is reported, not exported. Still open for #53: the gate is not inside the discovery
-  loop (a lemma still counts as found when its Lean theorem fails; the gate reports it), and only
-  developments of the repository are exported, not arbitrary new ones.
+  does not prove is reported, not exported. The gate is deliberately not inside the discovery
+  loop: a lemma is proved when the system's checker accepts it, the Lean theorem is a second,
+  equivalent proof, and a failure there is reported by the gate, not hidden. Open: only developments of
+  the repository are exported, not arbitrary new ones.
 
 - A development the exporter was not written against (#59): `Examples/Trees.lean`, `Generated/Trees.lean`.
   Polymorphic trees with `mirror`, `size`, `flatten`; the system finds 21 lemmas (including
