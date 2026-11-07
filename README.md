@@ -105,3 +105,14 @@ See [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 Every change needs an issue and a pull request. See [`AGENTS.md`](AGENTS.md) and
 [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md).
+
+## Website
+
+`site/` builds a static website (`node site/build.mjs`, no dependencies, output `site/dist/`) that
+presents the thesis' method beside the Lean code that implements it, the report CI produces, and every
+lemma the system proved with its proof in the thesis' format and its Lean theorem. It is generated from the
+repository's own artifacts (`results/report.md`, `results/site-data.json`, `Generated/*.lean`, the Lean sources),
+and the build fails if they disagree. To deploy, import the repository in Vercel; `vercel.json` sets the build
+command and output directory. The repository is private and the site contains its source: keep Vercel's
+Deployment Protection on unless you mean to publish it. Set `GITHUB_TOKEN` in the project to show the CI
+status of the built commit.

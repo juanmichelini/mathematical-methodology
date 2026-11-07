@@ -46,13 +46,14 @@ jobs:
       - name: Compare with the Haskell
         run: lake exe haskell-check
 
-      # Regenerate the report on a clean runner. The executable exits non-zero if a good
+      # Regenerate the report (and the data the website is built from) on a clean runner. The executable exits non-zero if a good
       # certificate is rejected or a bad one is accepted.
       - name: Generate results
         shell: bash
         run: |
           mkdir -p results
           lake exe results | tee results/report.md
+          lake exe site-data > results/site-data.json
 
       # results/report.md is deterministic, so a diff means it is stale.
       - name: Check committed results are up to date
@@ -60,9 +61,15 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain -- results/)" ]; then
             git --no-pager diff -- results/ || true
-            echo "::error::results/report.md is stale. Run 'lake exe results > results/report.md' and commit it."
+            echo "::error::results/ is stale. Run 'lake exe results > results/report.md' and 'lake exe site-data > results/site-data.json' and commit them."
             exit 1
           fi
+
+      # The website is generated from the repository's own artifacts (site/build.mjs). Building it checks
+      # that they agree: every Lean symbol it quotes exists, every lemma has its Lean theorem and every
+      # theorem its lemma, and the report's numbers equal the data's. Nothing is deployed from here.
+      - name: Build the website
+        run: SITE_OFFLINE=1 node site/build.mjs
 
       - uses: actions/upload-artifact@v4
         if: always()
