@@ -169,20 +169,25 @@ def exportTheorem (ds : List DatasH) (avail : List Avail) (name : String) (c : C
     String :=
   "\n".intercalate (theoremHeader ds name c :: proofLines ds avail "  " p) ++ "\n"
 
+/-- The proofs of a group that become theorems, with their names: the complete ones, in order;
+theorem `i` of group `g` is called `g_l{i+1}`.  One place for the numbering, shared by the
+export and by the site data (`Site.lean`). -/
+def nameProofs (g : String) (ps : List Proof) : List (String × Proof) :=
+  ((ps.filter Proof.complete).zipIdx).map fun (p, i) => (s!"{sanitize g}_l{i + 1}", p)
+
 /-- Theorems for groups of proofs, in order; each can use every earlier theorem.  A group is a
-name prefix and the proofs found for it; theorem `i` of group `g` is called `g_l{i+1}`.
-Returns the theorems, the lemma-to-name list, and the number of steps with no tactic. -/
+name prefix and the proofs found for it.  Returns the theorems, the lemma-to-name list, and the
+number of steps with no tactic. -/
 def theoremsFor (ds : List DatasH) (initial : List Avail) (groups : List (String × List Proof)) :
     List String × List Avail × Nat :=
   groups.foldl
     (fun (acc : List String × List Avail × Nat) (g, proofs) =>
-      proofs.zipIdx.foldl
-        (fun (acc : List String × List Avail × Nat) (p, i) =>
+      (nameProofs g proofs).foldl
+        (fun (acc : List String × List Avail × Nat) (name, p) =>
           let (texts, av, bad) := acc
           match p.head with
           | none => acc
           | some c =>
-            let name := s!"{sanitize g}_l{i + 1}"
             (texts ++ [exportTheorem ds av name c p], av ++ [⟨name, c⟩],
               bad + countUnmapped (proofLines ds av "  " p)))
         acc)

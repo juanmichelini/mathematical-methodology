@@ -3,3 +3,4 @@
 *.olean
 lake-manifest.json.bak
 /trace/
+/site/dist/

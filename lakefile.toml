@@ -22,3 +22,7 @@ root = "HaskellCheck"
 [[lean_exe]]
 name = "trace"
 root = "TraceMain"
+
+[[lean_exe]]
+name = "site-data"
+root = "SiteMain"

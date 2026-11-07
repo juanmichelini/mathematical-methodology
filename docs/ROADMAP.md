@@ -77,6 +77,12 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
   by the same author as the exporter and in the same family (first-order, structural recursion);
   other families (mutual or nested types, higher-order functions) are untested.
 
+- Website (#61): `site/`, `Site.lean`, `results/site-data.json`. Thesis sections 1 to 10 with the Lean
+  declarations extracted by name, the CI report rendered, Appendix B / the suite / the trees development with
+  every proof in the thesis' format beside its Lean theorem; the build checks the lemma-theorem pairing and the
+  agreement with the report. Not done: deployment (needs a Vercel project), the CI status badge (needs a token),
+  per-lemma "compiled" status (Lean's verdict lives in CI's compile gate, not in the data).
+
 - Traces (#39): `lake exe trace [dir] [first|all]` writes `enumerated.txt`, `conjectured.txt`,
   `attempted.txt`, `proved.txt` and `summary.txt` (default `trace/`, git-ignored, not committed).
   Everything is kept, not just the proved lemmas: 64 + 164 candidates, every conjecture of every

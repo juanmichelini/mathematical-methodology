@@ -50,4 +50,5 @@ import MathematicalMethodology.Generated.AppendixBProofs
 import MathematicalMethodology.Generated.Suite
 import MathematicalMethodology.Generated.Trees
 import MathematicalMethodology.Trace
+import MathematicalMethodology.Site
 import MathematicalMethodology.Examples.TraceCheck
