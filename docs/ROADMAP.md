@@ -66,8 +66,10 @@ Each item below should become an issue before work starts (see `AGENTS.md`).
 
 - Everything proved in the suite as Lean theorems (#53): `Export/Suite.lean`, `Generated/Suite.lean`
   (93 theorems: `lemascomp`, the 35 lemmas, the chains), plus `scripts/gate-compile.py`, the compile
-  gate (found N, compiled N; negative test with a corrupted proof). One `lemascomp` lemma the system
-  does not prove is reported, not exported. The gate is deliberately not inside the discovery
+  gate (found N, compiled N; negative test with a corrupted proof). One hand-written starting lemma (`lemascomp`: `mult (S x) y = suma y (mult x y)`) is taken as
+  given, as in the Haskell, reported and not exported: it needs suma commutativity, which comes later in the
+  suite, and it is redundant from scratch (the search drops it once the suma lemmas are known).
+  The system proves it when those lemmas are available (#68). The gate is deliberately not inside the discovery
   loop: a lemma is proved when the system's checker accepts it, the Lean theorem is a second,
   equivalent proof, and a failure there is reported by the gate, not hidden. Open: only developments of
   the repository are exported, not arbitrary new ones.

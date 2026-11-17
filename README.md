@@ -51,14 +51,17 @@ rather than discarding the lemma from the search.
   exported to Lean by the generator and compiled: the 123 Appendix B lemmas and the 93 theorems
   of the `Test.hs` suite and chains (`Generated/AppendixBProofs.lean`, `Generated/Suite.lean`),
   no axioms, and a compile gate (`scripts/gate-compile.py`) reports found vs compiled and fails
-  on any proof that does not compile. Not yet: one
-  `lemascomp` lemma of `Test.hs` is not proved by the system (the Haskell takes it as given), and
-  only three developments are covered: Appendix B, the `Test.hs` suite (both from the thesis) and
+  on any proof that does not compile. Not yet: only three developments are covered: Appendix B, the `Test.hs` suite (both from the thesis) and
   polymorphic trees, which one author wrote as a generality test. An arbitrary new development may use
   something the exporter has not met (for example mutual recursion, non-structural recursion,
   several type parameters, function-valued fields). Then the Lean file would not compile and the
   gate would say so; what is untested is how often that happens, not whether it is noticed
   ([#53](https://github.com/juanmichelini/mathematical-methodology/issues/53), closed).
+  Not a gap: one of the five hand-written starting lemmas of `Test.hs` (`lemascomp`),
+  `mult (S x) y = suma y (mult x y)`, is taken as given, as in the original program. From scratch the
+  method does not need it (the suma lemmas already cover it, so the search drops it as redundant), and
+  the system proves it once those lemmas are available
+  ([#68](https://github.com/juanmichelini/mathematical-methodology/issues/68)).
 - **Traces**: `lake exe trace` records everything enumerated, conjectured and attempted, not only
   what was proved (not committed).
 
