@@ -22,8 +22,9 @@ namespace MM.Export
 
 open MM MM.Strategic MM.Examples MM.Examples.TestEnv MM.Examples.TestSuite
 
-/-- The only lemma of the suite the system does not prove: a `lemascomp` fact that needs `suma`
-commutativity, which the suite proves later.  The Haskell takes it as given.  Anything else
+/-- The only lemma of the suite taken as given: a hand-written `lemascomp` starting lemma that needs
+`suma` commutativity, which the suite proves later.  The Haskell takes it as given too.  From scratch
+it is redundant (the suma lemmas make the search drop it) and provable once they are known (#68).  Anything else
 unproved (or this one becoming provable) changes the report and must be looked at. -/
 def suiteAssumed : List String := ["comp: x:Nat y:Nat |- mult (S x) y = suma y (mult x y)"]
 

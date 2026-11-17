@@ -138,13 +138,13 @@ const lemmaHtml = (l, leanFiles, tag) => {
 <summary>${statementHtml(l.statement)}${
     l.proved
       ? `<span class="badge lean" title="the Lean theorem this lemma was exported to">${esc(l.id)}</span><span class="badge n" title="finished proofs">${l.done}</span>`
-      : '<span class="badge warn" title="not proved by the system; the Haskell takes it as given">assumed</span>'
+      : '<span class="badge warn" title="a hand-written starting lemma of the suite, taken as given as in the Haskell">given</span>'
   }</summary>
 ${
     l.proved
       ? `<div class="cols"><div><h4>The system’s proof <small>thesis format</small></h4>${proofHtml(l.proof)}</div>
 <div><h4>The same, as a Lean theorem <small>checked by Lean in CI</small></h4>${codeBlock(thm.text, { })}</div></div>`
-      : '<p class="muted">The system did not prove this one; it is a starting hypothesis of the suite (a <code>lemascomp</code> lemma). It needs commutativity of <code>suma</code>, which the suite proves later.</p>'
+      : '<p class="muted">This is one of the hand-written starting lemmas of the suite (<code>lemascomp</code>), taken as given as in the original program. It needs commutativity of <code>suma</code>, which the suite proves later. Found from scratch it would be redundant: once the suma lemmas are known the search drops it. The system proves it when those lemmas are available.</p>'
   }
 </details>`;
 };
@@ -211,7 +211,7 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
 <div class="stats">
 ${stat(json.appendixB.length, 'functions found', 'f0 … f30, the thesis’ Appendix B')}
 ${stat(counts.appendixB.lemmas, 'lemmas proved about them', `${finished} finished proofs`)}
-${stat(counts.suite.proved, 'lemmas in the thesis’ Test module', `${counts.suite.unproved} taken as given, not proved`)}
+${stat(counts.suite.proved, 'lemmas in the thesis’ Test module', `${counts.suite.unproved} starting lemma taken as given`)}
 ${stat(counts.trees.proved, 'lemmas on a new development', 'polymorphic trees, not in the thesis')}
 ${stat(`${totalTheorems} / ${totalProved}`, 'Lean theorems / lemmas proved', 'one theorem for every lemma, checked at build')}
 </div>
