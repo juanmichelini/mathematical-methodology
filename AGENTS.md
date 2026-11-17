@@ -75,7 +75,9 @@ three levels, and the code is split the same way:
   (`Export/Suite.lean`, `Generated/Suite.lean`, #53): the data types and functions of `Test.hs`, the
   35 lemmas and the lemma chains. `scripts/gate-compile.py FILE` is the compile gate: it reports
   `found N, compiled M` per generated file and fails if any theorem does not compile; CI
-  regenerates each file, diffs it against the committed copy and runs the gate.
+  regenerates each file, diffs it against the committed copy and runs the gate. The gate is after the search on purpose: a lemma is proved when `Cert.check`/the search's
+  checker accepts it, the Lean theorem is a second proof of the same statement, and a compile failure
+  is an exporter failure that CI reports, not a lemma that was not proved.
   `lake exe export-lean trees` does it for `Examples/Trees.lean` (#59), a development that is not
   from the thesis (polymorphic trees), as a generality test; the same gate runs on it in CI.
   Only proofs the system found are exported: a hand-written certificate is not a mechanical result.
